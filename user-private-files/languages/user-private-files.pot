@@ -1,0 +1,525 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: User Private Files\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-17 06:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0.2\n"
+"X-Domain: user-private-files"
+
+#: inc/functions-file.php:362 inc/functions-file.php:537
+#: inc/functions-folder.php:718 inc/functions-folder.php:905
+msgid ". Login and check your files."
+msgstr ""
+
+#: templates/right-sidebar.php:49
+msgid "Add"
+msgstr ""
+
+#: inc/functions-file.php:792 inc/functions-folder.php:73
+#: inc/functions-folder.php:88 templates/render.php:61 templates/render.php:80
+msgid "All Files"
+msgstr ""
+
+#: templates/file-preview.php:71 templates/share-folder.php:57
+msgid "All Users"
+msgstr ""
+
+#: inc/classic-render.php:123 templates/file-preview.php:42
+#: templates/file-preview.php:67 templates/file-preview.php:77
+#: templates/file-preview.php:92 templates/share-folder.php:31
+#: templates/share-folder.php:54 templates/share-folder.php:63
+#: templates/share-folder.php:79
+msgid "Allow Access"
+msgstr ""
+
+#: inc/functions-file.php:891
+msgid "An error occured while submitting your comment. Please contact us."
+msgstr ""
+
+#: templates/folder-popups.php:55
+msgid "Are You Sure?"
+msgstr ""
+
+#: inc/functions-file.php:197 inc/functions-file.php:228
+#: inc/functions-file.php:390 inc/functions-file.php:571
+#: inc/functions-folder.php:350 inc/functions-folder.php:394
+#: inc/functions-folder.php:746 inc/functions-folder.php:938
+msgid "Author"
+msgstr ""
+
+#: templates/render.php:158
+msgid "Bulk Select"
+msgstr ""
+
+#: inc/classic-post-new.php:34
+msgid "Choose file"
+msgstr ""
+
+#: templates/post-new.php:21
+msgid "Choose files"
+msgstr ""
+
+#: templates/right-sidebar.php:48
+msgid "Comments"
+msgstr ""
+
+#: inc/functions-file.php:673 inc/functions-file.php:709
+#: inc/functions-file.php:745 inc/functions-file.php:773
+#: inc/functions-folder.php:973
+msgid "Could not verify POST values"
+msgstr ""
+
+#: templates/folder-popups.php:20
+msgid "Create"
+msgstr ""
+
+#: templates/folder-popups.php:15
+msgid "Create New Folder"
+msgstr ""
+
+#: templates/right-sidebar.php:62
+msgid "Created By"
+msgstr ""
+
+#: inc/functions-folder.php:70 templates/render.php:57
+msgid "Dashboard"
+msgstr ""
+
+#: templates/file-popups.php:47 templates/folder-popups.php:47
+#: templates/render.php:156 templates/render.php:161 templates/render.php:168
+msgid "Delete"
+msgstr ""
+
+#: inc/classic-render.php:125
+msgid "Delete File"
+msgstr ""
+
+#: templates/file-popups.php:41
+msgid "Delete File?"
+msgstr ""
+
+#: templates/folder-popups.php:41
+msgid "Delete Folder?"
+msgstr ""
+
+#: inc/classic-render.php:117 templates/right-sidebar.php:39
+msgid "Description"
+msgstr ""
+
+#: inc/classic-render.php:115 templates/right-sidebar.php:36
+msgid "Document Name"
+msgstr ""
+
+#: templates/render.php:153
+msgid "Download"
+msgstr ""
+
+#: inc/classic-post-new.php:31
+msgid "Drag and drop a file you want to upload"
+msgstr ""
+
+#: templates/file-popups.php:28
+msgid "Edit file description"
+msgstr ""
+
+#: inc/classic-render.php:122 templates/file-preview.php:87
+#: templates/share-folder.php:73
+msgid "Email Address"
+msgstr ""
+
+#: templates/file-preview.php:37 templates/share-folder.php:26
+msgid "Email Address or Username"
+msgstr ""
+
+#: templates/folder-popups.php:58 templates/render.php:184
+msgid "Empty Trash"
+msgstr ""
+
+#: inc/functions-file.php:606 inc/functions-file.php:640
+#: inc/functions-file.php:822 inc/functions-file.php:859
+#: inc/functions-folder.php:293 inc/functions-folder.php:456
+#: inc/functions-folder.php:534 inc/functions-folder.php:1022
+#: inc/functions-folder.php:1075 inc/functions-folder.php:1129
+#: inc/functions-folder.php:1189
+msgid "Error - Could not verify POST values"
+msgstr ""
+
+#: admin/settings.php:69 inc/functions-file.php:41 inc/functions-file.php:124
+#: inc/functions-file.php:268 inc/functions-file.php:427
+#: inc/functions-folder.php:569 inc/functions-folder.php:616
+#: inc/functions-folder.php:786
+msgid "error - Could not verify POST values"
+msgstr ""
+
+#: inc/functions-file.php:284 inc/functions-file.php:443
+#: inc/functions-folder.php:632 inc/functions-folder.php:799
+msgid "error - Empty POST values"
+msgstr ""
+
+#: inc/functions-file.php:374 inc/functions-file.php:555
+msgid ""
+"Error - File is shared but unable to send email to the user. Please contact "
+"us."
+msgstr ""
+
+#: inc/functions-folder.php:440 inc/functions-folder.php:1210
+msgid "Error - Folder ID is missing"
+msgstr ""
+
+#: inc/functions-folder.php:730 inc/functions-folder.php:923
+msgid ""
+"Error - Folder is shared but unable to send email to the user. Please "
+"contact us."
+msgstr ""
+
+#: inc/functions-folder.php:518
+msgid "Error - Folder Name is empty"
+msgstr ""
+
+#: inc/classic-user-functions.php:138 inc/functions-file.php:320
+#: inc/functions-file.php:493
+msgid "error - Unable to add users to this document"
+msgstr ""
+
+#: inc/functions-folder.php:676 inc/functions-folder.php:861
+msgid "error - Unable to add users to this folder"
+msgstr ""
+
+#: inc/classic-user-functions.php:177
+msgid ""
+"error - Unable to remove the user from this document. Please try again later "
+"or contact us."
+msgstr ""
+
+#: inc/functions-file.php:689
+msgid ""
+"error - Unable to remove the user from this file. Please try again later or "
+"contact us."
+msgstr ""
+
+#: inc/functions-folder.php:1001
+msgid ""
+"error - Unable to remove the user from this folder. Please try again later "
+"or contact us."
+msgstr ""
+
+#: inc/classic-user-functions.php:208 inc/functions-file.php:725
+msgid ""
+"error - Unable to remove this file. Please try again later or contact us."
+msgstr ""
+
+#: inc/functions-file.php:753
+msgid ""
+"error - Unable to restore this file. Please try again later or contact us."
+msgstr ""
+
+#: inc/functions-folder.php:474
+msgid "Error creating the folder! Please try later or contact us"
+msgstr ""
+
+#: inc/classic-user-functions.php:61
+msgid ""
+"Error generating the details for your document! Please try later or contact "
+"us"
+msgstr ""
+
+#: inc/functions-file.php:83
+msgid ""
+"Error generating the details for your file! Please try later or contact us"
+msgstr ""
+
+#: inc/functions-file.php:96
+msgid "Error uploading the file! Please try later."
+msgstr ""
+
+#: inc/classic-user-functions.php:74
+msgid "Error uploading the photo! Please try later."
+msgstr ""
+
+#: templates/render.php:173
+msgid "Filter"
+msgstr ""
+
+#: templates/render.php:172
+msgid "Filter by user email"
+msgstr ""
+
+#: templates/folder-popups.php:18 templates/right-sidebar.php:56
+msgid "Folder Name"
+msgstr ""
+
+#: inc/functions-file.php:200 inc/functions-file.php:231
+#: inc/functions-file.php:393 inc/functions-file.php:574
+#: inc/functions-folder.php:353 inc/functions-folder.php:397
+#: inc/functions-folder.php:749 inc/functions-folder.php:941
+#: templates/file-preview.php:40 templates/file-preview.php:65
+#: templates/file-preview.php:75 templates/file-preview.php:90
+#: templates/share-folder.php:29 templates/share-folder.php:52
+#: templates/share-folder.php:61 templates/share-folder.php:76
+msgid "Full Access"
+msgstr ""
+
+#: inc/classic-render.php:93
+msgid "Group by File Type"
+msgstr ""
+
+#: templates/render.php:143
+msgid "Home"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://userprivatefiles.com/"
+msgstr ""
+
+#: templates/file-popups.php:60 templates/file-popups.php:71
+msgid "Move"
+msgstr ""
+
+#: templates/file-popups.php:68
+msgid "Move bulk files"
+msgstr ""
+
+#: templates/file-popups.php:56
+msgid "Move this file"
+msgstr ""
+
+#: templates/render.php:149 templates/render.php:160
+msgid "Move To"
+msgstr ""
+
+#: inc/classic-render.php:88
+msgid "My Files"
+msgstr ""
+
+#: templates/render.php:130
+msgid "New Folder"
+msgstr ""
+
+#: templates/files-search.php:247
+msgid "No files / folders found"
+msgstr ""
+
+#: templates/files.php:260
+msgid "No Files / Folders here."
+msgstr ""
+
+#: templates/files-shared.php:59 templates/files-shared.php:321
+msgid "No files / Folders here."
+msgstr ""
+
+#: templates/files.php:264
+msgid "No files / Folders here. Upload a file or create a new folder."
+msgstr ""
+
+#: inc/functions-file.php:407 inc/functions-folder.php:764
+msgid "No user found with this email address or username."
+msgstr ""
+
+#: inc/classic-post-new.php:49
+msgid "Note"
+msgstr ""
+
+#: templates/render.php:164 templates/render.php:179 templates/render.php:182
+msgid "Permanent Delete"
+msgstr ""
+
+#: templates/render.php:151 templates/render.php:167
+msgid "Rename"
+msgstr ""
+
+#: templates/file-popups.php:15
+msgid "Rename this file"
+msgstr ""
+
+#: templates/folder-popups.php:28
+msgid "Rename this folder"
+msgstr ""
+
+#: templates/render.php:174
+msgid "Reset"
+msgstr ""
+
+#: templates/render.php:163
+msgid "Restore"
+msgstr ""
+
+#: templates/render.php:181
+msgid "Restore File"
+msgstr ""
+
+#: templates/render.php:178
+msgid "Restore Folder"
+msgstr ""
+
+#: templates/file-popups.php:20 templates/file-popups.php:33
+#: templates/folder-popups.php:33
+msgid "Save"
+msgstr ""
+
+#: templates/render.php:135
+msgid "Search"
+msgstr ""
+
+#: templates/render.php:134
+msgid "Search Files"
+msgstr ""
+
+#: templates/render.php:159
+msgid "Select All"
+msgstr ""
+
+#: templates/render.php:150 templates/render.php:166
+msgid "Share"
+msgstr ""
+
+#: templates/share-folder.php:15
+msgid "Share This Folder with others"
+msgstr ""
+
+#: inc/classic-render.php:121 templates/file-preview.php:24
+msgid "Share with others"
+msgstr ""
+
+#: inc/functions-folder.php:87 templates/render.php:79 templates/render.php:145
+msgid "Shared"
+msgstr ""
+
+#: inc/classic-render.php:177
+msgid "Shared By"
+msgstr ""
+
+#: templates/files-search.php:172
+msgid "Shared Files"
+msgstr ""
+
+#: inc/classic-render.php:161 inc/functions-folder.php:85
+#: templates/render.php:77
+msgid "Shared with me"
+msgstr ""
+
+#: templates/file-preview.php:33 templates/share-folder.php:24
+msgid "Single User"
+msgstr ""
+
+#: inc/functions-file.php:104
+msgid "This file type is not allowed for uploading."
+msgstr ""
+
+#: inc/classic-user-functions.php:78
+msgid "This file type is not allowed."
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"This plugin allows users to manage their uploaded files and access to them."
+msgstr ""
+
+#: templates/folder-popups.php:45
+msgid "This will move files and sub folders to trash."
+msgstr ""
+
+#: templates/file-popups.php:45
+msgid "This will move the file to trash."
+msgstr ""
+
+#: templates/file-popups.php:44
+msgid "This will permanently delete the file."
+msgstr ""
+
+#: templates/folder-popups.php:44
+msgid "This will permanently delete the files and sub folders."
+msgstr ""
+
+#: inc/classic-post-new.php:48
+msgid "Title"
+msgstr ""
+
+#: inc/functions-folder.php:122 inc/functions-folder.php:123
+#: templates/render.php:119 templates/render.php:120
+msgid "Trash"
+msgstr ""
+
+#: templates/files.php:258
+msgid "Trash is Empty."
+msgstr ""
+
+#: inc/classic-post-new.php:54
+msgid "Upload"
+msgstr ""
+
+#: templates/render.php:129
+msgid "Upload Files"
+msgstr ""
+
+#: templates/right-sidebar.php:45
+msgid "Uploaded By"
+msgstr ""
+
+#: user-private-files.php:196 inc/functions-file.php:100
+msgid "Uploaded file exceeds the maximum upload size for this site"
+msgstr ""
+
+#. Name of the plugin
+#. Author of the plugin
+msgid "User Private Files"
+msgstr ""
+
+#: templates/file-preview.php:46 templates/share-folder.php:35
+msgid "Users with Role"
+msgstr ""
+
+#: inc/functions-file.php:203 inc/functions-file.php:234
+#: inc/functions-file.php:396 inc/functions-file.php:577
+#: inc/functions-folder.php:356 inc/functions-folder.php:400
+#: inc/functions-folder.php:752 inc/functions-folder.php:944
+#: templates/file-preview.php:39 templates/file-preview.php:64
+#: templates/file-preview.php:74 templates/file-preview.php:89
+#: templates/share-folder.php:28 templates/share-folder.php:51
+#: templates/share-folder.php:60 templates/share-folder.php:75
+msgid "View Only"
+msgstr ""
+
+#: templates/right-sidebar.php:42 templates/right-sidebar.php:59
+msgid "Who has access"
+msgstr ""
+
+#: inc/functions-folder.php:432
+msgid "You do not have permission to open this folder."
+msgstr ""
+
+#: inc/functions-file.php:249
+msgid "You do not have permission to view this file."
+msgstr ""
+
+#: admin/custom-fields.php:13 admin/customizer-free.php:13
+#: admin/gdrive_settings-free.php:13 admin/login_setting-free.php:24
+#: admin/settings.php:10
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: inc/classic-user-functions.php:146 inc/classic-user-functions.php:184
+#: inc/classic-user-functions.php:212 inc/functions-file.php:411
+#: inc/functions-file.php:590 inc/functions-file.php:624
+#: inc/functions-file.php:658 inc/functions-file.php:694
+#: inc/functions-file.php:730 inc/functions-file.php:758
+#: inc/functions-file.php:843 inc/functions-file.php:896
+#: inc/functions-folder.php:554 inc/functions-folder.php:599
+#: inc/functions-folder.php:768 inc/functions-folder.php:956
+#: inc/functions-folder.php:1006 inc/functions-folder.php:1059
+#: inc/functions-folder.php:1114
+msgid "You don't have permission to perform this action"
+msgstr ""
+
+#: inc/classic-post-new.php:66 inc/shortcodes.php:39
+msgid "You must be logged in to upload/manage the files"
+msgstr ""
