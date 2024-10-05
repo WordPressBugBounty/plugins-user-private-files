@@ -1,4 +1,4 @@
-=== User Private Files - Upload Documents & Secure File Sharing with Frontend File Manager ===
+=== User Private Files - File Upload & Download Manager with Secure File Sharing ===
 Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, private files, file upload, frontend, file manager
 Requires at least: 6.0
