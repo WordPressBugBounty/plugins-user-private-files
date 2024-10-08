@@ -26,13 +26,13 @@ User Private Files is a perfect file sharing solution for you.
 
 User Private Files is a private file sharing plugin with frontend file manager (client portal) that will add a file sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files. A perfect frontend dashboard to upload and share private files.
 
-[Check the Frontend Demo Here](https://demo.userprivatefiles.com/dashboard/)
+[Check the Frontend Demo Here](https://demo.userprivatefiles.com/dashboard/?utm_source=wordpress&utm_medium=website)
 
 https://www.youtube.com/watch?v=tdwzs-w8EyI
 
-Some of the features shown in the video are available only in the [PRO version](https://userprivatefiles.com/).
+Some of the features shown in the video are available only in the [PRO version](https://userprivatefiles.com/?utm_source=wordpress&utm_medium=website).
 
-[All Documentation/Features Videos](https://userprivatefiles.com/documentation/install-plugin-frontend-file-manager-pro/)
+[All Documentation/Features Videos](https://userprivatefiles.com/documentation/install-plugin-frontend-file-manager-pro/?utm_source=wordpress&utm_medium=website)
 
 The plugin is simple to use and comes with 2 different design shortcodes:
 
@@ -92,7 +92,7 @@ Yes, the site administrator can view/delete all the files uploaded by users in t
 
 = How can users share their files? =
 
-Follow this [Video documentation series](https://userprivatefiles.com/documentation/install-plugin-frontend-file-manager-pro/)
+Follow this [Video documentation series](https://userprivatefiles.com/documentation/install-plugin-frontend-file-manager-pro/?utm_source=wordpress&utm_medium=website)
 
 = Does the plugin send an email to the users? =
 
@@ -260,7 +260,7 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 
 * Beautiful animation & icons
 
-[PRO version Features](https://userprivatefiles.com/)
+[PRO version Features](https://userprivatefiles.com/?utm_source=wordpress&utm_medium=website)
 
 * Backend file manager for admin to manage files
 
@@ -336,7 +336,7 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 
 * Display total storage used and size of each file in the backend **(NEW)**
 
-* And many more. [See the Full List Here](https://userprivatefiles.com/)
+* And many more. [See the Full List Here](https://userprivatefiles.com/?utm_source=wordpress&utm_medium=website)
 
 == Everything you need in a File Sharing Plugin ==
 **Easy to use**
@@ -401,4 +401,4 @@ Extend the functionality of the best file sharing plugin even more by installing
 **Best in class Customer Support**
 We are fully dedicated to the User Private Files plugin and are known by our amazing support that we provide to our customers. We listen to plugin users and add features from time to time keeping the plugin up-to-date. If you have any suggestions or questions, please let us know.
 
-[Check the Demo](https://demo.userprivatefiles.com/dashboard/) to experience all features.
+[Check the Demo](https://demo.userprivatefiles.com/dashboard/?utm_source=wordpress&utm_medium=website) to experience all features.
