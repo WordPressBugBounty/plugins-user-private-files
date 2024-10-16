@@ -26,7 +26,7 @@ User Private Files is a perfect file sharing solution for you.
 
 User Private Files is a private file sharing plugin with frontend file manager (client portal) that will add a file sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files. A perfect frontend dashboard to upload and share private files.
 
-[Check the Frontend Demo Here](https://demo.userprivatefiles.com/dashboard/?utm_source=wordpress&utm_medium=website)
+[Check the Full Demo Here](https://backend.userprivatefiles.com/)
 
 https://www.youtube.com/watch?v=tdwzs-w8EyI
 
@@ -401,4 +401,4 @@ Extend the functionality of the best file sharing plugin even more by installing
 **Best in class Customer Support**
 We are fully dedicated to the User Private Files plugin and are known by our amazing support that we provide to our customers. We listen to plugin users and add features from time to time keeping the plugin up-to-date. If you have any suggestions or questions, please let us know.
 
-[Check the Demo](https://demo.userprivatefiles.com/dashboard/?utm_source=wordpress&utm_medium=website) to experience all features.
+[Check the Demo](https://backend.userprivatefiles.com/) to experience all features.
