@@ -2,7 +2,7 @@
 /**
 * Plugin Name: User Private Files
 * Description: This plugin allows users to manage their uploaded files and access to them.
-* Version: 2.1.1
+* Version: 2.1.2
 * Author: User Private Files
 * Author URI: https://userprivatefiles.com/
 * License: GPLv2 or later
@@ -115,12 +115,17 @@ if (!function_exists('upfp_admin_script')) {
 		);
 		wp_enqueue_style(
 			'upf-multiple_choose-style',
-			"https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css"
+			plugin_dir_url(__FILE__) . 'css/admin/chosen.min.css',
 		);
 		wp_enqueue_script(
 			'upf-multiple_choose-script2',
-			"https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js",
-			array('jquery')
+			plugins_url('js/lib/chosen.jquery.min.js',__FILE__ ),
+			array('jquery'),
+		);
+		wp_enqueue_style(
+			'upf-adm-font-awesome',
+			plugin_dir_url(__FILE__) . 'css/fa.min.css',
+			array(),
 		);
 	}
 }
@@ -232,6 +237,7 @@ if(is_admin()){
 		function upvf_admin_config() {
 			add_menu_page('User Private Files', 'User Private Files', 'manage_options', 'upvf-free', 'upvf_config_callback', 'dashicons-superhero');
 			add_submenu_page('upvf-free', 'Settings', 'Settings', 'manage_options', 'upvf-free', 'upvf_config_callback', 1);
+			add_submenu_page('upvf-free', 'Backend File Manager', 'Backend File Manager', 'manage_options', 'upvf-free-files', 'upvf_config_backend_fm_callback', 2);
 		}
 	}
 }

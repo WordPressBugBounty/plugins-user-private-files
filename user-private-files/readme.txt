@@ -3,7 +3,7 @@ Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, download manager, file manager, file upload, upload
 Requires at least: 6.0
 Tested up to: 6.6.2
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -88,7 +88,7 @@ Yes, the plugin needs to write a rewrite rule to the .htaccess file to allow/den
 
 = Will the user files appear in the backend? =
 
-Yes, the site administrator can view/delete all the files uploaded by users in the backend in media library. Get the PRO version for backend file manager that provide more powerful tools.
+No. Get the PRO version for backend file manager that provide powerful tools to manage all files from users.
 
 = How can users share their files? =
 
@@ -100,8 +100,7 @@ Yes, when adding a user by an email address or username to the file, the plugin 
 
 = Files type Restrictions? =
 
-Only the images and documnet files are allowed in classic design shortcode.
-Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the modern design shortcode.
+Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the modern design shortcode. You can add or restrict file types with the PRO version.
 
 == Screenshots ==
 1. Front-end Dashboard
@@ -115,6 +114,11 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.1.2 =
+* 2024-10-18
+* [Update] - Improved backend settings UI.
+* Fixed - Font Awesome icons not appearing in backend.
 
 = 2.1.1 =
 * 2024-08-17

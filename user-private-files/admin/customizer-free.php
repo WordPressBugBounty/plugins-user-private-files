@@ -19,6 +19,154 @@ if (!function_exists('upvf_pro_customiser_callback'))
 
 				<div class="wrap" >
 					<form method="post" action="" enctype="multipart/form-data">
+
+                        <div class="upfp_setting-container">
+                            <h2 class="heading">General (PRO Feature)</h2>
+                            <div class="upfp_inner-container">
+							<div class="upfp_col-1">								
+								<label>Disable full width of Frontend dashboard</label>
+							</div>
+
+							<div class="upfp_col-2">
+								<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+									<div class="upfp_toggle-check">
+										<input type="checkbox">	
+										<div class="upfp_round"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        </div>
+
+                        <div class="upfp_setting-container">
+                            <h2 class="heading">Branding (PRO Feature)</h2>
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label>Logo</label>
+                                </div>
+                                <div class="upfp_col-2 upfp_thumb_col-2">
+                                    <input type="file" class="upfp_thumb" accept="image/png, image/jpeg, image/webp">
+                                </div>						
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label>Watermark</label>
+                                </div>
+                                <div class="upfp_col-2 upfp_thumb_col-2">
+                                    <input type="file" class="upfp_thumb" name="upfp_cust_watermark_thumbnail" accept="image/png, image/jpeg, image/webp">
+                                </div>						
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label>Watermark Settngs :</label>
+                                </div>
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">                                   
+                                    <label>Size</label>
+                                </div>
+                                <div class="upfp_col-2">
+                                <select class="upfp_input">
+                                    <option value="auto">Auto</option>
+                                    <option value="cover">Cover</option>
+                                    <option value="contain">Contain</option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label>Width</label>
+                                </div>
+                                <div class="upfp_col-2">
+                                <select class="upfp_input">
+                                    <option value="10%">10%</option>
+                                    <option value="20%">20%</option>
+                                    <option value="30%">30%</option>
+                                    <option value="40%">40%</option>
+                                    <option value="50%">50%</option>
+                                    <option value="60%">60%</option>
+                                    <option value="70%">70%</option>
+                                    <option value="80%">80%</option>
+                                    <option value="90%">90%</option>
+                                    <option value="100%">100%</option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">                                   
+                                    <label>Height</label>
+                                </div>
+                                <div class="upfp_col-2">
+                                <select class="upfp_input">
+                                    <option value="10%">10%</option>
+                                    <option value="20%">20%</option>
+                                    <option value="30%">30%</option>
+                                    <option value="40%">40%</option>
+                                    <option value="50%">50%</option>
+                                    <option value="60%">60%</option>
+                                    <option value="70%">70%</option>
+                                    <option value="80%">80%</option>
+                                    <option value="90%">90%</option>
+                                    <option value="100%">100%</option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label>Opacity</label>
+                                </div>
+                                <div class="upfp_col-2">
+                                <select class="upfp_input">
+                                    <option value="0.1">0.1</option>
+                                    <option value="0.2">0.2</option>
+                                    <option value="0.3">0.3</option>
+                                    <option value="0.4">0.4</option>
+                                    <option value="0.5">0.5</option>
+                                    <option value="0.6">0.6</option>
+                                    <option value="0.7">0.7</option>
+                                    <option value="0.8">0.8</option>
+                                    <option value="0.9">0.9</option>
+                                    <option value="1.0">1.0</option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label>Position</label>
+                                </div>
+                                <div class="upfp_col-2">
+                                <select class="upfp_input">
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                    <option value="top">Top</option>
+                                    <option value="bottom">Bottom</option>
+                                    <option value="center">Center</option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label>Repeat</label>
+                                </div>
+                                <div class="upfp_col-2">
+                                <select class="upfp_input">
+                                    <option value="repeat">Repeat</option>
+                                    <option value="no-repeat">No-Repeat</option>
+                                    <option value="repeat-x">Repeat-X</option>
+                                    <option value="repeat-y">Repeat-Y</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+
 						<div class="upfp_setting-container">
                             <h2 class="heading">Colors (PRO Feature)</h2>
                             <div class="upfp_inner-container">
@@ -139,64 +287,7 @@ if (!function_exists('upvf_pro_customiser_callback'))
                                 </div>	
                             </div>
                         </div>
-                        <div class="upfp_setting-container">
-							<h2 class="heading">Toolbar (PRO Feature)</h2>
-
-                            <?php 
-                                global $wp_roles;
-                                $all_roles = $wp_roles->roles;
-								$options = '';
-								foreach($all_roles as $key => $val){
-									$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-								}
-                            ?>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<label id="upfp_search" for="upfp_cust_srch">Hide Search for</label>
-								</div>
-                                <div class="upfp_col-2">
-									<select id="upfp_cust_srch" class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-
-                            <div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<label id="upfp_folders" for="upfp_cust_fldr">Hide Filters for</label>
-								</div>
-                                <div class="upfp_col-2">
-									<select id="upfp_cust_fldr" class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-
-                            <div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<label id="upfp_new_folder" for="upfp_cust_new_fldr">Hide New Folders Button</label>
-								</div>
-                                <div class="upfp_col-2">
-									<select id="upfp_cust_new_fldr" class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-							
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<label for="upfp_cust_upld_file">Hide Upload Files Button</label>
-								</div>
-                                <div class="upfp_col-2">
-									<select id="upfp_cust_upld_file" class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-							
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<label for="upfp_cust_new_file">Hide New File Button (Premium Feature)</label>
-								</div>
-                                <div class="upfp_col-2">
-									<select id="upfp_cust_new_file" class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-							
-                        </div>
+        
                         <div class="upfp_setting-container">
 							<h2 class="heading">File View Mode (PRO Feature)</h2>
                             <div class="upfp_inner-container">

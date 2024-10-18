@@ -8,35 +8,31 @@ body{
 
 /* banner CSS */
 .upfp_banner{
-    height: 130px;
-    background-repeat: no-repeat;
-    background-size: contain;
-	background-color: #F4FAFF;
-    background-image: url("../../images/admin_images/free-banner.png");
-	background-position: center center;
-    display: flex;
-    flex-direction: row;
-    margin: 1% 1% 0 0;
-    text-align: center;
-	box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+  background-repeat: repeat;
+  background-color: #fff;
+  background-image: url("../../images/admin_images/home__pattern1.png");
+  display: flex;
+  margin: 1% 1% 0 0;
+  text-align: center;
+  justify-content: space-between;
 }
-
+.upfp_banner_logo {
+    height: 40px;
+    align-self: center;
+    margin: 0 10px;
+  }
 .upfp_banner .banner_col-1{
 	width: 70%;
 }
+.banner_col-1 {
+    display: flex;
+  }
 
-.banner_col-1{
-    width: 30%;
-}
-
-.upfp_banner h2{
-    width: 40%;
-}
-
-.upfp_btn-container{
-    width: 30%;
-    position: relative;
-}
+.upfp_banner .upfp_contains_btn {
+    display: flex;
+    justify-content: end;
+    margin: 0.5em;
+  }
 
 .contains_btn{
     position: absolute;
@@ -69,32 +65,33 @@ a.upfp_btn{
     margin-right: 12px;
 }
 /* Tabs Navbar CSS */
-.upfp_tab-container{
-    margin: 1% 1% 0 0;
+.upfp_tab-container {
+    margin-right: 1%;
+    margin-top: 1%;
     height: 30px;
-    border-bottom: 1px solid #adb5bd;
-}
+    border-bottom: 1px solid #005ca1;
+  }
 
-.upfp_tab-container .tabs{
-    border: 1px solid #adb5bd;
+  .upfp_tab-container .tabs {
+    border: 1px solid #005ca1;
     border-bottom: none;
-    padding: 8px 10px;
-    background-color: #adb5bd;
-    margin-left: 0.5rem;
+    padding: 7px 14px;
+    background-color: #fff;
     font-size: 15px;
-    color: #000;
+    color: #005ca1;
     text-decoration: none;
     font-weight: 600;
     line-height: 1.71428571;
     white-space: nowrap;
     margin-bottom: -1px;
-}
+    border-radius: 7px 7px 0 0;
+  }
 
-.tabs.upfp_active{
-    background-color: #f0f0f1;
-    color: #000;
-    border-bottom: 1px solid #f0f0f1;
-}
+.tabs.upfp_active {
+    background-color: #005ca1;
+    color: #fff;
+    border-bottom: 1px solid #005ca1;
+  }
 
 .tabs.upfp_active:focus{
     box-shadow: none;
@@ -102,31 +99,31 @@ a.upfp_btn{
 }
 
 /* Each Setting Container CSS */
-.upfp_setting-container{
+.upfp_setting-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
-    background-color: #f4faff;
+    background-color: #fff;
     margin: 2rem 0;
-    border-radius: 5px;
-}
+  }
 
-.heading{
+.upfp_setting-container .heading {
     font-size: 1.25rem;
     margin: 0;
+    border-bottom: 1px solid #adb5bd;
     width: 98%;
-    background-color: #adb5bd;
+    background-color: #fff;
     line-height: 1.2;
     font-weight: 500;
     padding: 1%;
-}
+  }
 
 .upfp_inner-container{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 3vh 0 3vh 0;
+    margin: 2vh 0;
 }
 
 .upfp_col-1{
@@ -137,8 +134,11 @@ a.upfp_btn{
     font-size: 14px;
 }
 
-.upfp_col-2{
+.upfp_col-2 {
     width: 70%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .upfp_inner-container .upfp_col-2 .chosen-container{
@@ -269,16 +269,7 @@ a.upfp_btn{
     outline: none;
 }
 
-.upfp_msg{
-    text-align: center;
-    padding: 15px;
-    font-size: 20px;
-}
 
-.upfp_sub-msg{
-    font-size: 16px;
-    padding: 15px;
-}
 
 .upfp_input{
     min-width: 95%;
@@ -312,16 +303,19 @@ a.upfp_btn{
     align-items: center;
 }
 
-.upfp_thumb_heading{
+.upfp_thumb_heading,
+.upfp_file_type_heading,
+.upfp_ftp_heading {
     border-bottom: 1px solid #adb5bd;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #adb5bd;
 }
 
-.upfp_thumb_heading h2{
+.upfp_setting-container .upfp_thumb_heading h2.heading,
+.upfp_setting-container .upfp_file_type_heading h2.heading,
+.upfp_setting-container .upfp_ftp_heading h2.heading {
     border: none;
     width: auto;
 }
@@ -413,7 +407,7 @@ a.upfp_btn{
     background: #0071a1;
     z-index: 1;
   }
-  .upfp-popup input{
+  .upfp-popup input:not([type=checkbox]), .upfp-popup select{
     flex: auto;
     margin: auto 5px;
     padding: 10px;
@@ -422,6 +416,15 @@ a.upfp_btn{
     width: 75%;
     border-radius: 0;
   }
+  
+.upfp-popup textarea {
+    flex: auto;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 0;
+}
+
   .upfp-popup .upf_inner h4{
     font-size: 15px;
     font-weight: bold;
@@ -429,6 +432,10 @@ a.upfp_btn{
     margin: 0 0 20px;
     padding: 0;
   }
+
+  .upfp-popup .upf_inner p {
+    font-weight: normal;
+}
   
 /*
 * CSS for upf Custom Fields settings page
@@ -466,3 +473,144 @@ a.upfp_btn{
 	cursor: pointer;
 	text-decoration: underline;
 }
+
+/* Uploads tab */
+
+.upfp_file_type_header_wrapper {
+    font-weight: bold;
+    background: #cfcfcf;
+    padding: 5px;
+}
+
+.upfp_file_type_wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.upfp_file_type_wrapper div{
+    width: 20%;
+    text-align: center;
+}
+
+.upfp_srvr_col1 {
+    width: 70%;
+    margin-left: 1.5vw;
+    word-wrap: break-word;
+}
+.upfp_srvr_col2 {
+    width: 30%;
+}
+.upfp_srvr_folder_wrapper .upf_setting_msg{
+    box-shadow: 0 0 3px #aaa;
+    margin: 10px;
+    height: 200px;
+    overflow: auto;
+    padding: 10px;
+    font-style: italic;
+}
+.upfp_ftp_msg {
+    padding: 10px;
+}
+
+.upfp_upload_wrapper input[type=text] {
+    width: 60%;
+    min-width: 60%
+}
+
+.addNewFileType_popup form, .addNewFile_popup form {
+    display: flex;
+    align-items: center;
+}
+
+  /* Register Tab */
+.upfp_rf_wrapper {
+    text-align: center;
+}
+
+.upfp_rf_wrapper .upfp_inner-container:first-child {
+    padding: 5px;
+    font-weight: bold;
+    background: #cfcfcf;
+}
+
+.upfp_rf_wrapper i, .upfp_allowed_type_wrapper i {
+    padding: 10px;
+    margin: 0 0.5em;
+    color: #fff;
+    border: none;
+    background-color: #2271b1;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    float: right;
+}
+.upfp-popup select#upf_rf_type{
+	max-width: 100%;
+    line-height: 1;
+}
+
+#upf_rf_add_field_btn.add_btn {
+    margin-left: auto;
+}
+
+.upf_rf_new_field_popup input[type="checkbox"] {
+	margin-left: 5px;
+}
+
+.upfp_rf_wrapper i:hover, .upfp_allowed_type_wrapper i:hover{
+    background-color: #192a55;
+}
+
+.upfp_rf_wrapper .upf_rf_admin_col {
+    width: 20%;
+}
+
+.upfp_rf_wrapper .upf_rf_admin_col label{
+    word-wrap: break-word;
+}
+
+#upfp_register_option_page .upfp_admin_save {
+    margin: 1.5vw;
+}
+
+/* Backend File Manager */
+#upfadm_container img{
+	max-width: 100%;
+}
+#upfadm_container .upfadm_fm_pp{
+	position: absolute;
+	top: 0;
+	left: -20px;
+	right: 0;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 9999;
+}
+#upfadm_container .upfadm_fm_pp_inner{
+	background: #fff; height: 300px; max-width: 650px; margin: auto; margin-top: 15%; padding: 10px; border-radius: 5px;
+}
+#upfadm_container .upfadm_fm_pp_inner h1{
+	font-size: 2em;
+}
+#upfadm_container .upfadm_fm_pp_inner h1, #upfadm_container .upfadm_fm_pp_inner p{
+	text-align: center;
+}
+#upfadm_container .upfadm_fm_pp_inner p{
+	font-size: 15px;
+	font-weight: 600;
+}
+#upfadm_container .upfadm_fm_pp_inner_features{
+	display: flex;
+	padding: 0 10%;
+	justify-content: space-between;
+}
+.upfadm_fm_pp_inner .upfp_contains_btn{
+	padding-top: 2em;
+    text-align: center;
+}
+#upfadm_container .upfadm_fm_pp_inner_features ul li{
+	list-style: disc;
+	margin-left: 20px;
+	font-size: 15px;
+}
+

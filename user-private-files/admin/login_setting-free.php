@@ -71,6 +71,50 @@ class UPFP_LOGIN_FUNC
 							</div>
 						</div>
 					</div>
+
+					<div class="upfp_inner-container">
+						<div class="upfp_col-1">
+							<label>Remember Me Label</label>
+						</div>
+						<div class="upfp_col-2">
+							<input type="text" class="upfp_input" disabled readonly="readonly" placeholder="Leave blank for default label">
+						</div>
+					</div>
+
+					<div class="upfp_inner-container">
+						<div class="upfp_col-1">
+							<label>Display Google reCAPTCHA v2</label>
+						</div>
+
+						<div class="upfp_col-2">
+							<div id="upfp_setting-toggle" class="upfp_toggle_btn upfp_toggle_setting">
+								<div class="upfp_toggle-check">
+									<input type="checkbox">
+									<div class="upfp_round"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class = "upfp_toggle_wrapper upfp-hidden">
+                        <div class="upfp_inner-container">
+                            <div class="upfp_col-1">
+                                <label>Google reCAPTCHA site Key</label>
+                            </div>
+                            <div class="upfp_col-2">
+                                <input type="text" class="upfp_input" disabled readonly="readonly" placeholder="Enter site key">
+                            </div>
+                        </div>
+
+                        <div class="upfp_inner-container">
+                            <div class="upfp_col-1">
+                                <label>Google reCAPTCHA secret Key</label>
+                            </div>
+                            <div class="upfp_col-2">
+                                <input type="text" class="upfp_input" disabled readonly="readonly" placeholder="Enter secret key">
+                            </div>
+                        </div>
+                    </div>
 				
 					<div class="upfp_inner-container">
 						<div class="upfp_col-1">
@@ -102,6 +146,15 @@ class UPFP_LOGIN_FUNC
 						</div>
 						<div class="upfp_col-2">
 							<input type="text" class="upfp_input" disabled readonly="readonly" placeholder="Leave blank for default label">
+						</div>								
+					</div>
+
+					<div class="upfp_inner-container">
+						<div class="upfp_col-1">
+							<label>Redirect URL</label>
+						</div>
+						<div class="upfp_col-2">
+							<input type="text" class="upfp_input" disabled readonly="readonly" placeholder="">
 						</div>								
 					</div>
 

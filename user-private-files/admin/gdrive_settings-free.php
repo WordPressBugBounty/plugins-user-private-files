@@ -19,7 +19,7 @@ if (!function_exists('upvf_pro_gdrive_callback'))
 						<form method='POST' action="">
 							<div id="upfp_gdrive_sec">
 								<div class="upfp_setting-container">
-									<h2 class="heading">Google Drive Settings - (Premium Feature)</h2>
+									<h2 class="heading">Google Drive Settings - (Premium Addon)</h2>
 									<div class="upfp_inner-container">
 										<div class="upfp_col-1">
 											<label>Client ID</label>
