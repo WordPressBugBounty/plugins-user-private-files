@@ -21,9 +21,9 @@ if (!function_exists('upvf_config_callback')) {
 			</div>
 			<div class="upfp_btn-container">
 				<div class="upfp_contains_btn">
-					<a id="btn1" class="upfp_btn" href="https://userprivatefiles.com/pricing/?utm_source=free-settings&utm_medium=free" target="_blank">Get PRO Version</a>
-					<a id="btn2" class="upfp_btn" href="https://userprivatefiles.com/documentation/?utm_source=free-settings&utm_medium=free" target="_blank">Documentation</a>
-					<a id="btn3" class="upfp_btn" href="https://userprivatefiles.com/support/?utm_source=free-settings&utm_medium=free" target="_blank">Contact Support</a>
+					<a id="btn1" class="upfp_btn" href="https://userprivatefiles.com/pricing/?utm_source=free-get-pro&utm_medium=upf-free" target="_blank">Get PRO Version</a>
+					<a id="btn2" class="upfp_btn" href="https://userprivatefiles.com/documentation/?utm_source=free-documentation&utm_medium=upf-free" target="_blank">Documentation</a>
+					<a id="btn3" class="upfp_btn" href="https://userprivatefiles.com/support/?utm_source=free-support&utm_medium=upf-free" target="_blank">Contact Support</a>
 					<a id="btn4" class="upfp_btn" href="https://wordpress.org/support/plugin/user-private-files/reviews/" target="_blank">Feedback</a>
 				</div>	
 			</div>
@@ -43,9 +43,9 @@ if (!function_exists('upvf_config_callback')) {
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=upload" class="tabs <?php echo ($active_menu == 'upload' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-gear"></i> Upload</a>
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=storage" class="tabs <?php echo ($active_menu == 'storage' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-boxes-packing"></i> Storage</a>
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=login" class="tabs <?php echo ($active_menu == 'login' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-user-shield"></i> Log In</a>
-			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=register" class="tabs <?php echo ($active_menu == 'register' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-user-shield"></i>Registration</a>
+			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=register" class="tabs <?php echo ($active_menu == 'register' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-user-plus"></i> Registration</a>
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=customizer" class="tabs <?php echo ($active_menu == 'customizer' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-palette"></i> Customizer</a>
-			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=fields" class="tabs <?php echo ($active_menu == 'fields' ? 'upfp_active' : ''); ?>">Custom Fields</a>
+			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=fields" class="tabs <?php echo ($active_menu == 'fields' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-tag"></i> Custom Tags</a>
 		</nav>
 
 		<?php
@@ -286,6 +286,36 @@ if (!function_exists('upvf_config_callback')) {
 										<div class="upfp_toggle-check">
 										<input type="checkbox">
 											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Enable Activity logs</label>
+								</div>
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_btn upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+										<input type="checkbox">
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class = "upfp_toggle_wrapper upfp-hidden">
+								<div class="upfp_inner-container">
+									<div class="upfp_col-1">
+										<label>Disable activities display on frontend</label>
+									</div>
+									<div class="upfp_col-2">
+										<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+											<div class="upfp_toggle-check">
+											<input type="checkbox">
+												<div class="upfp_round"></div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -546,8 +576,49 @@ if (!function_exists('upvf_config_backend_fm_callback')) {
 						</ul>
 					</div>
 					<div class="upfp_contains_btn">
-						<a id="btn1" class="upfp_btn" href="https://userprivatefiles.com/pricing/?utm_source=free-file-manager&utm_medium=free" target="_blank">Get PRO Version</a>
-						<a id="btn2" class="upfp_btn" href="https://userprivatefiles.com/features/?utm_source=free-file-manager&utm_medium=free" target="_blank">All Features</a>
+						<a id="btn1" class="upfp_btn" href="https://userprivatefiles.com/pricing/?utm_source=free-file-manager&utm_medium=upf-free" target="_blank">Get PRO Version</a>
+						<a id="btn2" class="upfp_btn" href="https://userprivatefiles.com/features/?utm_source=free-file-manager&utm_medium=upf-free" target="_blank">All Features</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<?php
+	}
+}
+
+if (!function_exists('upvf_config_activities_log_callback')) {
+	function upvf_config_activities_log_callback(){
+		if (!current_user_can('manage_options')){
+			wp_die( __('You do not have sufficient permissions to access this page.', 'user-private-files') );
+		}
+		
+		global $upf_plugin_url;
+		?>
+		
+		<div id="upfadm_container">
+			<img src="<?php echo $upf_plugin_url . 'images/admin_images/upf-activity-logs-ss.png'; ?>">
+			<div class="upfadm_fm_pp">
+				<div class="upfadm_fm_pp_inner">
+					<h1>Available in Premium/Developer versions</h1>
+					<p>Track all files and folders activities by all users.</p>
+					<div class="upfadm_fm_pp_inner_features">
+						<ul>
+							<li>Enable/disable Activity logs</li>
+							<li>Display/Hide Activities on frontend</li>
+							<li>Dedicated Activities page</li>
+							<li>Clear Activity logs</li>
+						</ul>
+						<ul>
+							<li>All files activities</li>
+							<li>All folders activities</li>
+							<li>Track downloads</li>
+							<li>Timestamp</li>
+						</ul>
+					</div>
+					<div class="upfp_contains_btn">
+						<a id="btn1" class="upfp_btn" href="https://userprivatefiles.com/pricing/?utm_source=free-activity&utm_medium=upf-free" target="_blank">Get PRO Version</a>
+						<a id="btn2" class="upfp_btn" href="https://userprivatefiles.com/features/?utm_source=free-activity&utm_medium=upf-free" target="_blank">All Features</a>
 					</div>
 				</div>
 			</div>

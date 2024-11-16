@@ -63,7 +63,7 @@ if (!function_exists('upvf_pro_custom_fields_callback'))
 						<div class="upfp_setting-container">
 							
 							<div class="upfp_thumb_heading">
-								<h2 class="heading">Custom Fields (Premium Addon)</h2>
+								<h2 class="heading">Custom Tags (Premium Addon)</h2>
 								<button class="upfp_btn">Add New</button>
 							</div>
 							

@@ -2,9 +2,9 @@
 /**
 * Plugin Name: User Private Files
 * Description: This plugin allows users to manage their uploaded files and access to them.
-* Version: 2.1.2
+* Version: 2.1.3
 * Author: User Private Files
-* Author URI: https://userprivatefiles.com/
+* Author URI: https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=wporg
 * License: GPLv2 or later
 * Text Domain: user-private-files
 * Domain Path: /languages
@@ -237,7 +237,8 @@ if(is_admin()){
 		function upvf_admin_config() {
 			add_menu_page('User Private Files', 'User Private Files', 'manage_options', 'upvf-free', 'upvf_config_callback', 'dashicons-superhero');
 			add_submenu_page('upvf-free', 'Settings', 'Settings', 'manage_options', 'upvf-free', 'upvf_config_callback', 1);
-			add_submenu_page('upvf-free', 'Backend File Manager', 'Backend File Manager', 'manage_options', 'upvf-free-files', 'upvf_config_backend_fm_callback', 2);
+			add_submenu_page('upvf-free', 'Admin File Manager', 'Admin File Manager', 'manage_options', 'upvf-free-files', 'upvf_config_backend_fm_callback', 2);
+			add_submenu_page('upvf-free', 'Activity Logs', 'Activity Logs', 'manage_options', 'upvf-free-activities', 'upvf_config_activities_log_callback', 2);
 		}
 	}
 }

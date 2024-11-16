@@ -240,6 +240,28 @@ if (!function_exists('upvf_pro_upload_callback'))
                         <div class="upfp_srvr_fldr_heading">
                             <h2 class="heading">Sync Server Folder (PRO Feature)</h2>
                         </div>
+
+                        <div class="upfp_inner-container">
+                            <div class="upfp_col-1">
+                                <label>Enable auto sync</label>
+                            </div>
+
+                            <div class="upfp_col-2">
+                                <div id="upfp_setting-toggle" class="upfp_toggle_setting">
+                                    <div class="upfp_toggle-check">
+                                        <input type="checkbox">	
+                                        <div class="upfp_round"></div>
+                                    </div>
+                                </div>
+                                <select class="upfp_input">
+                                    <option value="hourly">Hourly</option>
+                                    <option value="twicedaily">Twice daily</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly ">Weekly </option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="upfp_inner-container">
                             <div class="upfp_col-1">
                                 <label>Server folder path</label>

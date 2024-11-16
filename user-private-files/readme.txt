@@ -2,8 +2,8 @@
 Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, download manager, file manager, file upload, upload
 Requires at least: 6.0
-Tested up to: 6.6.2
-Stable tag: 2.1.2
+Tested up to: 6.7
+Stable tag: 2.1.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,31 +20,253 @@ Is this file sharing plugin for you?
 * Allow site users to upload and share private files with you or each other in a secure way.
 * Rich features like uploader, downloader, file stats, gallery, notifications, file manager, trash, file previews, public files, password protection and many more.
 
-User Private Files is a perfect file sharing solution for you.
 
-== Best file management and sharing plugin ==
-
-User Private Files is a private file sharing plugin with frontend file manager (client portal) that will add a file sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files. A perfect frontend dashboard to upload and share private files.
-
-[Check the Full Demo Here](https://backend.userprivatefiles.com/)
+**[Try the FREE Demo of User Private Files](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
 
 https://www.youtube.com/watch?v=tdwzs-w8EyI
 
-Some of the features shown in the video are available only in the [PRO version](https://userprivatefiles.com/?utm_source=wordpress&utm_medium=website).
+**[All Features List](https://userprivatefiles.com/features/?utm_source=wp-features&utm_medium=wporg)** | **[Documentation](https://userprivatefiles.com/documentation/?utm_source=wp-docs&utm_medium=wporg)** | **[Case Studies](https://userprivatefiles.com/blog/?utm_source=wp-case-study&utm_medium=wporg)** | **[Get PRO Version](https://userprivatefiles.com/pricing/?utm_source=wp-get-pro&utm_medium=wporg)**
 
-[All Documentation/Features Videos](https://userprivatefiles.com/documentation/install-plugin-frontend-file-manager-pro/?utm_source=wordpress&utm_medium=website)
+== 🔒 Best file management and sharing plugin ==
 
-The plugin is simple to use and comes with 2 different design shortcodes:
+User Private Files is a private file sharing plugin with frontend file manager (client portal) that will add a file sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files. A perfect frontend dashboard to upload and share private files.
 
-Modern design **“[upf_manager]”**
+### 🚀 Check the Demo Here:
+* **[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
+* **[Frontend Manager](https://backend.userprivatefiles.com/?utm_source=wp-demo-frontend&utm_medium=wporg)**
+* **[Classic Template](https://backend.userprivatefiles.com/?utm_source=wp-demo-classic&utm_medium=wporg)**
+* **[File Uploader](https://backend.userprivatefiles.com/?utm_source=wp-demo-uploader&utm_medium=wporg)**
+* **[File Gallery](https://backend.userprivatefiles.com/?utm_source=wp-demo-gallery&utm_medium=wporg)**
+* **[Public Files/Folder](https://backend.userprivatefiles.com/?utm_source=wp-demo-public&utm_medium=wporg)**
 
-Classic design (old - limited functionality) has 2 shortcodes - one for uploading files and another for displaying the files that they uploaded and that are Shared with them. We recommend that you use them together on a single page:
-Shortcode for uploading form is **“[upf_upload]”**
-Shortcode for displaying files is **“[upf_display]”**
+== 🗝️ Everything you need in a File Sharing Plugin ==
+**Easy to use**
+User Private Files is as easy as using your computer. The sleek design gives you the freedom to manage files and folders as you want.
 
-Users can add/remove other users from their files by their email addresses. Only the allowed users will be able to view/download those files and unauthentic users will see a permission denied error message (even if they have direct URL to the file).
+**Compatible with Themes**
+We are using Divi theme on our demo sites. It is very compatible with Divi theme. We have tested with some popular themes like DIVI, AVADA, BE, The7, Bridge, UnCode, Salient etc. and there are no issues so far.
 
-Your users will be able to manage their files, add a title and note to the uploaded files. They can also delete their uploaded files. Site administrator can view all the files from backend file manager (available in PRO) and will have the full control over them.
+**Compatible with Elementor & other Page-Builders**
+WordPress File Sharing plugin is compatible with Elementor builder. While editing a page create a new shortcode block and paste the shortcode [upf_manager]. Save the page and preview. Same can be followed for other builders like – Muffin, WPBakery, Visual Composer, Beaver, Divi, SiteOrigin, etc.
+
+**Security First Approach**
+Security is at the core of User Private Files. All file transfers and access are protected with the best security methods, safeguarding your confidential documents from potential threats.
+
+**Customizer (PRO)**
+Customize Color scheme of button, text and hover. Adjust your branding for frontend file sharing portal with settings to set logo, watermark, and background options.
+
+**Features Rich**
+User Private Files is the only file sharing plugin you ever need. With so many features, you can convert your site into a dedicated file sharing portal for your clients and customers. Features like uploader, file manager, search, preview, trash, sort, view modes, zip, sharing files/folders and a lot more are what make the plugin best in file sharing solution.
+
+**No Limit**
+You can upload as many files as you want & as many folders or sub-folders can be created. There is no limit on number of files. This depends on your hosting account.
+
+**No max file-size Limit**
+User Private Files plugin do not limit on file size. It depends on your hosting account. If you are unable to upload large files, edit your php.ini or user.ini file and add this line :
+upload_max_filesize = 128M
+This will limit max file size to 128mb, change it as needed. Sometime it is managed by hosting provider, please contact your hosting provide and as them to increase upload_max_filesize.
+
+**Full control over Features (PRO)**
+Want to enable/disable some features? The User Private Files got you cover with a full fledged settings section where you can easily enable or disable some features for some or all user roles.
+
+**Uploading Files/Folders**
+Upload bulk files, folders with drag and drop feature. With the PRO version, you can add extra file types that you want to allow for uploading.
+
+**Email Notifications**
+An option in backend to configure email template. When someone shares a file/folder with a user/users, they will receive an email notification.
+
+**Frontend Notifications (PRO)**
+Users will get a notification on frontend page when a file/folder is shared with them. They can read, delete, and refresh notifications. Clicking on a notification will open that file/folder.
+
+**Copy Link (PRO)**
+Users can copy the link to a file/folder and share it with other users. Pasting the link will open that file or folder if they have access to it.
+
+**Share with single user, roles, or all users**
+Share your files and folders with a single user, multiple users, a particular user role or all users at once.
+
+**Secure frontend file manager**
+Full width front-end file manager and all uploaded files are secure that only allowed users can access.
+
+**Inbuilt login form and customizer (PRO)**
+WordPress file sharing plugin comes with a login form which is fully customizable. You can set labels and fields for the login form via the customizer.
+
+**Thumbnails and File View Modes (PRO)**
+Easily change thumbnails for default and custom file types. You can also set custom thumbnails for folders. As and admin you can control the default file view mode and allow users to toggle between Grid and List view modes.
+
+**Toolbar**
+The frontend dashboard has a powerful toolbar to perform various actions on files and folders. With the PRO version, you can control what to display or hide in the toolbar. Take full control over search, filters, buttons, and labels in the toolbar.
+
+**Addons (Premium & Developer)**
+Extend the functionality of the best file sharing plugin even more by installing the addons - google-drive integration, Custom Fields, and Text Editor.
+
+**Best in class Customer Support**
+We are fully dedicated to the User Private Files plugin and are known by our amazing support that we provide to our customers. We listen to plugin users and add features from time to time keeping the plugin up-to-date. If you have any suggestions or questions, please let us know.
+
+== 🌟 Shortcodes ==
+
+**[upf_manager]**
+
+Use this shortcode in a page to display a full-features file manager dashboard on frontend of your site.
+If you are using the classic text editor in your site, you can directly paste this in the page content.
+If you are using a page builder like Guttenberg, WPBakery, Elementor etc. then you need to insert a shortcode block and then paste this shortcode in that block’s content.
+
+**[upf_upload]**
+
+If you like to display only Upload Box to your users, use this shortcode. 
+[PRO] This shortcode accepts an optional attribute “id”. You can pass a folder ID to it and the file will be uploaded to that folder if the user has upload access to it. If there is no id attribute, the files will be uploaded to all files under the my-files section of that user.
+
+**[upf_display]**
+
+If you like to display a user’s uploaded and shared files only. This works like a gallery. This will not display any folder but will display all files from the folders.
+This is a limited shortcode and doesn’t offer much features. But if you just want to display all files that a user has uploaded and the files that he has given access to, then it’s a good one.
+
+**[upf_selected_files]** [PRO]
+
+Use this shortcode to display a list of selected files and folders that users have access to.
+This shortcode accepts 2 parameters called “id” and “limit_folder_view” where id is a required parameter.
+Pass the ids of the files or folders that you want to display and pass the roles to the second parameter separated by commas.
+
+**[upf_public_folder]** [PRO]
+
+This shortcode is used to display files that are publicly available and are not private. Users can view these files without the need of creating an account on your site.
+This shortcode requires one parameter “id”. To display all public files, use the shortcode [upf_public_folder id=”public-files”]. Change the id to a folder/file id to display specific public folders or files.
+You can copy this shortcode from the backend file manager. When you click the public files or any files/folders inside, you can see the shortcode on the right sidebar. Public files are only viewable (supported formats) and downloadable. There is no functionality of sharing, editing, comments etc.
+
+== 📣 Features ==
+
+* Allow your site users to upload their private files.
+
+* Users can share their files with other users by using their email addresses or usernames.
+
+* Only the allowed users will be able to view/download shared files and unauthentic users or guests will see a permission denied error if they have direct URL to the file.
+
+* Users can remove the allowed users anytime they want.
+
+* Easy to setup for administrator and easy to use for users.
+
+* Front-end dashboard to allow users upload and manage their files.
+
+* Full control over uploaded files to site administrator.
+
+* 2 different designs - Classic and full-width modern design
+
+* Filter to group files by their type (Classic design only)
+
+* Translation Ready
+
+* Folders system - Users can Create/Rename/Delete and Share folders
+
+* Users can upload/move files within different folders
+
+* Admin can share files with single, all users or users with a specific role
+
+* Comments - Users can comment on shared files
+
+* Email notification when a file / folder is shared with someone
+
+* Backend settings to enable/disable email notification and change email subject/content
+
+* Trash folder functionality
+
+* Search for files and folders
+
+* Interactive Dropbox like design
+
+* Download file option
+
+* Support for file types - image, pdf, doc, zip, audio, video, txt and CSV
+
+* Support image, pdf preview and video play
+
+* No page refresh - Fully AJAX
+
+* Restore or Delete files & folders from Trash 
+
+* Beautiful animation & icons
+
+**😍 [PRO version Features](https://userprivatefiles.com/?utm_source=wp-pro-features&utm_medium=wporg)**
+
+* Backend file manager for admin to manage files
+
+* Premade folders from backend file manager 
+
+* Sync files from Server/FTP folder
+
+* Upload Folder from PC, It will create all subfolders and upload files in same hierarchy
+
+* Analytics - See count of Views and Downloads for files in backend file manager
+
+* Backend file manager to view and control other users files without asking them to share with admin
+
+* File preview support for docx, ppt, csv, excel files etc using google doc viewer
+
+* Google Drive Integration (Premium & Developer versions)
+
+* Display selected files/folders only by their IDs
+
+* Custom fields/columns in list view (Premium & Developer versions)
+
+* Backend option to hide Search, filters, New folder button for particular user roles
+
+* Text Editor Addon to create or edit text files (Premium & Developer versions)
+
+* Option to Zip an entire folder and download
+
+* Preview support for zip files
+
+* Frontend notifications when a file / folder is shared with someone
+
+* Frontend notification when a file is uploaded in shared folder with option to turn ON/OFF
+
+* Frontend notification when a folder is created in shared folder with option to turn ON/OFF
+
+* Email notification when a file/folder is uploaded/created in shared folder with option to turn ON/OFF
+
+* Single email notification option for bulk upload
+
+* Backend option to enable/disable frontend notifications
+
+* Copy link to a folder or file and share with other users who have access
+
+* Backend option to allow users to share with role specific & all users
+
+* Backend option to enable/disable file uploading functionality based on roles
+
+* Backend customizer to update colors, thumbnails, and toolbar options
+
+* Grid/List views
+
+* Login functionality when user is not logged in
+
+* Backend options to customize login form
+
+* Shortcode support for Login form to display it anywhere
+
+* Option to set redirection for login form
+
+* Sort files/folder
+
+* Collapsible side panels on frontend
+
+* New permission level View and Upload
+
+* Additional shortcodes to display selected files, target folder uploading, and public files
+
+* Public Files and Folders section in file manager
+
+* Add privacy policy link in the right sidebar
+
+* Description support for folders
+
+* Display total storage used and size of each file in the backend
+
+* And many more.
+
+**[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)** | **[Frontend Manager](https://backend.userprivatefiles.com/?utm_source=wp-demo-frontend&utm_medium=wporg)** | **[Classic Template](https://backend.userprivatefiles.com/?utm_source=wp-demo-classic&utm_medium=wporg)** | **[File Uploader](https://backend.userprivatefiles.com/?utm_source=wp-demo-uploader&utm_medium=wporg)** | **[File Gallery](https://backend.userprivatefiles.com/?utm_source=wp-demo-gallery&utm_medium=wporg)** | **[Public Files/Folder](https://backend.userprivatefiles.com/?utm_source=wp-demo-public&utm_medium=wporg)**
+
+User Private Files will add file sharing functionality on a WordPress website. Plugin designed for users to upload, store, and share files securely. It emphasizes data privacy and user control, allowing individuals to manage their files with ease. Enhancing the overall user experience while safeguarding confidential information.
+
+**[All Features List](https://userprivatefiles.com/features/?utm_source=wp-features&utm_medium=wporg)** | **[Documentation](https://userprivatefiles.com/documentation/?utm_source=wp-docs&utm_medium=wporg)** | **[Case Studies](https://userprivatefiles.com/blog/?utm_source=wp-case-study&utm_medium=wporg)** | **[Get PRO Version](https://userprivatefiles.com/pricing/?utm_source=wp-get-pro&utm_medium=wporg)**
 
 == Installation ==
 
@@ -90,10 +312,6 @@ Yes, the plugin needs to write a rewrite rule to the .htaccess file to allow/den
 
 No. Get the PRO version for backend file manager that provide powerful tools to manage all files from users.
 
-= How can users share their files? =
-
-Follow this [Video documentation series](https://userprivatefiles.com/documentation/install-plugin-frontend-file-manager-pro/?utm_source=wordpress&utm_medium=website)
-
 = Does the plugin send an email to the users? =
 
 Yes, when adding a user by an email address or username to the file, the plugin sends an email to the target user. There is an option to customize subject and content as well.
@@ -114,6 +332,11 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.1.3 =
+* 2024-11-16
+* [Update] - Updated description.
+* [Update] - Improved backend settings UI.
 
 = 2.1.2 =
 * 2024-10-18
@@ -212,197 +435,3 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 
 == Upgrade Notice ==
 
-== Features ==
-
-* Allow your site users to upload their private files.
-
-* Users can share their files with other users by using their email addresses or usernames.
-
-* Only the allowed users will be able to view/download shared files and unauthentic users or guests will see a permission denied error if they have direct URL to the file.
-
-* Users can remove the allowed users anytime they want.
-
-* Easy to setup for administrator and easy to use for users.
-
-* Front-end dashboard to allow users upload and manage their files.
-
-* Full control over uploaded files to site administrator.
-
-* 2 different designs - Classic and full-width modern design **(NEW)**
-
-* Filter to group files by their type (Classic design only)
-
-* Translation Ready
-
-* Folders system - Users can Create/Rename/Delete and Share folders **(NEW)**
-
-* Users can upload/move files within different folders **(NEW)**
-
-* Admin can share files with single, all users or users with a specific role **(NEW)**
-
-* Comments - Users can comment on shared files **(NEW)**
-
-* Email notification when a file / folder is shared with someone **(NEW)**
-
-* Backend settings to enable/disable email notification and change email subject/content **(NEW)**
-
-* Trash folder functionality **(NEW)**
-
-* Search for files and folders **(NEW)**
-
-* Interactive Dropbox like design **(NEW)**
-
-* Download file option
-
-* Support for file types - image, pdf, doc, zip, audio, video, txt and CSV **(NEW)**
-
-* Support image, pdf preview and video play **(NEW)**
-
-* No page refresh - Fully AJAX
-
-* Restore or Delete files & folders from Trash **(NEW)**
-
-* Beautiful animation & icons
-
-[PRO version Features](https://userprivatefiles.com/?utm_source=wordpress&utm_medium=website)
-
-* Backend file manager for admin to manage files
-
-* Premade folders from backend file manager **(NEW)**
-
-* Sync files from Server/FTP folder **(NEW)**
-
-* Upload Folder from PC, It will create all subfolders and upload files in same hierarchy **(NEW)**
-
-* Analytics - See count of Views and Downloads for files in backend file manager **(NEW)**
-
-* Backend file manager to view and control other users files without asking them to share with admin
-
-* File preview support for docx, ppt, csv, excel files etc using google doc viewer **(NEW)**
-
-* Google Drive Integration (Premium & Developer versions) **(NEW)**
-
-* Display selected files/folders only by their IDs **(NEW)**
-
-* Custom fields/columns in list view (Premium & Developer versions) **(NEW)**
-
-* Backend option to hide Search, filters, New folder button for particular user roles
-
-* Text Editor Addon to create or edit text files (Premium & Developer versions) **(NEW)**
-
-* Option to Zip an entire folder and download **(NEW)**
-
-* Preview support for zip files **(NEW)**
-
-* Frontend notifications when a file / folder is shared with someone
-
-* Frontend notification when a file is uploaded in shared folder with option to turn ON/OFF **(NEW)**
-
-* Frontend notification when a folder is created in shared folder with option to turn ON/OFF **(NEW)**
-
-* Email notification when a file/folder is uploaded/created in shared folder with option to turn ON/OFF
-
-* Single email notification option for bulk upload **(NEW)**
-
-* Backend option to enable/disable frontend notifications
-
-* Copy link to a folder or file and share with other users who have access
-
-* Backend option to allow users to share with role specific & all users
-
-* Backend option to enable/disable file uploading functionality based on roles
-
-* Backend customizer to update colors, thumbnails, and toolbar options
-
-* Grid/List views
-
-* Login functionality when user is not logged in
-
-* Backend options to customize login form
-
-* Shortcode support for Login form to display it anywhere **(NEW)**
-
-* Option to set redirection for login form **(NEW)**
-
-* Sort files/folder
-
-* Collapsible side panels on frontend
-
-* New permission level View and Upload **(NEW)**
-
-* Additional shortcodes to display selected files, target folder uploading, and public files **(NEW)**
-
-* Public Files and Folders section in file manager **(NEW)**
-
-* Add privacy policy link in the right sidebar **(NEW)**
-
-* Description support for folders
-
-* Display total storage used and size of each file in the backend **(NEW)**
-
-* And many more. [See the Full List Here](https://userprivatefiles.com/?utm_source=wordpress&utm_medium=website)
-
-== Everything you need in a File Sharing Plugin ==
-**Easy to use**
-User Private Files is as easy as using your computer. The sleek design gives you the freedom to manage files and folders as you want.
-
-**Compatible with Themes**
-We are using Divi theme on our demo sites. It is very compatible with Divi theme. We have tested with some popular themes like DIVI, AVADA, BE, The7, Bridge, UnCode, Salient etc. and there are no issues so far.
-
-**Compatible with Elementor & other Page-Builders**
-WordPress File Sharing plugin is compatible with Elementor builder. While editing a page create a new shortcode block and paste the shortcode [upf_manager]. Save the page and preview. Same can be followed for other builders like – Muffin, WPBakery, Visual Composer, Beaver, Divi, SiteOrigin, etc.
-
-**Security First Approach**
-Security is at the core of User Private Files. All file transfers and access are protected with the best security methods, safeguarding your confidential documents from potential threats.
-
-**Customizer (PRO)**
-Customize Color scheme of button, text and hover. Adjust your branding for frontend file sharing portal with settings to set logo, watermark, and background options.
-
-**Features Rich**
-User Private Files is the only file sharing plugin you ever need. With so many features, you can convert your site into a dedicated file sharing portal for your clients and customers. Features like uploader, file manager, search, preview, trash, sort, view modes, zip, sharing files/folders and a lot more are what make the plugin best in file sharing solution.
-
-**No Limit**
-You can upload as many files as you want & as many folders or sub-folders can be created. There is no limit on number of files. This depends on your hosting account.
-
-**No max file-size Limit**
-User Private Files plugin do not limit on file size. It depends on your hosting account. If you are unable to upload large files, edit your php.ini or user.ini file and add this line :
-upload_max_filesize = 128M
-This will limit max file size to 128mb, change it as needed. Sometime it is managed by hosting provider, please contact your hosting provide and as them to increase upload_max_filesize.
-
-**Full control over Features (PRO)**
-Want to enable/disable some features? The User Private Files got you cover with a full fledged settings section where you can easily enable or disable some features for some or all user roles.
-
-**Uploading Files/Folders**
-Upload bulk files, folders with drag and drop feature. With the PRO version, you can add extra file types that you want to allow for uploading.
-
-**Email Notifications**
-An option in backend to configure email template. When someone shares a file/folder with a user/users, they will receive an email notification.
-
-**Frontend Notifications (PRO)**
-Users will get a notification on frontend page when a file/folder is shared with them. They can read, delete, and refresh notifications. Clicking on a notification will open that file/folder.
-
-**Copy Link (PRO)**
-Users can copy the link to a file/folder and share it with other users. Pasting the link will open that file or folder if they have access to it.
-
-**Share with single user, roles, or all users**
-Share your files and folders with a single user, multiple users, a particular user role or all users at once.
-
-**Secure frontend file manager**
-Full width front-end file manager and all uploaded files are secure that only allowed users can access.
-
-**Inbuilt login form and customizer (PRO)**
-WordPress file sharing plugin comes with a login form which is fully customizable. You can set labels and fields for the login form via the customizer.
-
-**Thumbnails and File View Modes (PRO)**
-Easily change thumbnails for default and custom file types. You can also set custom thumbnails for folders. As and admin you can control the default file view mode and allow users to toggle between Grid and List view modes.
-
-**Toolbar**
-The frontend dashboard has a powerful toolbar to perform various actions on files and folders. With the PRO version, you can control what to display or hide in the toolbar. Take full control over search, filters, buttons, and labels in the toolbar.
-
-**Addons (Premium & Developer)**
-Extend the functionality of the best file sharing plugin even more by installing the addons - google-drive integration, Custom Fields, and Text Editor.
-
-**Best in class Customer Support**
-We are fully dedicated to the User Private Files plugin and are known by our amazing support that we provide to our customers. We listen to plugin users and add features from time to time keeping the plugin up-to-date. If you have any suggestions or questions, please let us know.
-
-[Check the Demo](https://backend.userprivatefiles.com/) to experience all features.

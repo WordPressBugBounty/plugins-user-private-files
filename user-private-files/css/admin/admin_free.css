@@ -512,7 +512,7 @@ a.upfp_btn{
     padding: 10px;
 }
 
-.upfp_upload_wrapper input[type=text] {
+.upfp_upload_wrapper input[type=text], .upfp_upload_wrapper select {
     width: 60%;
     min-width: 60%
 }
