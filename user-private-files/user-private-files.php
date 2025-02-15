@@ -2,7 +2,7 @@
 /**
 * Plugin Name: User Private Files
 * Description: This plugin allows users to manage their uploaded files and access to them.
-* Version: 2.1.3
+* Version: 2.1.4
 * Author: User Private Files
 * Author URI: https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=wporg
 * License: GPLv2 or later

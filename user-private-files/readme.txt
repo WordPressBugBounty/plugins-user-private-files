@@ -3,7 +3,7 @@ Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, download manager, file manager, file upload, upload
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -332,6 +332,10 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.1.4 =
+* 2025-02-15
+* Fixed - JS XSS issue by implementing html entities method.
 
 = 2.1.3 =
 * 2024-11-16

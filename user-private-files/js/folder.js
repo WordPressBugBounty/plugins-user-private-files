@@ -12,6 +12,11 @@ jQuery(document).ready(function ($) {
 		$('.upfp_folder_banner .upfp_folder_tool ' + shown_class).show();
 		$('.upfp_folder_banner .upfp_folder_tool ' + shown_class_1).show();
 	}
+	
+	// htmlEntities for JS variables
+	function upvf_htmlEntities(str) {
+		return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); // .replace(/"/g, '&quot;')
+	}
 
 	/* Load files from folder */
 	function load_folder_items(elem, fltr_email = '') {
@@ -224,7 +229,7 @@ jQuery(document).ready(function ($) {
 
 								} 
 								else {
-									$('.upfp_folder_banner #upfp_bc_folder').html('<span id="bc_fldr_id_' + fldr_id + '">' + fldr_name + '</span>');
+									$('.upfp_folder_banner #upfp_bc_folder').html('<span id="bc_fldr_id_' + fldr_id + '">' + upvf_htmlEntities(fldr_name) + '</span>');
 								}
 
 							} 
