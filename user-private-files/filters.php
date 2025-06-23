@@ -32,3 +32,46 @@ if (!function_exists('upfp_modify_upload_dir')) {
 add_filter( 'wp_image_editors', function() {
 	return array( 'WP_Image_Editor_GD' ); 
 } );
+
+// Filter to remove upf-docs from media library
+add_filter('ajax_query_attachments_args', 'exclude_upf_doc_from_media_library_filter_cllbck');
+function exclude_upf_doc_from_media_library_filter_cllbck($query) {
+    
+    $meta_query = array(
+        array(
+            'key'     => 'upf_doc',
+            'value'   => 'true',
+            'compare' => 'NOT EXISTS'
+        )
+    );
+
+    if (isset($query['meta_query'])) {
+        $query['meta_query'] = array_merge($query['meta_query'], $meta_query);
+    } else {
+        $query['meta_query'] = $meta_query;
+    }
+
+    return $query;
+}
+
+add_action('pre_get_posts', 'exclude_upf_doc_from_media_library_action_cllbck');
+function exclude_upf_doc_from_media_library_action_cllbck($query) {
+    if (!is_admin() || !$query->is_main_query()) {
+        return;
+    }
+
+    $screen = get_current_screen();
+    if ($screen && $screen->base !== 'upload') {
+        return;
+    }
+
+    $meta_query = array(
+        array(
+            'key'     => 'upf_doc',
+            'value'   => 'true',
+            'compare' => 'NOT EXISTS'
+        )
+    );
+
+    $query->set('meta_query', array_merge($query->get('meta_query') ?: array(), $meta_query));
+}

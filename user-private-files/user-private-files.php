@@ -2,7 +2,7 @@
 /**
 * Plugin Name: User Private Files
 * Description: This plugin allows users to manage their uploaded files and access to them.
-* Version: 2.1.4
+* Version: 2.1.5
 * Author: User Private Files
 * Author URI: https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=wporg
 * License: GPLv2 or later
@@ -66,8 +66,8 @@ if (!function_exists('upvf_init_plugin')) {
 		add_action( 'admin_enqueue_scripts', 'upfp_admin_script' );
 
 		// Including other functions
-		include(plugin_dir_path(__FILE__ ) . 'inc/classic-post-new.php');
-		include(plugin_dir_path(__FILE__ ) . 'inc/classic-render.php');
+		include(plugin_dir_path(__FILE__ ) . 'templates/classic-post-new.php');
+		include(plugin_dir_path(__FILE__ ) . 'templates/classic-render.php');
 		include(plugin_dir_path(__FILE__ ) . 'inc/classic-user-functions.php');
 		
 		// PRO Design
@@ -148,7 +148,9 @@ if (!function_exists('upf_styles_scripts')) {
 			array( 
 				'ajaxurl' 			=> admin_url( 'admin-ajax.php' ), 
 				'upvf_plugin_url' 	=> plugin_dir_url( __FILE__ ),
-				'nonce'				=> wp_create_nonce('upf_classic_ajax_nonce')
+				'nonce'				=> wp_create_nonce('upf_classic_ajax_nonce'),
+				'restURL'			=> rest_url(),
+				'restNonce'			=> wp_create_nonce('wp_rest')
 			)
 		);
 		
@@ -216,10 +218,6 @@ if (!function_exists('upf_styles_scripts')) {
 					'nonce'				=> wp_create_nonce('upfp_ajax_nonce')
 				 )		 
 		);
-
-		
-
-		
 		
 	}
 }

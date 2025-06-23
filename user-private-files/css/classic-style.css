@@ -227,7 +227,91 @@
 #grp_by:checked:after {
 	background: #16a085;
 }
+
+/* Rename/desc popup */
+.upf_clsc_popup {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgb(0, 0, 0, 0.3);
+  z-index: 99999;
+  overflow-y: scroll;
+}
+
+.upf_clsc_edit_pp .upf_clsc_inner {
+  width: 50%;
+  background: #fff;
+  margin: auto;
+  margin-top: 10%;
+  position: relative;
+  padding: 30px;
+  max-width: 750px;
+  min-width: 425px;
+}
+
+.upf_clsc_edit_pp h4 {
+  margin: 0 0 20px;
+  padding: 0;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.upf_clsc_edit_pp .upf_clsc_popup_close_btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #0071a1;
+  z-index: 1;
+}
+
+.upf_clsc_edit_pp form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.upf_clsc_edit_pp form input[type="submit"] {
+  background: #0071a1;
+  border: 0;
+  color: #fff;
+  padding: 10px 30px;
+  width: 160px;
+  max-width: 160px;
+  font-weight: normal;
+  text-transform: capitalize;
+  min-width: 160px;
+  height: 40px;
+}
+
+.upf_clsc_edit_pp form input[type="submit"]:hover {
+  background: #4c4c4c;
+  cursor: pointer;
+}
+
+.edit_doc_upf_popup .upf_clsc_action {
+  float: right;
+  color: #0071a1;
+}
+
+.upf_clsc_hidden {
+    display: none;
+}
+
 /* -------------------- MOBILE CSS ------------------ */
+@media only screen and (max-device-width: 425px) {
+  .upf_clsc_popup .upf_clsc_inner {
+    min-width: 95%;
+  }
+}
+
 @media only screen 
   and (max-width: 950px)
 {

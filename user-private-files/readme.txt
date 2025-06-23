@@ -2,8 +2,8 @@
 Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, download manager, file manager, file upload, upload
 Requires at least: 6.0
-Tested up to: 6.7
-Stable tag: 2.1.4
+Tested up to: 6.8.1
+Stable tag: 2.1.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -332,6 +332,12 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.1.5 =
+* 2025-06-23
+* [Update] - Removed UPF docs from Media Library.
+* [Update] - Added Rename + Description update functionality for classic shortcode.
+* Fixed - Updated text domain.
 
 = 2.1.4 =
 * 2025-02-15

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Private Files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 06:17+0000\n"
+"POT-Creation-Date: 2025-06-23 10:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "All Users"
 msgstr ""
 
-#: inc/classic-render.php:123 templates/file-preview.php:42
+#: templates/classic-render.php:124 templates/file-preview.php:42
 #: templates/file-preview.php:67 templates/file-preview.php:77
 #: templates/file-preview.php:92 templates/share-folder.php:31
 #: templates/share-folder.php:54 templates/share-folder.php:63
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Bulk Select"
 msgstr ""
 
-#: inc/classic-post-new.php:34
+#: templates/classic-post-new.php:34
 msgid "Choose file"
 msgstr ""
 
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: inc/classic-render.php:125
+#: templates/classic-render.php:126
 msgid "Delete File"
 msgstr ""
 
@@ -112,11 +112,11 @@ msgstr ""
 msgid "Delete Folder?"
 msgstr ""
 
-#: inc/classic-render.php:117 templates/right-sidebar.php:39
+#: templates/classic-render.php:118 templates/right-sidebar.php:39
 msgid "Description"
 msgstr ""
 
-#: inc/classic-render.php:115 templates/right-sidebar.php:36
+#: templates/classic-render.php:116 templates/right-sidebar.php:36
 msgid "Document Name"
 msgstr ""
 
@@ -124,15 +124,15 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: inc/classic-post-new.php:31
+#: templates/classic-post-new.php:31
 msgid "Drag and drop a file you want to upload"
 msgstr ""
 
-#: templates/file-popups.php:28
+#: templates/classic-render.php:145 templates/file-popups.php:28
 msgid "Edit file description"
 msgstr ""
 
-#: inc/classic-render.php:122 templates/file-preview.php:87
+#: templates/classic-render.php:123 templates/file-preview.php:87
 #: templates/share-folder.php:73
 msgid "Email Address"
 msgstr ""
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Error - Could not verify POST values"
 msgstr ""
 
-#: admin/settings.php:69 inc/functions-file.php:41 inc/functions-file.php:124
+#: admin/settings.php:82 inc/functions-file.php:41 inc/functions-file.php:124
 #: inc/functions-file.php:268 inc/functions-file.php:427
 #: inc/functions-folder.php:569 inc/functions-folder.php:616
 #: inc/functions-folder.php:786
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Full Access"
 msgstr ""
 
-#: inc/classic-render.php:93
+#: templates/classic-render.php:93
 msgid "Group by File Type"
 msgstr ""
 
@@ -278,7 +278,8 @@ msgid "Home"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://userprivatefiles.com/"
+msgid ""
+"https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=wporg"
 msgstr ""
 
 #: templates/file-popups.php:60 templates/file-popups.php:71
@@ -297,7 +298,7 @@ msgstr ""
 msgid "Move To"
 msgstr ""
 
-#: inc/classic-render.php:88
+#: templates/classic-render.php:88
 msgid "My Files"
 msgstr ""
 
@@ -325,7 +326,7 @@ msgstr ""
 msgid "No user found with this email address or username."
 msgstr ""
 
-#: inc/classic-post-new.php:49
+#: templates/classic-post-new.php:49
 msgid "Note"
 msgstr ""
 
@@ -337,7 +338,7 @@ msgstr ""
 msgid "Rename"
 msgstr ""
 
-#: templates/file-popups.php:15
+#: templates/classic-render.php:133 templates/file-popups.php:15
 msgid "Rename this file"
 msgstr ""
 
@@ -361,6 +362,7 @@ msgstr ""
 msgid "Restore Folder"
 msgstr ""
 
+#: templates/classic-render.php:137 templates/classic-render.php:149
 #: templates/file-popups.php:20 templates/file-popups.php:33
 #: templates/folder-popups.php:33
 msgid "Save"
@@ -386,7 +388,7 @@ msgstr ""
 msgid "Share This Folder with others"
 msgstr ""
 
-#: inc/classic-render.php:121 templates/file-preview.php:24
+#: templates/classic-render.php:122 templates/file-preview.php:24
 msgid "Share with others"
 msgstr ""
 
@@ -394,7 +396,7 @@ msgstr ""
 msgid "Shared"
 msgstr ""
 
-#: inc/classic-render.php:177
+#: templates/classic-render.php:202
 msgid "Shared By"
 msgstr ""
 
@@ -402,7 +404,7 @@ msgstr ""
 msgid "Shared Files"
 msgstr ""
 
-#: inc/classic-render.php:161 inc/functions-folder.php:85
+#: inc/functions-folder.php:85 templates/classic-render.php:186
 #: templates/render.php:77
 msgid "Shared with me"
 msgstr ""
@@ -440,7 +442,7 @@ msgstr ""
 msgid "This will permanently delete the files and sub folders."
 msgstr ""
 
-#: inc/classic-post-new.php:48
+#: templates/classic-post-new.php:48
 msgid "Title"
 msgstr ""
 
@@ -453,7 +455,7 @@ msgstr ""
 msgid "Trash is Empty."
 msgstr ""
 
-#: inc/classic-post-new.php:54
+#: templates/classic-post-new.php:54
 msgid "Upload"
 msgstr ""
 
@@ -465,7 +467,7 @@ msgstr ""
 msgid "Uploaded By"
 msgstr ""
 
-#: user-private-files.php:196 inc/functions-file.php:100
+#: user-private-files.php:203 inc/functions-file.php:100
 msgid "Uploaded file exceeds the maximum upload size for this site"
 msgstr ""
 
@@ -503,7 +505,7 @@ msgstr ""
 
 #: admin/custom-fields.php:13 admin/customizer-free.php:13
 #: admin/gdrive_settings-free.php:13 admin/login_setting-free.php:24
-#: admin/settings.php:10
+#: admin/settings.php:10 admin/settings.php:552 admin/settings.php:593
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -520,6 +522,6 @@ msgstr ""
 msgid "You don't have permission to perform this action"
 msgstr ""
 
-#: inc/classic-post-new.php:66 inc/shortcodes.php:39
+#: inc/shortcodes.php:39 templates/classic-post-new.php:66
 msgid "You must be logged in to upload/manage the files"
 msgstr ""
