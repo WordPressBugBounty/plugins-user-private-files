@@ -137,6 +137,7 @@
     padding: 25px;
     height: 100%;
 	overflow-y: scroll;
+    box-sizing: border-box;
 }
 .doc_view img {
     max-width: 100%;

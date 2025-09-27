@@ -411,17 +411,20 @@ jQuery(document).ready(function ($) {
 		var file_id = $(".edit_doc_upf_popup").attr("data-file");
 		file_id = file_id.replace("doc_", "");
 		var file_name = $(this).find("#upf_clsc_file_name").val();
+
+		var fd = new FormData();
+		fd.append('file_id', file_id);
+		fd.append('file_new_name', file_name);
+		fd.append('upf_nonce', ajax_upf_classic_obj.nonce);
+		fd.append('action', 'upvf_pro_rename_file');
 		jQuery
 			.ajax({
-				url: ajax_upf_classic_obj.restURL + "wp/v2/media/" + file_id,
-				type: "POST",
-				data: {
-					title: file_name,
-				},
-				dataType: "JSON",
-				beforeSend: function (xhr) {
-					xhr.setRequestHeader("X-WP-Nonce", ajax_upf_classic_obj.restNonce);
-				},
+				url: ajax_upf_classic_obj.ajaxurl,
+				type: 'POST',
+				data: fd,
+				contentType: false,
+				processData: false,
+				dataType: "JSON"
 			})
 			.done(function (results) {
 				// Update in sidebar
@@ -449,17 +452,19 @@ jQuery(document).ready(function ($) {
 		file_id = file_id.replace("doc_", "");
 		var file_dsc = $(this).find("#upf_clsc_file_dsc").val();
 
+		var fd = new FormData();
+		fd.append('file_id', file_id);
+		fd.append('file_new_dsc', file_dsc);
+		fd.append('upf_nonce', ajax_upf_classic_obj.nonce);
+		fd.append('action', 'upvf_pro_update_file_dsc');
 		jQuery
 			.ajax({
-				url: ajax_upf_classic_obj.restURL + "wp/v2/media/" + file_id,
-				type: "POST",
-				data: {
-					description: file_dsc,
-				},
-				dataType: "JSON",
-				beforeSend: function (xhr) {
-					xhr.setRequestHeader("X-WP-Nonce", ajax_upf_classic_obj.restNonce);
-				},
+				url: ajax_upf_classic_obj.ajaxurl,
+				type: 'POST',
+				data: fd,
+				contentType: false,
+				processData: false,
+				dataType: "JSON"
 			})
 			.done(function (results) {
 				// Update in sidebar

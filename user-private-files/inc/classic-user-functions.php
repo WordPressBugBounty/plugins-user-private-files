@@ -14,7 +14,7 @@ add_action( 'wp_ajax_nopriv_classic_upload_doc_callback', 'classic_upload_doc_ca
 if (!function_exists('classic_upload_doc_callback')) {
 	function classic_upload_doc_callback(){
 		$res_array = array();
-		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upf_classic_ajax_nonce' ) ) {
+		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upfp_ajax_nonce' ) ) {
 			header( 'HTTP/1.1 400 Empty POST Values' );
 			$res_array['error'] = 'error - Could not verify POST values';
 			echo json_encode($res_array);
@@ -93,7 +93,7 @@ add_action( 'wp_ajax_nopriv_dpk_upvf_update_doc', 'dpk_upvf_update_doc' );
 if (!function_exists('dpk_upvf_update_doc')) {
 	function dpk_upvf_update_doc() {
 		$res_array = array();
-		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upf_classic_ajax_nonce' ) ) {
+		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upfp_ajax_nonce' ) ) {
 			header( 'HTTP/1.1 400 Empty POST Values' );
 			$res_array['error'] = 'error - Could not verify POST values';
 			echo json_encode($res_array);
@@ -155,7 +155,7 @@ add_action( 'wp_ajax_dpk_upvf_rmv_access', 'dpk_upvf_rmv_access' );
 add_action( 'wp_ajax_nopriv_dpk_upvf_rmv_access', 'dpk_upvf_rmv_access' );
 if (!function_exists('dpk_upvf_rmv_access')) {
 	function dpk_upvf_rmv_access() {
-		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upf_classic_ajax_nonce' ) ) {
+		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upfp_ajax_nonce' ) ) {
 			header( 'HTTP/1.1 400 Empty POST Values' );
 			echo 'Could not verify POST values';
 			exit;
@@ -194,7 +194,7 @@ add_action( 'wp_ajax_dpk_upvf_rmv_file', 'dpk_upvf_rmv_file' );
 add_action( 'wp_ajax_nopriv_dpk_upvf_rmv_file', 'dpk_upvf_rmv_file' );
 if (!function_exists('dpk_upvf_rmv_file')) {
 	function dpk_upvf_rmv_file() {
-		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upf_classic_ajax_nonce' ) ) {
+		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upfp_ajax_nonce' ) ) {
 			header( 'HTTP/1.1 400 Empty POST Values' );
 			echo 'Could not verify POST values';
 			exit;

@@ -1,24 +1,29 @@
-=== User Private Files - File Upload & Download Manager with Secure File Sharing ===
+=== File Sharing & Download Manager - User Private Files ===
 Contributors: deepakkite, mrking2201, upfpro
-Tags: file sharing, download manager, file manager, file upload, upload
+Tags: file sharing, download manager, file manager, document manager, upload, private files
 Requires at least: 6.0
-Tested up to: 6.8.1
-Stable tag: 2.1.5
+Tested up to: 6.8.2
+Stable tag: 2.1.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-File management and sharing portal. Upload, download, and share private files and folders with site users securely.
+Secure WordPress file sharing & download manager. Upload, manage & share private files with users safely.
 
 == Description ==
 
-User Private Files is a must have WordPress file sharing plugin that allows admin and site users to upload, manage and share their private files and folders with restricted access via frontend and backend.
+**A powerful WordPress file sharing and download manager plugin. Upload, manage, and share private files securely with your users.**
+
+User Private Files is more than just a file sharing plugin. It works as a WordPress file manager, download manager, and document sharing plugin — making it easy to control access to files and documents for each user.
 
 Is this file sharing plugin for you?
 
-* Upload and share private files with your site users securely that no one else can access.
-* Allow site users to upload and share private files with you or each other in a secure way.
-* Rich features like uploader, downloader, file stats, gallery, notifications, file manager, trash, file previews, public files, password protection and many more.
+* **Secure file sharing** – upload and share private files with restricted access.
+* **User file uploads** – allow your site users to upload and manage their own files.
+* **Advanced file manager** – organize files with folders, trash, and access controls.
+* **Download manager** – track downloads with detailed file stats and view counts.
+* **Rich file options** – previews, galleries, password protection, and public file sharing.
+* **Notifications** – get alerts when files are uploaded, shared, or downloaded.
 
 
 **[Try the FREE Demo of User Private Files](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
@@ -27,9 +32,9 @@ https://www.youtube.com/watch?v=tdwzs-w8EyI
 
 **[All Features List](https://userprivatefiles.com/features/?utm_source=wp-features&utm_medium=wporg)** | **[Documentation](https://userprivatefiles.com/documentation/?utm_source=wp-docs&utm_medium=wporg)** | **[Case Studies](https://userprivatefiles.com/blog/?utm_source=wp-case-study&utm_medium=wporg)** | **[Get PRO Version](https://userprivatefiles.com/pricing/?utm_source=wp-get-pro&utm_medium=wporg)**
 
-== 🔒 Best file management and sharing plugin ==
+== 🔒 Best WordPress file management and sharing plugin ==
 
-User Private Files is a private file sharing plugin with frontend file manager (client portal) that will add a file sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files. A perfect frontend dashboard to upload and share private files.
+User Private Files is a private file sharing plugin with frontend file manager (client portal) that adds secure file sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files. A perfect frontend dashboard to upload and share private files.
 
 ### 🚀 Check the Demo Here:
 * **[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
@@ -332,6 +337,11 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.1.6 =
+* 2025-09-27
+* [Update] - Removed REST call for rename and desc update.
+* Fixed - Classic file preview layout issue.
 
 = 2.1.5 =
 * 2025-06-23
