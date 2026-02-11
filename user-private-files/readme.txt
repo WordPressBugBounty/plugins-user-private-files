@@ -1,6 +1,6 @@
 === File Sharing & Download Manager - User Private Files ===
 Contributors: deepakkite, mrking2201, upfpro
-Tags: file sharing, download manager, file manager, document manager, upload, private files
+Tags: file sharing, download manager, file manager, document management, upload
 Requires at least: 6.0
 Tested up to: 6.8.2
 Stable tag: 2.1.6
@@ -12,11 +12,11 @@ Secure WordPress file sharing & download manager. Upload, manage & share private
 
 == Description ==
 
-**A powerful WordPress file sharing and download manager plugin. Upload, manage, and share private files securely with your users.**
+A powerful WordPress file sharing and download manager plugin. Upload, manage, and share private files securely with your users.
 
 User Private Files is more than just a file sharing plugin. It works as a WordPress file manager, download manager, and document sharing plugin — making it easy to control access to files and documents for each user.
 
-Is this file sharing plugin for you?
+**Key Features**
 
 * **Secure file sharing** – upload and share private files with restricted access.
 * **User file uploads** – allow your site users to upload and manage their own files.
