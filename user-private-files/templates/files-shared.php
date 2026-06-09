@@ -167,12 +167,12 @@ if($folder_id == 'all-shared-files' || $folder_id == 'filter-shared'){ // for ma
 	foreach($sf_array as $sf_id){
 		$sf_name = get_the_title($sf_id);
 	?>
-		<div id="sub_folder_<?php echo $sf_id; ?>" data-folder-id="<?php echo $sf_id; ?>" data-folder-name="<?php echo $sf_name; ?>" data-share="true" class="folder-item upfp_fldr_obj">
-		
+		<div id="sub_folder_<?php echo absint($sf_id); ?>" data-folder-id="<?php echo absint($sf_id); ?>" data-folder-name="<?php echo esc_attr($sf_name); ?>" data-share="true" class="folder-item upfp_fldr_obj">
+
 			<a class="sub-folder-action" href="javascript:void(0);">
-				<img src="<?php echo $folder_prvw_img; ?>">
+				<img src="<?php echo esc_url($folder_prvw_img); ?>">
 			</a>
-			<p class="folder_ttl"><?php echo $sf_name; ?></p>
+			<p class="folder_ttl"><?php echo esc_html($sf_name); ?></p>
 			
 		</div>
 	<?php
@@ -198,66 +198,66 @@ if($folder_id == 'all-shared-files' || $folder_id == 'filter-shared'){ // for ma
 			$mime_type = get_post_mime_type($doc_id);
 		?>
 
-			<div id="doc_<?php echo $doc_id; ?>" class="doc-item" data-share="true">
-			
+			<div id="doc_<?php echo absint($doc_id); ?>" class="doc-item" data-share="true">
+
 				<?php if (strpos($mime_type, 'image') !== false) { $doc_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail'); ?>
-					
+
 					<a class="upfp_single_file edit-doc" href="javascript:void(0);">
-						<img data-type="img" data-src="<?php echo $doc_src; ?>" src="<?php echo $doc_thumb[0]; ?>">
+						<img data-type="img" data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($doc_thumb[0]); ?>">
 					</a>
-				
+
 				<?php } else if(strpos($mime_type, 'video') !== false){ ?>
-			
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $vdo_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($vdo_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else if(strpos($mime_type, 'zip') !== false) { ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $zip_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($zip_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else if(strpos($mime_type, 'pdf') !== false) { ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $pdf_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($pdf_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else if(strpos($mime_type, 'document') !== false) { ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $doc_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($doc_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else{ ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $file_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($file_prvw_img); ?>">
 				</a>
-				
+
 			<?php } ?>
-				
-				<p class="doc_ttl"><?php echo $doc_ttl; ?></p>
-				
+
+				<p class="doc_ttl"><?php echo esc_html($doc_ttl); ?></p>
+
 			</div>
 
-		<?php 
+		<?php
 		}
-		
+
 	}
-	
+
 } else{ // if inside folder
 	
 	// folders inside folders
 	foreach($folders as $folder){
 	?>
-		<div id="sub_folder_<?php echo $folder->ID; ?>" data-folder-id="<?php echo $folder->ID; ?>" data-folder-name="<?php echo $folder->post_title; ?>" data-share="true" class="folder-item upfp_fldr_obj">
-		
+		<div id="sub_folder_<?php echo absint($folder->ID); ?>" data-folder-id="<?php echo absint($folder->ID); ?>" data-folder-name="<?php echo esc_attr($folder->post_title); ?>" data-share="true" class="folder-item upfp_fldr_obj">
+
 			<a class="sub-folder-action" href="javascript:void(0);">
-				<img src="<?php echo $folder_prvw_img; ?>">
+				<img src="<?php echo esc_url($folder_prvw_img); ?>">
 			</a>
-			<p class="folder_ttl"><?php echo $folder->post_title; ?></p>
+			<p class="folder_ttl"><?php echo esc_html($folder->post_title); ?></p>
 			
 		</div>
 	<?php
@@ -269,52 +269,52 @@ if($folder_id == 'all-shared-files' || $folder_id == 'filter-shared'){ // for ma
 		$doc_src = wp_get_attachment_url($doc_id);
 		$mime_type = get_post_mime_type($doc_id);
 	?>
-		<div id="doc_<?php echo $doc_id; ?>" class="doc-item" data-share="true">
-		
+		<div id="doc_<?php echo absint($doc_id); ?>" class="doc-item" data-share="true">
+
 			<?php if (strpos($mime_type, 'image') !== false) { $doc_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail'); ?>
-				
+
 				<a class="upfp_single_file edit-doc" href="javascript:void(0);">
-					<img data-type="img" data-src="<?php echo $doc_src; ?>" src="<?php echo $doc_thumb[0]; ?>">
+					<img data-type="img" data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($doc_thumb[0]); ?>">
 				</a>
-			
+
 			<?php } else if(strpos($mime_type, 'video') !== false){ ?>
-			
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $vdo_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($vdo_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else if(strpos($mime_type, 'zip') !== false) { ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $zip_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($zip_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else if(strpos($mime_type, 'pdf') !== false) { ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $pdf_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($pdf_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else if(strpos($mime_type, 'document') !== false) { ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $doc_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($doc_prvw_img); ?>">
 				</a>
-				
+
 			<?php } else{ ?>
-				
+
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo $doc_src; ?>" src="<?php echo $file_prvw_img; ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($file_prvw_img); ?>">
 				</a>
-				
+
 			<?php } ?>
-			
-			<p class="doc_ttl"><?php echo $doc_ttl; ?></p>
-			
+
+			<p class="doc_ttl"><?php echo esc_html($doc_ttl); ?></p>
+
 		</div>
 	<?php
 	}
-	
+
 }
 
 if(!$folders && !$all_docs_ids){

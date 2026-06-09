@@ -40,7 +40,7 @@ if ( ! defined('ABSPATH') ) {
 				$editable_roles = apply_filters('editable_roles', $all_roles);
 				$options = '';
 				foreach($editable_roles as $key => $val){
-					$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
+					$options .= '<option value="' . esc_attr($key) . '">' . esc_html($val['name']) . '</option>';
 				}
 				?>
 				

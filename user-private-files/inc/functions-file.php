@@ -174,8 +174,8 @@ if (!function_exists('upvf_pro_preview_file')) {
                     
                     $cmnts_html .= '<p>
                         <span class="cmnt_usr_avatar">' . $cmnt_usr_avatar . '</span>
-                        <span class="cmnt_usr_email">' . $cmnt_user_email . '</span>
-                        <span class="cmnt_usr_cmnt">' . $cmnt_content . '</span>
+                        <span class="cmnt_usr_email">' . esc_html($cmnt_user_email) . '</span>
+                        <span class="cmnt_usr_cmnt">' . esc_html($cmnt_content) . '</span>
                     </p>';
                     
                 }
@@ -796,10 +796,10 @@ if (!function_exists('upvf_pro_get_folders')) {
 				if( !empty($fldrs_to_exclude) ){
 					$parent_fldr = get_post_meta($folder->ID, 'upf_parent_fldr', true);
 					if( !in_array($parent_fldr, $fldrs_to_exclude) ){
-						$options .= '<option value="'.$folder->ID.'">'.$folder->post_title.'</option>';
+						$options .= '<option value="' . esc_attr($folder->ID) . '">' . esc_html($folder->post_title) . '</option>';
 					}
 				} else{
-					$options .= '<option value="'.$folder->ID.'">'.$folder->post_title.'</option>';
+					$options .= '<option value="' . esc_attr($folder->ID) . '">' . esc_html($folder->post_title) . '</option>';
 				}
 				
 			}

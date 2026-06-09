@@ -65,8 +65,8 @@ $shared_folders = get_posts($shared_args);
 			<ul class="upfp_nav_list my_folders">
 				
 				<?php foreach($folders as $folder){ ?>
-					<li id="upfp_nav_fldr_<?php echo $folder->ID; ?>" data-folder-id="<?php echo $folder->ID; ?>" data-folder-name="<?php echo $folder->post_title; ?>" class="upfp_fldr_obj">
-						<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> <?php echo $folder->post_title; ?></span></a>
+					<li id="upfp_nav_fldr_<?php echo absint($folder->ID); ?>" data-folder-id="<?php echo absint($folder->ID); ?>" data-folder-name="<?php echo esc_attr($folder->post_title); ?>" class="upfp_fldr_obj">
+						<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> <?php echo esc_html($folder->post_title); ?></span></a>
 					</li>
 				<?php } ?>
 				
@@ -108,8 +108,8 @@ $shared_folders = get_posts($shared_args);
 			foreach($sf_array as $sf_id){
 				$sf_name = get_the_title($sf_id);
 			?>
-				<li id="upfp_nav_fldr_<?php echo $sf_id; ?>" data-folder-id="<?php echo $sf_id; ?>" data-folder-name="<?php echo $sf_name; ?>" data-share="true" class="upfp_fldr_obj">
-					<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> <?php echo $sf_name; ?></span></a>
+				<li id="upfp_nav_fldr_<?php echo absint($sf_id); ?>" data-folder-id="<?php echo absint($sf_id); ?>" data-folder-name="<?php echo esc_attr($sf_name); ?>" data-share="true" class="upfp_fldr_obj">
+					<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> <?php echo esc_html($sf_name); ?></span></a>
 				</li>
 			<?php } ?>
 			

@@ -60,28 +60,28 @@ if (!function_exists('upvf_classic_display_prvt_files')) {
 				
 				if($grp_by){ // group together same type of files
 					if (strpos($mime_type, 'image') !== false) {
-						$grp_img_html .= '<div id="doc_'.$doc_id.'" class="doc-item" data-alwd-usrs="'.$ca_users_str.'" doc_type="'.$mime_type.'">';
+						$grp_img_html .= '<div id="doc_'.absint($doc_id).'" class="doc-item" data-alwd-usrs="'.esc_attr($ca_users_str).'" doc_type="'.esc_attr($mime_type).'">';
 						$grp_img_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail');
-						$grp_img_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-type="img" data-src="'.$doc_src.'" src="'.$grp_img_thumb[0].'"></a>';
-						$grp_img_html .= '<p class="doc_ttl">'.$doc_ttl.'</p>';
-						$grp_img_html .= '<p class="doc_desc upvf-hidden">'.$doc_desc.'</p></div>';
+						$grp_img_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-type="img" data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($grp_img_thumb[0]).'"></a>';
+						$grp_img_html .= '<p class="doc_ttl">'.esc_html($doc_ttl).'</p>';
+						$grp_img_html .= '<p class="doc_desc upvf-hidden">'.esc_html($doc_desc).'</p></div>';
 					} else{
-						$grp_doc_html .= '<div id="doc_'.$doc_id.'" class="doc-item" data-alwd-usrs="'.$ca_users_str.'" doc_type="'.$mime_type.'">';
-						$grp_doc_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.$doc_src.'" src="'.$doc_prvw_img.'"></a>';
-						$grp_doc_html .= '<p class="doc_ttl">'.$doc_ttl.'</p>';
-						$grp_doc_html .= '<p class="doc_desc upvf-hidden">'.$doc_desc.'</p></div>';
+						$grp_doc_html .= '<div id="doc_'.absint($doc_id).'" class="doc-item" data-alwd-usrs="'.esc_attr($ca_users_str).'" doc_type="'.esc_attr($mime_type).'">';
+						$grp_doc_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($doc_prvw_img).'"></a>';
+						$grp_doc_html .= '<p class="doc_ttl">'.esc_html($doc_ttl).'</p>';
+						$grp_doc_html .= '<p class="doc_desc upvf-hidden">'.esc_html($doc_desc).'</p></div>';
 					}
 				} else{ // No grouping
-					$doc_item_html .= '<div id="doc_'.$doc_id.'" class="doc-item" data-alwd-usrs="'.$ca_users_str.'" doc_type="'.$mime_type.'">';
+					$doc_item_html .= '<div id="doc_'.absint($doc_id).'" class="doc-item" data-alwd-usrs="'.esc_attr($ca_users_str).'" doc_type="'.esc_attr($mime_type).'">';
 					if (strpos($mime_type, 'image') !== false) {
 						$doc_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail');
 						$doc_item_html .= '<a class="edit-doc" href="javascript:void(0);">
-								<img data-type="img" data-src="'.$doc_src.'" src="'.$doc_thumb[0].'"></a>';
+								<img data-type="img" data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($doc_thumb[0]).'"></a>';
 					} else{
-						$doc_item_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.$doc_src.'" src="'.$doc_prvw_img.'"></a>';
+						$doc_item_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($doc_prvw_img).'"></a>';
 					}
-					$doc_item_html .= '<p class="doc_ttl">'.$doc_ttl.'</p>';
-					$doc_item_html .= '<p class="doc_desc upvf-hidden">'.$doc_desc.'</p></div>';
+					$doc_item_html .= '<p class="doc_ttl">'.esc_html($doc_ttl).'</p>';
+					$doc_item_html .= '<p class="doc_desc upvf-hidden">'.esc_html($doc_desc).'</p></div>';
 				}
 			}
 			
@@ -189,17 +189,17 @@ if (!function_exists('upvf_classic_display_prvt_files')) {
 					$swm_doc_ttl = get_the_title($swm_doc);
 					$swm_doc_src = wp_get_attachment_url($swm_doc);
 					$mime_type = get_post_mime_type($swm_doc);
-					$swm_item_html .= '<div id="swm_doc_'.$swm_doc.'" class="swm-doc-item" doc_type="'.$mime_type.'">';
+					$swm_item_html .= '<div id="swm_doc_'.absint($swm_doc).'" class="swm-doc-item" doc_type="'.esc_attr($mime_type).'">';
 					if (strpos($mime_type, 'image') !== false) {
 						$doc_thumb = wp_get_attachment_image_src($swm_doc, 'thumbnail');
-						$swm_item_html .= '<a href="'.$swm_doc_src.'" target="_blank">
-								<img class="full-width" data-src="'.$swm_doc_src.'" src="'.$doc_thumb[0].'"></a>';
+						$swm_item_html .= '<a href="'.esc_url($swm_doc_src).'" target="_blank">
+								<img class="full-width" data-src="'.esc_attr(esc_url($swm_doc_src)).'" src="'.esc_url($doc_thumb[0]).'"></a>';
 					} else{
-						$swm_item_html .= '<a href="'.$swm_doc_src.'" target="_blank"><img src="'.$doc_prvw_img.'"></a>';
+						$swm_item_html .= '<a href="'.esc_url($swm_doc_src).'" target="_blank"><img src="'.esc_url($doc_prvw_img).'"></a>';
 					}
 					$doc_author = get_post_field ('post_author', $swm_doc);
 					$user_obj = get_userdata( $doc_author );
-					$swm_item_html .= '<p class="doc_ttl">'.$swm_doc_ttl.'</br><span>'.__("Shared By", "user-private-files").' '.$user_obj->user_login.'</span></p></div>';
+					$swm_item_html .= '<p class="doc_ttl">'.esc_html($swm_doc_ttl).'</br><span>'.esc_html(__("Shared By", "user-private-files")).' '.esc_html($user_obj->user_login).'</span></p></div>';
 				}
 				$render_html .= '<div class="swm_sec"><div class="swm_all_items">';
 				$render_html .= $swm_item_html;

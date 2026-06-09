@@ -3,6 +3,10 @@ jQuery(document).ready(function ($) {
 	let doc_type = '';
 	let drop_file = '';
 
+	function upvf_htmlEntities(str) {
+		return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+	}
+
 	// Common popup functions
 	$('.closePopup').on('click', function () {
 		$('.edit_doc_upf_popup .doc_view').html('');
@@ -167,15 +171,15 @@ jQuery(document).ready(function ($) {
 							var doc_ttl = jQuery('#add-doc-frm #doc_ttl').val();
 							var doc_desc = jQuery('#add-doc-frm #doc_desc').val();
 
-							$doc_pht_html = '<div id="doc_' + new_doc_id + '" class="doc-item" data-alwd-usrs doc_type="' + doc_mime_type + '">';
+							$doc_pht_html = '<div id="doc_' + parseInt(new_doc_id) + '" class="doc-item" data-alwd-usrs doc_type="' + upvf_htmlEntities(doc_mime_type) + '">';
 							if (doc_type == 'image') {
 								$doc_pht_html += '<a class="edit-doc" href="javascript:void(0);"><img data-type="img" data-src="' + new_doc_src + '" src="' + new_doc_thumb + '"></a>';
 							} else {
 								let doc_prvw_img = ajax_upf_classic_obj.upvf_plugin_url + 'images/document.png';
 								$doc_pht_html += '<a class="edit-doc" href="javascript:void(0);"><img data-src="' + new_doc_src + '" src="' + doc_prvw_img + '"></a>';
 							}
-							$doc_pht_html += '<p class="doc_ttl">' + doc_ttl + '</p>';
-							$doc_pht_html += '<p class="doc_desc upvf-hidden">' + doc_desc + '</p></div>';
+							$doc_pht_html += '<p class="doc_ttl">' + upvf_htmlEntities(doc_ttl) + '</p>';
+							$doc_pht_html += '<p class="doc_desc upvf-hidden">' + upvf_htmlEntities(doc_desc) + '</p></div>';
 
 							if ($('select#fldr_id').length > 0) {
 								var selected_fldr_id = $('select#fldr_id').val();
@@ -212,8 +216,8 @@ jQuery(document).ready(function ($) {
 		let doc_src = $(this).find('img').attr('data-src');
 		let doc_desc = $(this).closest('.doc-item').find('.doc_desc').text();
 
-		$('.edit_doc_upf_popup #edit_doc_ttl').html(doc_ttl);
-		$('.edit_doc_upf_popup #edit_doc_desc').html(doc_desc);
+		$('.edit_doc_upf_popup #edit_doc_ttl').text(doc_ttl);
+		$('.edit_doc_upf_popup #edit_doc_desc').text(doc_desc);
 
 		if (doc_mime_type.includes('image')) {
 			$('.edit_doc_upf_popup .doc_view').html('<img src="' + doc_src + '">');
@@ -241,7 +245,7 @@ jQuery(document).ready(function ($) {
 			let alwd_usr_html = '';
 			$.each(alwd_user_array, function (i) {
 				let alwd_usr_data = alwd_user_array[i].split(":");
-				alwd_usr_html += '<p class="alwd-usr-p" data-usr-id="' + alwd_usr_data[0] + '">' + alwd_usr_data[1] + ' <span class="rmv-file-acs">Remove</span></p>';
+				alwd_usr_html += '<p class="alwd-usr-p" data-usr-id="' + parseInt(alwd_usr_data[0]) + '">' + upvf_htmlEntities(alwd_usr_data[1]) + ' <span class="rmv-file-acs">Remove</span></p>';
 			});
 			$('.doc_curr_alwd_users').html('<h5>Allowed Users</h5>' + alwd_usr_html);
 		} else {
@@ -279,7 +283,7 @@ jQuery(document).ready(function ($) {
 					console.log(results.error);
 				} else {
 					if (results.added_user_email) {
-						var usr_html = '<p class="alwd-usr-p" data-usr-id="' + results.added_user_id + '">' + results.added_user_email + ' <span class="rmv-file-acs">Remove</span></p>';
+						var usr_html = '<p class="alwd-usr-p" data-usr-id="' + parseInt(results.added_user_id) + '">' + upvf_htmlEntities(results.added_user_email) + ' <span class="rmv-file-acs">Remove</span></p>';
 						$('.doc_curr_alwd_users').append(usr_html);
 						var doc_elem_id = $('.edit_doc_upf_popup').attr('data-file');
 						var doc_usrs = $('.all-docs').find('#' + doc_elem_id);

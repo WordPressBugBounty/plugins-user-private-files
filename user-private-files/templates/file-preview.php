@@ -53,7 +53,7 @@ if ( ! defined('ABSPATH') ) {
 				
 				$options = '';
 				foreach($editable_roles as $key => $val){
-					$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
+					$options .= '<option value="' . esc_attr($key) . '">' . esc_html($val['name']) . '</option>';
 				}
 				?>
 				

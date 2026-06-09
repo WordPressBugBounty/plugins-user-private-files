@@ -1,24 +1,25 @@
-=== File Sharing & Download Manager - User Private Files ===
+=== Secure Client Portal and Private File Sharing Plugin - User Private Files ===
 Contributors: deepakkite, mrking2201, upfpro
-Tags: file sharing, download manager, file manager, document management, upload
+Tags: file sharing, download manager, client portal, document management, document library
 Requires at least: 6.0
-Tested up to: 6.8.2
-Stable tag: 2.1.6
+Tested up to: 7.0
+Stable tag: 2.1.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Secure WordPress file sharing & download manager. Upload, manage & share private files with users safely.
+WordPress secure client portal plugin with file sharing and document manager. Upload, manage and share documents with users safely.
 
 == Description ==
 
-A powerful WordPress file sharing and download manager plugin. Upload, manage, and share private files securely with your users.
+A powerful WordPress secure client portal with file sharing and document management plugin. Upload, manage, and share private documents securely with your users with full client portal.
 
-User Private Files is more than just a file sharing plugin. It works as a WordPress file manager, download manager, and document sharing plugin — making it easy to control access to files and documents for each user.
+User Private Files is more than just a file sharing plugin. It works as a WordPress file manager, secure client portal, download manager, and document sharing plugin — making it easy to control access to files and documents for each user.
 
 **Key Features**
 
 * **Secure file sharing** – upload and share private files with restricted access.
+* **Secure Client Portal** – private and unique client portal for each user.
 * **User file uploads** – allow your site users to upload and manage their own files.
 * **Advanced file manager** – organize files with folders, trash, and access controls.
 * **Download manager** – track downloads with detailed file stats and view counts.
@@ -32,9 +33,9 @@ https://www.youtube.com/watch?v=tdwzs-w8EyI
 
 **[All Features List](https://userprivatefiles.com/features/?utm_source=wp-features&utm_medium=wporg)** | **[Documentation](https://userprivatefiles.com/documentation/?utm_source=wp-docs&utm_medium=wporg)** | **[Case Studies](https://userprivatefiles.com/blog/?utm_source=wp-case-study&utm_medium=wporg)** | **[Get PRO Version](https://userprivatefiles.com/pricing/?utm_source=wp-get-pro&utm_medium=wporg)**
 
-== 🔒 Best WordPress file management and sharing plugin ==
+== 🔒 Best WordPress file management and client portal plugin ==
 
-User Private Files is a private file sharing plugin with frontend file manager (client portal) that adds secure file sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files. A perfect frontend dashboard to upload and share private files.
+User Private Files is a private file sharing plugin with secure client portal that adds secure document sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files via unique client portal. A perfect frontend dashboard to upload and share private files.
 
 ### 🚀 Check the Demo Here:
 * **[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
@@ -52,19 +53,25 @@ User Private Files is as easy as using your computer. The sleek design gives you
 We are using Divi theme on our demo sites. It is very compatible with Divi theme. We have tested with some popular themes like DIVI, AVADA, BE, The7, Bridge, UnCode, Salient etc. and there are no issues so far.
 
 **Compatible with Elementor & other Page-Builders**
-WordPress File Sharing plugin is compatible with Elementor builder. While editing a page create a new shortcode block and paste the shortcode [upf_manager]. Save the page and preview. Same can be followed for other builders like – Muffin, WPBakery, Visual Composer, Beaver, Divi, SiteOrigin, etc.
+User Private Files plugin is compatible with Elementor builder. While editing a page create a new shortcode block and paste the shortcode [upf_manager]. Save the page and preview. Same can be followed for other builders like – Muffin, WPBakery, Visual Composer, Beaver, Divi, SiteOrigin, etc.
 
 **Security First Approach**
 Security is at the core of User Private Files. All file transfers and access are protected with the best security methods, safeguarding your confidential documents from potential threats.
 
+**Use Cases of User Private Files plugin**
+Any business like agency, accountant, lawyer, consultant, hospital, school, institution, company, organization etc. can use UPF to create a dedicated client portal to upload, manage, share and download private files like invoices, contracts, agreements, reports, and any other private documents.
+
+**File Types Support**
+Images, pdf, doc, zip, audio, video, txt, CSV etc. files are supported as they are supported by default in WordPress. You can add or restrict more custom file types with the PRO version.
+
 **Customizer (PRO)**
-Customize Color scheme of button, text and hover. Adjust your branding for frontend file sharing portal with settings to set logo, watermark, and background options.
+Customize Color scheme of button, text and hover. Adjust your branding for frontend file sharing client portal with settings to set logo, watermark, and background options.
 
 **Features Rich**
-User Private Files is the only file sharing plugin you ever need. With so many features, you can convert your site into a dedicated file sharing portal for your clients and customers. Features like uploader, file manager, search, preview, trash, sort, view modes, zip, sharing files/folders and a lot more are what make the plugin best in file sharing solution.
+User Private Files is the only document management plugin you ever need. With so many features, you can convert your site into a dedicated secure file sharing portal for your clients and customers. Features like uploader, file manager, search, preview, trash, sort, view modes, zip, sharing files/folders and a lot more are what make the plugin best in file sharing solution.
 
 **No Limit**
-You can upload as many files as you want & as many folders or sub-folders can be created. There is no limit on number of files. This depends on your hosting account.
+You can upload as many files as you want and as many folders or sub-folders can be created. There is no limit on number of files. This depends on your hosting account.
 
 **No max file-size Limit**
 User Private Files plugin do not limit on file size. It depends on your hosting account. If you are unable to upload large files, edit your php.ini or user.ini file and add this line :
@@ -291,9 +298,17 @@ You can install the Plugin in two ways.
 
 == Frequently Asked Questions ==
 
-= Are the files secure? =
+= How to share private files in WordPress? =
 
-Yes, the files are uploaded to a different directory and the files will be accessible only by allowed users or admin. Public URL to a file will show a permission error.
+Install and activate User Private Files (WordPress File Sharing) plugin and then use the shortcode in a page. Upload a file on frontend and preview that file. Click on share icon to share it with other users on your WordPress website.
+
+= Are the files really secure? =
+
+Yes, the files are uploaded to a different directory than default media folder and the files will be accessible only by allowed users or admin. Public URL to a file will show a permission error.
+
+= Can we use User Private Files as a Secure Client Portal? =
+
+Yes, the plugin allows you to setup a dedicated private client portal where users can register/login, view/download shared files, upload/share their files and folders.
 
 = What are the shortcodes =
 
@@ -304,10 +319,6 @@ For Classic Design:
 Shortcode for uploading form is “[upf_upload]”
 Shortcode for displaying files is “[upf_display]”
 We recommend that you use them on a single page.
-
-= How to share files in WordPress? =
-
-Install and activate User Private Files (WordPress File Sharing) plugin and then use the shortcode in a page. Upload a file on frontend and preview that file. Click on share icon to share it with other users on your WordPress website.
 
 = Does this plugin modify .htaccess file? =
 
@@ -337,6 +348,10 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.1.7 =
+* 2026-06-09
+* [Update] - Improved security with added escaping.
 
 = 2.1.6 =
 * 2025-09-27

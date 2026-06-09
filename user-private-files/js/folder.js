@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
 	
 	// htmlEntities for JS variables
 	function upvf_htmlEntities(str) {
-		return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); // .replace(/"/g, '&quot;')
+		return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 	}
 
 	/* Load files from folder */
@@ -143,7 +143,7 @@ jQuery(document).ready(function ($) {
 										rmv_usr_btn_new = '';
 									}
 
-									alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + alwd_usrs[i][0] + '"><span> ' + alwd_usrs[i][1] + '</span><span> ' + acs_full + '</span>' + rmv_usr_btn_new + '</li>';
+									alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + parseInt(alwd_usrs[i][0]) + '"><span> ' + upvf_htmlEntities(alwd_usrs[i][1]) + '</span><span> ' + upvf_htmlEntities(acs_full) + '</span>' + rmv_usr_btn_new + '</li>';
 
 								});
 								$('.upfp_folder_access_list').html(alwd_usr_html);
@@ -161,7 +161,7 @@ jQuery(document).ready(function ($) {
 						}
 
 						// shared/created by
-						$('.upfp_folder_info .upfp_folder_shared_by').html(results.author);
+						$('.upfp_folder_info .upfp_folder_shared_by').text(results.author);
 						$('.upfp_folder_info #shared-by').show();
 
 						if (folder_status == 'trash' && fldr_id != 'trash-files') { // if inside trash sub-folders
@@ -169,7 +169,7 @@ jQuery(document).ready(function ($) {
 						}
 
 						// update folder name in sidebar
-						$('.upfp_folder_info #folder_name').html(results.folder_ttl);
+						$('.upfp_folder_info #folder_name').text(results.folder_ttl);
 
 						// display folder info in sidebar
 						if (fldr_id == 'trash-files' || fldr_id == 'all-files' || fldr_id == 'all-shared-files' || fldr_id == 'filter-shared') {
@@ -214,35 +214,35 @@ jQuery(document).ready(function ($) {
 						if (data_share == 'true') {
 							$('.upfp_folder_banner #upfp_bc_folder').html(' <span id="bc_fldr_id_all-shared-files" data-share="true">Shared</span>');
 							if (fldr_id != 'all-shared-files') {
-								$('.upfp_folder_banner #upfp_bc_folder').append(' / ' + '<small id="bc_fldr_id_' + fldr_id + '">' + results.folder_ttl + '</small>');
+								$('.upfp_folder_banner #upfp_bc_folder').append(' / ' + '<small id="bc_fldr_id_' + parseInt(fldr_id) + '">' + upvf_htmlEntities(results.folder_ttl) + '</small>');
 							}
-						} 
+						}
 						else {
 
 							if (results.all_parent_folders.length === 0 || folder_status == 'trash') {
-								// If inside root folder or trash folders		
+								// If inside root folder or trash folders
 
 								if (folder_status == 'trash' && fldr_id != 'trash-files') {
 
 									$('.upfp_folder_banner #upfp_bc_folder').html('<span id="bc_fldr_id_trash-files">Trash</span> / ');
-									$('.upfp_folder_banner #upfp_bc_folder').append('<span id="bc_fldr_id_' + fldr_id + '" data-status="trash">' + results.folder_ttl + '</span>');
+									$('.upfp_folder_banner #upfp_bc_folder').append('<span id="bc_fldr_id_' + parseInt(fldr_id) + '" data-status="trash">' + upvf_htmlEntities(results.folder_ttl) + '</span>');
 
-								} 
+								}
 								else {
 									$('.upfp_folder_banner #upfp_bc_folder').html('<span id="bc_fldr_id_' + fldr_id + '">' + upvf_htmlEntities(fldr_name) + '</span>');
 								}
 
-							} 
+							}
 							else {
 								// Inside a sub folder
 								$('.upfp_folder_banner #upfp_bc_folder, .upfp_folder_banner .upfp_parmalink span').html('');
 
 								// Get all parent folders first
 								jQuery.each(results.all_parent_folders, function (index, item) {
-									$('.upfp_folder_banner #upfp_bc_folder').append(' / ' + '<span id="bc_fldr_id_' + item.id + '">' + item.name + '</span>');
+									$('.upfp_folder_banner #upfp_bc_folder').append(' / ' + '<span id="bc_fldr_id_' + parseInt(item.id) + '">' + upvf_htmlEntities(item.name) + '</span>');
 								});
 
-								$('.upfp_folder_banner #upfp_bc_folder').append(' / ' + '<span id="bc_fldr_id_' + fldr_id + '">' + results.folder_ttl + '</span>');
+								$('.upfp_folder_banner #upfp_bc_folder').append(' / ' + '<span id="bc_fldr_id_' + parseInt(fldr_id) + '">' + upvf_htmlEntities(results.folder_ttl) + '</span>');
 
 							}
 						}
@@ -713,7 +713,7 @@ jQuery(document).ready(function ($) {
 									rmv_usr_btn_new = '';
 								}
 
-								alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + alwd_usrs[i][0] + '"><span> ' + alwd_usrs[i][1] + '</span><span> ' + acs_full + '</span>' + rmv_usr_btn_new + '</li>';
+								alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + parseInt(alwd_usrs[i][0]) + '"><span> ' + upvf_htmlEntities(alwd_usrs[i][1]) + '</span><span> ' + upvf_htmlEntities(acs_full) + '</span>' + rmv_usr_btn_new + '</li>';
 							});
 							$('.upfp_folder_access_list').html(alwd_usr_html);
 						}
@@ -775,7 +775,7 @@ jQuery(document).ready(function ($) {
 									rmv_usr_btn_new = '';
 								}
 
-								alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + alwd_usrs[i][0] + '"><span> ' + alwd_usrs[i][1] + '</span><span> ' + acs_full + '</span>' + rmv_usr_btn_new + '</li>';
+								alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + parseInt(alwd_usrs[i][0]) + '"><span> ' + upvf_htmlEntities(alwd_usrs[i][1]) + '</span><span> ' + upvf_htmlEntities(acs_full) + '</span>' + rmv_usr_btn_new + '</li>';
 							});
 
 							$('.upfp_folder_access_list').html(alwd_usr_html);
@@ -837,7 +837,7 @@ jQuery(document).ready(function ($) {
 									rmv_usr_btn_new = '';
 								}
 
-								alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + alwd_usrs[i][0] + '"><span> ' + alwd_usrs[i][1] + '</span><span> ' + acs_full + '</span>' + rmv_usr_btn_new + '</li>';
+								alwd_usr_html += '<li class="alwd-usr-li" data-usr-id="' + parseInt(alwd_usrs[i][0]) + '"><span> ' + upvf_htmlEntities(alwd_usrs[i][1]) + '</span><span> ' + upvf_htmlEntities(acs_full) + '</span>' + rmv_usr_btn_new + '</li>';
 							});
 							$('.upfp_folder_access_list').html(alwd_usr_html);
 						}

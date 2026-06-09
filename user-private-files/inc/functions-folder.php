@@ -75,8 +75,8 @@ if (!function_exists('refresh_left_panel')) {
 							</ul>
 							<ul class="upfp_nav_list my_folders">';
 								foreach($folders as $folder){
-									$panel_html .= '<li id="upfp_nav_fldr_' . $folder->ID . '" data-folder-id="' . $folder->ID . '" data-folder-name="' . $folder->post_title . '" class="upfp_fldr_obj">
-										<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> ' . $folder->post_title . '</span></a>
+									$panel_html .= '<li id="upfp_nav_fldr_' . absint($folder->ID) . '" data-folder-id="' . absint($folder->ID) . '" data-folder-name="' . esc_attr($folder->post_title) . '" class="upfp_fldr_obj">
+										<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> ' . esc_html($folder->post_title) . '</span></a>
 									</li>';
 								}
 			$panel_html .= '</ul>';	
@@ -112,8 +112,8 @@ if (!function_exists('refresh_left_panel')) {
 							foreach($sf_array as $sf_id){
 								$sf_name = get_the_title($sf_id);
 								
-								$panel_html .= '<li id="upfp_nav_fldr_' . $sf_id . '" data-folder-id="' . $sf_id . '" data-folder-name="' . $sf_name . '" data-share="true" class="upfp_fldr_obj">
-									<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> ' . $sf_name . '</span></a>
+								$panel_html .= '<li id="upfp_nav_fldr_' . absint($sf_id) . '" data-folder-id="' . absint($sf_id) . '" data-folder-name="' . esc_attr($sf_name) . '" data-share="true" class="upfp_fldr_obj">
+									<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i> <span> ' . esc_html($sf_name) . '</span></a>
 								</li>';
 							}
 		$panel_html .= '</ul>';
@@ -498,16 +498,16 @@ if (!function_exists('upvf_pro_new_flder_callback')) {
 				global $upf_plugin_url;
 				$folder_prvw_img = $upf_plugin_url . 'images/folder-150.png';
 				
-				$res_array['html'] = '<div id="sub_folder_' . $fldr_id . '" data-folder-id="' . $fldr_id . '" data-folder-name="' . $fldr_ttl . '" class="folder-item upfp_fldr_obj">
+				$res_array['html'] = '<div id="sub_folder_' . absint($fldr_id) . '" data-folder-id="' . absint($fldr_id) . '" data-folder-name="' . esc_attr($fldr_ttl) . '" class="folder-item upfp_fldr_obj">
 										<a class="sub-folder-action" href="javascript:void(0);">
-											<img src="' . $folder_prvw_img . '">
+											<img src="' . esc_url($folder_prvw_img) . '">
 										</a>
-										<p class="folder_ttl">' . $fldr_ttl . '</p>
+										<p class="folder_ttl">' . esc_html($fldr_ttl) . '</p>
 									 </div>';
-				
+
 				if(!isset($_POST['parent_fldr'])){ // only add to navigation if it's a root folder
-					$res_array['folders_li'] = '<li id="upfp_nav_fldr_' . $fldr_id . '" data-folder-id="' . $fldr_id . '" data-folder-name="' . $fldr_ttl . '" class="upfp_fldr_obj">
-												<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . $fldr_ttl . '</span></a>
+					$res_array['folders_li'] = '<li id="upfp_nav_fldr_' . absint($fldr_id) . '" data-folder-id="' . absint($fldr_id) . '" data-folder-name="' . esc_attr($fldr_ttl) . '" class="upfp_fldr_obj">
+												<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . esc_html($fldr_ttl) . '</span></a>
 											</li>';
 				}
 				
@@ -590,8 +590,8 @@ if (!function_exists('upvf_pro_move_folder')) {
 				$res_array['dont_rmv'] = 1;
 				if($curr_prnt_fldr != ''){
 					$fldr_ttl = get_the_title($folder_id);
-					$res_array['li_html'] = '<li id="upfp_nav_fldr_' . $folder_id . '" data-folder-id="' . $folder_id . '" data-folder-name="' . $fldr_ttl . '" class="upfp_fldr_obj">
-												<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . $fldr_ttl . '</span></a>
+					$res_array['li_html'] = '<li id="upfp_nav_fldr_' . absint($folder_id) . '" data-folder-id="' . absint($folder_id) . '" data-folder-name="' . esc_attr($fldr_ttl) . '" class="upfp_fldr_obj">
+												<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . esc_html($fldr_ttl) . '</span></a>
 											</li>';
 				}
 			}
@@ -1099,12 +1099,12 @@ if (!function_exists('upvf_pro_restore_folder')) {
 				if(!$parent_folder){
 					$fldr_ttl = get_the_title($folder_id);
 					if($curr_user_id == $folder_author){
-						$res_array['li_html'] = '<li id="upfp_nav_fldr_' . $folder_id . '" data-folder-id="' . $folder_id . '" data-folder-name="' . $fldr_ttl . '" class="upfp_fldr_obj">
-													<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . $fldr_ttl . '</span></a>
+						$res_array['li_html'] = '<li id="upfp_nav_fldr_' . absint($folder_id) . '" data-folder-id="' . absint($folder_id) . '" data-folder-name="' . esc_attr($fldr_ttl) . '" class="upfp_fldr_obj">
+													<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . esc_html($fldr_ttl) . '</span></a>
 												</li>';
 					} else{
-						$res_array['shared_li_html'] = '<li id="upfp_nav_fldr_' . $folder_id . '" data-folder-id="' . $folder_id . '" data-folder-name="' . $fldr_ttl . '" class="upfp_fldr_obj" data-share="true">
-													<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . $fldr_ttl . '</span></a>
+						$res_array['shared_li_html'] = '<li id="upfp_nav_fldr_' . absint($folder_id) . '" data-folder-id="' . absint($folder_id) . '" data-folder-name="' . esc_attr($fldr_ttl) . '" class="upfp_fldr_obj" data-share="true">
+													<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . esc_html($fldr_ttl) . '</span></a>
 												</li>';
 					}
 				}
