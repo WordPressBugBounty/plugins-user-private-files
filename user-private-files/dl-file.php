@@ -55,37 +55,49 @@ if(user_can( $curr_user_id, 'administrator' )){
 
 	// If doc is image and not original but different size
 	if(!$doc_id){
-		$args = array(
-			'post_type' => 'attachment',
-			'post_status' => array('inherit', 'trash'),
-			'meta_query' => array(
-				array(
-					'key' => '_wp_attachment_metadata',
-					'value' => $file_raw_name,
-					'compare' => 'LIKE'
-				)
-			)
-		);
-		$the_query = new WP_Query( $args );
-		if ( $the_query->have_posts() ) {
-			while ( $the_query->have_posts() ) {
-				$the_query->the_post();
-				$doc_id = get_the_ID();
-				$doc_author = get_the_author_meta("ID");
-				if($curr_user_id == $doc_author){
-					$allowed = 1;
-				}
-				else{
-					$upf_allowed_users = get_post_meta($doc_id, 'upf_allowed', true);
-					if($upf_allowed_users){
-						if(in_array($curr_user_id, $upf_allowed_users)){
+		// Generated sizes are named "{original}-{width}x{height}.{ext}" by WordPress
+		// Derive the original filename so we can look up the true parent attachment via the same exact _wp_attached_file match used above, instead of a substring LIKE match across every attachment's metadata.
+		if (preg_match('/^(.+)-\d+x\d+\.(\w+)$/', $file_raw_name, $matches)) {
+			$original_private_file = 'upf-docs/' . $matches[1] . '.' . $matches[2];
+
+			$the_query = new WP_Query( array( 'post_type' => 'attachment', 'post_status' => array('inherit', 'trash'), 'meta_key' => '_wp_attached_file', 'meta_value' => $original_private_file ) );
+			if ( $the_query->have_posts() ) {
+				while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					$candidate_id = get_the_ID();
+
+					// Confirm this candidate's own generated sizes actually include the exact requested file
+					$candidate_meta = wp_get_attachment_metadata($candidate_id);
+					$size_found = false;
+					if (!empty($candidate_meta['sizes']) && is_array($candidate_meta['sizes'])) {
+						foreach ($candidate_meta['sizes'] as $size_data) {
+							if (isset($size_data['file']) && $size_data['file'] === $file_raw_name) {
+								$size_found = true;
+								break;
+							}
+						}
+					}
+
+					if ($size_found) {
+						$doc_id = $candidate_id;
+						$doc_author = get_the_author_meta("ID");
+						if($curr_user_id == $doc_author){
 							$allowed = 1;
 						}
+						else{
+							$upf_allowed_users = get_post_meta($doc_id, 'upf_allowed', true);
+							if($upf_allowed_users){
+								if(in_array($curr_user_id, $upf_allowed_users)){
+									$allowed = 1;
+								}
+							}
+						}
+						break;
 					}
 				}
 			}
+			wp_reset_query();
 		}
-		wp_reset_query();
 	}
 }
 
@@ -93,7 +105,33 @@ if(!$allowed){
 	status_header(403);
 	die('403 &#8212; You do not have Permission to view this file.');
 }
+
+// Resolve the file to serve from the authorized attachment's own data, never from the raw client-supplied filename
+if ($doc_id) {
+	$served_file = false;
+	$attached_file = get_attached_file($doc_id);
+	if ($attached_file && basename($attached_file) === $file_raw_name) {
+		$served_file = $attached_file;
+	} else {
+		$doc_meta = wp_get_attachment_metadata($doc_id);
+		if (!empty($doc_meta['sizes']) && is_array($doc_meta['sizes'])) {
+			foreach ($doc_meta['sizes'] as $size_data) {
+				if (isset($size_data['file']) && $size_data['file'] === $file_raw_name) {
+					$served_file = trailingslashit(dirname($attached_file)) . $size_data['file'];
+					break;
+				}
+			}
+		}
+	}
+
+	if (!$served_file || !is_file($served_file)) {
+		status_header(403);
+		die('403 &#8212; You do not have Permission to view this file.');
+	}
+	$file = $served_file;
 	
+} // else admin - directly serve the file
+
 $mime = wp_check_filetype($file);
 if( false === $mime[ 'type' ] && function_exists( 'mime_content_type' ) )
 	$mime[ 'type' ] = mime_content_type( $file );

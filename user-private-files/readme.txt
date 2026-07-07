@@ -3,7 +3,7 @@ Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, download manager, client portal, document management, document library
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.1.7
+Stable tag: 2.1.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -348,6 +348,10 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.1.8 =
+* 2026-07-07
+* [Update] - Improved security with updated permission checks.
 
 = 2.1.7 =
 * 2026-06-09

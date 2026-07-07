@@ -15,8 +15,8 @@ if (!function_exists('upf_pro_file_inserted')) {
 			update_post_meta($attach_id, 'upf_allowed', array($curr_user_id));
 			update_post_meta($attach_id, 'upf_acs_full', array($curr_user_id));
 			
-			if($fldr_id != 'all-files'){
-				
+			if($fldr_id != 'all-files' && upvf_check_fldr_full_access($fldr_id)){
+
 				update_post_meta($attach_id, 'upf_foldr_id', $fldr_id);
 				
 				$curr_allowed_users = get_post_meta($fldr_id, 'upf_allowed', true);

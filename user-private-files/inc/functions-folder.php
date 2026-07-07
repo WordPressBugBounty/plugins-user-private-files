@@ -226,7 +226,15 @@ if (!function_exists('rmv_access_child_elems')) {
 					}
 				}
 				update_post_meta($post_id, 'upf_allowed', $curr_allowed_users);
-				
+
+				$curr_acs_users = get_post_meta($post_id, 'upf_acs_full', true);
+				if($curr_acs_users){
+					if (($key = array_search($req_user_id, $curr_acs_users)) !== false) {
+						unset($curr_acs_users[$key]);
+					}
+				}
+				update_post_meta($post_id, 'upf_acs_full', $curr_acs_users);
+
 			}
 		}
 	}
@@ -458,28 +466,37 @@ if (!function_exists('upvf_pro_new_flder_callback')) {
 			exit;
 		}
 		
+		$parent_fldr = '';
+		if (isset($_POST['parent_fldr']) && $_POST['parent_fldr'] !== '') {
+			$parent_fldr = sanitize_text_field($_POST['parent_fldr']);
+			if (!upvf_check_fldr_full_access($parent_fldr)) {
+				$res_array['error'] = __("You don't have permission to perform this action", "user-private-files");
+				echo json_encode($res_array);
+				exit;
+			}
+		}
+
 		$fldr_ttl = '';
 		if(isset($_POST['fldr_ttl'])){
 			$fldr_ttl = sanitize_text_field($_POST['fldr_ttl']);
-		
+
 			$args = array(
 				'post_type' => 'upf_folder',
 				'post_title'     => $fldr_ttl,
 				// 'post_parent' => '',
 				'post_status'    => 'publish'
 			);
-			
+
 			$fldr_id = wp_insert_post($args, true);
 			if ( is_wp_error( $fldr_id ) ) {
 				$res_array['error'] = __("Error creating the folder! Please try later or contact us", "user-private-files");
 			} else {
-				
+
 				$curr_user_id = get_current_user_id();
 				update_post_meta($fldr_id, 'upf_allowed', array($curr_user_id));
 				update_post_meta($fldr_id, 'upf_acs_full', array($curr_user_id));
-				
-				if(isset($_POST['parent_fldr'])){
-					$parent_fldr = sanitize_text_field($_POST['parent_fldr']);
+
+				if($parent_fldr !== ''){
 					update_post_meta($fldr_id, 'upf_parent_fldr', $parent_fldr);
 					
 					$curr_allowed_users = get_post_meta($parent_fldr, 'upf_allowed', true);
@@ -505,7 +522,7 @@ if (!function_exists('upvf_pro_new_flder_callback')) {
 										<p class="folder_ttl">' . esc_html($fldr_ttl) . '</p>
 									 </div>';
 
-				if(!isset($_POST['parent_fldr'])){ // only add to navigation if it's a root folder
+				if($parent_fldr === ''){ // only add to navigation if it's a root folder
 					$res_array['folders_li'] = '<li id="upfp_nav_fldr_' . absint($fldr_id) . '" data-folder-id="' . absint($fldr_id) . '" data-folder-name="' . esc_attr($fldr_ttl) . '" class="upfp_fldr_obj">
 												<a class="upfp_foldr" href="javascript:void(0);"><i class="fas fa-folder"></i><span> ' . esc_html($fldr_ttl) . '</span></a>
 											</li>';
@@ -577,7 +594,8 @@ if (!function_exists('upvf_pro_move_folder')) {
 		$curr_user_id = get_current_user_id();
 		$fldr_author = get_post_field ('post_author', $folder_id);
 		$curr_prnt_fldr = get_post_meta($folder_id, 'upf_parent_fldr', true);
-		if( $curr_user_id == $fldr_author ){ // checking permission
+		$target_allowed = ($target_fldr_id == 'all-files') || upvf_check_fldr_full_access($target_fldr_id);
+		if( $curr_user_id == $fldr_author && $target_allowed ){ // checking permission on both source and destination
 		
 			if($target_fldr_id != 'all-files'){
 				update_post_meta($folder_id, 'upf_parent_fldr', $target_fldr_id);
@@ -1000,6 +1018,14 @@ if (!function_exists('upvf_pro_rmv_fldr_access')) {
 			if(!$allowed_users_updated){
 				$res_array['error'] = __("error - Unable to remove the user from this folder. Please try again later or contact us.", "user-private-files");
 			}
+
+			if($curr_acs_users){
+				if (($key = array_search($user_id, $curr_acs_users)) !== false) {
+					unset($curr_acs_users[$key]);
+				}
+			}
+			update_post_meta($fldr_id, 'upf_acs_full', $curr_acs_users);
+
 			$res_array['rmvd_usr'] = $user_id;
 			
 		} else{

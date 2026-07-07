@@ -20,6 +20,16 @@ if (!function_exists('classic_upload_doc_callback')) {
 			echo json_encode($res_array);
 			exit;
 		}
+
+		if (isset($_POST['fldr_id']) && $_POST['fldr_id'] !== '' && $_POST['fldr_id'] !== 'all-files') {
+			$fldr_id_check = sanitize_text_field($_POST['fldr_id']);
+			if (!upvf_check_fldr_full_access($fldr_id_check)) {
+				$res_array['error'] = __("You don't have permission to perform this action", "user-private-files");
+				echo json_encode($res_array);
+				exit;
+			}
+		}
+
 		$user_id = get_current_user_id();
 		
 		if(isset($_FILES)){
@@ -176,6 +186,15 @@ if (!function_exists('dpk_upvf_rmv_access')) {
 			if(!$allowed_users_updated){
 				$res_array['error'] = __("error - Unable to remove the user from this document. Please try again later or contact us.", "user-private-files");
 			}
+
+			$curr_acs_users = get_post_meta($doc_id, 'upf_acs_full', true);
+			if($curr_acs_users){
+				if (($key = array_search($user_id, $curr_acs_users)) !== false) {
+					unset($curr_acs_users[$key]);
+				}
+			}
+			update_post_meta($doc_id, 'upf_acs_full', $curr_acs_users);
+
 			$res_array['rmvd_usr'] = $user_id;
 			$user_obj = get_userdata( $user_id );
 			$res_array['rmvd_usr_email'] = $user_obj->user_email;
