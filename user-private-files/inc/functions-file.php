@@ -298,11 +298,12 @@ if (!function_exists('upvf_pro_update_doc')) {
 		
 		$docid = str_replace('doc_', '', $docid);
 		$req_user = get_user_by( 'email', $usr_email );
-		
-		if(!$req_user){
+
+		// lookup by username is an admin-only option
+		if(!$req_user && current_user_can( 'administrator' )){
 			$req_user = get_user_by( 'login', $usr_email );
 		}
-		
+
 		$curr_user_id = get_current_user_id();
 		$doc_author = get_post_field ('post_author', $docid);
 		$curr_acs_users = get_post_meta($docid, 'upf_acs_full', true);
@@ -435,6 +436,12 @@ if (!function_exists('upvf_pro_add_bulk')) {
 		if ( !isset( $_POST) || empty($_POST) || !is_user_logged_in() || !wp_verify_nonce( $_POST['upf_nonce'], 'upfp_ajax_nonce' ) ) {
 			header( 'HTTP/1.1 400 Empty POST Values' );
 			$res_array['error'] = __('error - Could not verify POST values', 'user-private-files');
+			echo json_encode($res_array);
+			exit;
+		}
+		// sharing with a role / all users is an admin-only option
+		if( !current_user_can( 'administrator' ) ){
+			$res_array['error'] = __("You don't have permission to perform this action", "user-private-files");
 			echo json_encode($res_array);
 			exit;
 		}

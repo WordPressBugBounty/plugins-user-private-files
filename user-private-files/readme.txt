@@ -1,41 +1,44 @@
-=== Secure Client Portal and Private File Sharing Plugin - User Private Files ===
+=== User Private Files – Secure File Sharing and Client Portal Plugin ===
 Contributors: deepakkite, mrking2201, upfpro
-Tags: file sharing, download manager, client portal, document management, document library
+Tags: file sharing, share documents, client portal, file upload, document library
 Requires at least: 6.0
-Tested up to: 7.0
-Stable tag: 2.1.8
+Tested up to: 7.1
+Stable tag: 2.1.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WordPress secure client portal plugin with file sharing and document manager. Upload, manage and share documents with users safely.
+A secure file share plugin for WordPress. Securely upload, manage and exchange private documents with site users.
 
 == Description ==
 
-A powerful WordPress secure client portal with file sharing and document management plugin. Upload, manage, and share private documents securely with your users with full client portal.
+Create a secure client file sharing portal in WordPress where clients and admin can privately upload, share, manage, and exchange files and documents.
 
-User Private Files is more than just a file sharing plugin. It works as a WordPress file manager, secure client portal, download manager, and document sharing plugin — making it easy to control access to files and documents for each user.
+User Private Files gives every user a personal space for file sharing and document management. Let admin and clients upload documents, access files shared with them, organize folders, and exchange files with other users - all from your WordPress website.
+
+Whether you need a client portal, secure file upload, file-sharing system, document portal, or private file manager, User Private Files helps you keep each user's files separate and control who can access them.
 
 **Key Features**
 
-* **Secure file sharing** – upload and share private files with restricted access.
-* **Secure Client Portal** – private and unique client portal for each user.
-* **User file uploads** – allow your site users to upload and manage their own files.
-* **Advanced file manager** – organize files with folders, trash, and access controls.
-* **Download manager** – track downloads with detailed file stats and view counts.
-* **Rich file options** – previews, galleries, password protection, and public file sharing.
-* **Notifications** – get alerts when files are uploaded, shared, or downloaded.
+* **Client File Uploads** – Let clients and users upload files directly through your website.
+* **Secure Client Portal** – Give every user a private space to access and manage their files.
+* **Private File Sharing** – Securely share files and folders with specific users and control access.
+* **Document Management** – Organize private files into folders and manage access from one place.
+* **File Management** – Upload, download, move, delete, search, and manage files with ease.
+* **File Notifications** – Notify users when files are uploaded, shared, or updated.
+* **File Previews & Galleries** – Let users preview supported files and display images in galleries.
+* **Flexible Access Controls** – Control access to files and folders based on users and user roles.
 
 
-**[Try the FREE Demo of User Private Files](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
+**[Try the Live Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
 
 https://www.youtube.com/watch?v=tdwzs-w8EyI
 
 **[All Features List](https://userprivatefiles.com/features/?utm_source=wp-features&utm_medium=wporg)** | **[Documentation](https://userprivatefiles.com/documentation/?utm_source=wp-docs&utm_medium=wporg)** | **[Case Studies](https://userprivatefiles.com/blog/?utm_source=wp-case-study&utm_medium=wporg)** | **[Get PRO Version](https://userprivatefiles.com/pricing/?utm_source=wp-get-pro&utm_medium=wporg)**
 
-== 🔒 Best WordPress file management and client portal plugin ==
+== 🔒 Best Client Document Portal plugin for WordPress ==
+User Private Files is the first choice for businesses like agency, accountant, lawyer, consultant, hospital, school, institution, company, organization etc. looking to create a dedicated client portal to upload, manage, share and download private files like invoices, contracts, agreements, reports, and any other private documents.
 
-User Private Files is a private file sharing plugin with secure client portal that adds secure document sharing functionality on your WordPress website just like Dropbox and Google Drive. Your site users will be able to login and upload their files and manage the access to those files via unique client portal. A perfect frontend dashboard to upload and share private files.
 
 ### 🚀 Check the Demo Here:
 * **[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
@@ -45,7 +48,7 @@ User Private Files is a private file sharing plugin with secure client portal th
 * **[File Gallery](https://backend.userprivatefiles.com/?utm_source=wp-demo-gallery&utm_medium=wporg)**
 * **[Public Files/Folder](https://backend.userprivatefiles.com/?utm_source=wp-demo-public&utm_medium=wporg)**
 
-== 🗝️ Everything you need in a File Sharing Plugin ==
+== 🗝️ Everything you need in a Client Portal Plugin ==
 **Easy to use**
 User Private Files is as easy as using your computer. The sleek design gives you the freedom to manage files and folders as you want.
 
@@ -273,6 +276,11 @@ You can copy this shortcode from the backend file manager. When you click the pu
 * Display total storage used and size of each file in the backend
 
 * And many more.
+
+The User Private Files makes use of the .htaccess file to restrict the unauthorized access and makes a file private to the authorized users only. But the .htaccess file is available on Apache servers only. See below documentation for nginx and windows servers:
+
+Configure Windows Server - https://userprivatefiles.com/documentation/configure-windows-server/?utm_source=wp-docs-backend&utm_medium=wporg
+Configure nginx Server - https://userprivatefiles.com/documentation/configure-nginx-server/?utm_source=wp-docs-backend&utm_medium=wporg
 
 **[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)** | **[Frontend Manager](https://backend.userprivatefiles.com/?utm_source=wp-demo-frontend&utm_medium=wporg)** | **[Classic Template](https://backend.userprivatefiles.com/?utm_source=wp-demo-classic&utm_medium=wporg)** | **[File Uploader](https://backend.userprivatefiles.com/?utm_source=wp-demo-uploader&utm_medium=wporg)** | **[File Gallery](https://backend.userprivatefiles.com/?utm_source=wp-demo-gallery&utm_medium=wporg)** | **[Public Files/Folder](https://backend.userprivatefiles.com/?utm_source=wp-demo-public&utm_medium=wporg)**
 

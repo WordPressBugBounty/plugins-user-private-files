@@ -172,16 +172,20 @@ if (!function_exists('dpk_upvf_rmv_access')) {
 		}
 		$doc_id = sanitize_text_field( $_POST['doc_id'] );
 		$doc_id = str_replace('doc_', '', $doc_id);
-		$user_id = sanitize_text_field( $_POST['user'] );
+		$user_id = absint( $_POST['user'] );
 
-		if(upvf_check_file_full_access($doc_id)){ // checking permission	
+		if(upvf_check_file_full_access($doc_id)){ // checking permission
 
 			$curr_allowed_users = get_post_meta($doc_id, 'upf_allowed', true);
-			if($curr_allowed_users){
-				if (($key = array_search($user_id, $curr_allowed_users)) !== false) {
-					unset($curr_allowed_users[$key]);
-				}
+
+			$key = is_array($curr_allowed_users) ? array_search($user_id, $curr_allowed_users) : false;
+			if (!$user_id || $key === false) {
+				$res_array['error'] = __("This user does not have access to this document.", "user-private-files");
+				echo json_encode($res_array);
+				exit;
 			}
+            
+			unset($curr_allowed_users[$key]);
 			$allowed_users_updated = update_post_meta($doc_id, 'upf_allowed', $curr_allowed_users);
 			if(!$allowed_users_updated){
 				$res_array['error'] = __("error - Unable to remove the user from this document. Please try again later or contact us.", "user-private-files");

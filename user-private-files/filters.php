@@ -75,3 +75,32 @@ function exclude_upf_doc_from_media_library_action_cllbck($query) {
 
     $query->set('meta_query', array_merge($query->get('meta_query') ?: array(), $meta_query));
 }
+
+// Filter to remove upf-docs from REST API media listing (/wp/v2/media)
+add_filter('rest_attachment_query', 'exclude_upf_doc_from_rest_media_query_cllbck');
+function exclude_upf_doc_from_rest_media_query_cllbck($args) {
+
+    $meta_query = array(
+        array(
+            'key'     => 'upf_doc',
+            'compare' => 'NOT EXISTS'
+        )
+    );
+
+    if (isset($args['meta_query'])) {
+        $args['meta_query'] = array_merge($args['meta_query'], $meta_query);
+    } else {
+        $args['meta_query'] = $meta_query;
+    }
+
+    return $args;
+}
+
+// Block single upf-doc items from REST API (/wp/v2/media/<id>, embeds)
+add_filter('rest_request_before_callbacks', 'block_upf_doc_from_rest_media_item_cllbck', 10, 3);
+function block_upf_doc_from_rest_media_item_cllbck($response, $handler, $request) {
+    if (preg_match('#^/wp/v2/media/(\d+)#', $request->get_route(), $matches) && metadata_exists('post', (int) $matches[1], 'upf_doc')) {
+        return new WP_Error('rest_post_invalid_id', __('Invalid post ID.'), array('status' => 404));
+    }
+    return $response;
+}
