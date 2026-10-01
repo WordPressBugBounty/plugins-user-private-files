@@ -9,12 +9,30 @@ if ( ! defined('ABSPATH') ) {
 }
 
 global $upf_plugin_url;
-$file_prvw_img = $upf_plugin_url . 'images/File_thumbnail.png';
-$doc_prvw_img = $upf_plugin_url . 'images/Doc_thumbnail.png';
-$pdf_prvw_img = $upf_plugin_url . 'images/PDF_thumbnail.png';
-$vdo_prvw_img = $upf_plugin_url . 'images/Video_thumbnail.png';
-$zip_prvw_img = $upf_plugin_url . 'images/Zip_thumbnail.png';
-$folder_prvw_img = $upf_plugin_url . 'images/folder-150.png';
+$plugin_dir = plugin_dir_path(dirname(__FILE__));
+$icons = array(
+    'file_prvw_img' => 'images/File_thumbnail.png',
+    'doc_prvw_img' => 'images/Doc_thumbnail.png',
+    'pdf_prvw_img' => 'images/PDF_thumbnail.png',
+    'vdo_prvw_img' => 'images/Video_thumbnail.png',
+    'zip_prvw_img' => 'images/Zip_thumbnail.png',
+    'folder_prvw_img' => 'images/folder-150.png'
+);
+
+foreach ($icons as $var => $path) {
+    $cache_key = 'upf_b64_icon_' . md5($path);
+    $b64 = wp_cache_get($cache_key, 'upf');
+    if (false === $b64) {
+        $full_path = $plugin_dir . $path;
+        if (file_exists($full_path)) {
+            $b64 = 'data:image/png;base64,' . base64_encode(file_get_contents($full_path));
+            wp_cache_set($cache_key, $b64, 'upf', 86400 * 30);
+        } else {
+            $b64 = $upf_plugin_url . $path;
+        }
+    }
+    $$var = $b64;
+}
 
 $user_id = get_current_user_id();
 $folder_id = $data->folder_id;
@@ -75,68 +93,42 @@ if( $folder_id == 'trash-files' || $folder_status == 'trash' ){ // from trash
 	$file_post_status = 'inherit';
 }
 
-if( $folder_id == 'all-files' ){ // for home page
-	$the_query = new WP_Query( array( 
-				'post_type' => 'attachment',
-				'post_status' => $file_post_status,
-				'author' => $user_id,
-				'meta_query' => array(
-					array(
-						'key'     => 'upf_doc',
-						'value'   => 'true',
-					),
-					array(
-						'key'     => 'upf_foldr_id',
-						'value'   => '',
-						'compare' => 'NOT EXISTS'
-					)
-				),
-				'posts_per_page' => -1 )
-			);
-	
-} else if($folder_id == 'trash-files'){ // for main trash page
-	$the_query = new WP_Query( array( 
-				'post_type' => 'attachment',
-				'post_status' => $file_post_status,
-				'author' => $user_id,
-				'meta_query' => array(
-					array(
-						'key'     => 'upf_doc',
-						'value'   => 'true',
-					)
-				),
-				'posts_per_page' => -1 )
-			);
-	
-} else{
-	$the_query = new WP_Query( array( 
-				'post_type' => 'attachment',
-				'post_status' => $file_post_status,
-				'meta_query' => array(
-					array(
-						'key'     => 'upf_doc',
-						'value'   => 'true',
-					),
-					array(
-						'key'     => 'upf_foldr_id',
-						'value'   => $folder_id
-					)
-				),
-				'posts_per_page' => -1 )
-			);
-	
-}
-
-
+// Get ALL files for this user, then filter in PHP to avoid slow NOT EXISTS meta queries
+$all_files_query = new WP_Query( array( 
+	'post_type' => 'attachment',
+	'post_status' => $file_post_status,
+	'author' => $user_id,
+	'meta_query' => array(
+		array(
+			'key'     => 'upf_doc',
+			'value'   => 'true',
+		)
+	),
+	'posts_per_page' => -1,
+	'fields' => 'ids',
+	'no_found_rows' => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => true
+) );
 
 $all_docs_ids = array();
-if($the_query->have_posts()){
-	while ( $the_query->have_posts() ) {
-		$the_query->the_post();
-		$all_docs_ids[] = get_the_ID();
+$all_files = $all_files_query->posts;
+
+foreach ($all_files as $doc_id) {
+	$doc_folder = get_post_meta($doc_id, 'upf_foldr_id', true);
+	
+	if( $folder_id == 'all-files' ) {
+		if (empty($doc_folder)) {
+			$all_docs_ids[] = $doc_id;
+		}
+	} else if($folder_id == 'trash-files') {
+		$all_docs_ids[] = $doc_id;
+	} else {
+		if ($doc_folder == $folder_id) {
+			$all_docs_ids[] = $doc_id;
+		}
 	}
 }
-wp_reset_query();
 
 ?>
 <?php
@@ -160,7 +152,7 @@ foreach($folders as $folder){
 		<div id="sub_folder_<?php echo absint($folder->ID); ?>" data-folder-id="<?php echo absint($folder->ID); ?>" data-folder-name="<?php echo esc_attr($folder->post_title); ?>" data-status="<?php echo esc_attr(($inside_trash)?'trash':''); ?>" class="folder-item upfp_fldr_obj">
 
 			<a class="sub-folder-action" href="javascript:void(0);">
-				<img src="<?php echo esc_url($folder_prvw_img); ?>">
+				<img src="<?php echo $folder_prvw_img; ?>">
 			</a>
 			<p class="folder_ttl"><?php echo esc_html($folder->post_title); ?></p>
 			
@@ -205,40 +197,62 @@ foreach($all_docs_ids as $doc_id){
 
 		<div id="doc_<?php echo absint($doc_id); ?>" class="doc-item" data-status="<?php echo esc_attr(($inside_trash)?'trash':''); ?>" data-alwd-usrs="<?php echo esc_attr($ca_users_str); ?>">
 
-			<?php if (strpos($mime_type, 'image') !== false) { $doc_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail'); ?>
+			<?php if (strpos($mime_type, 'image') !== false) { 
+				$doc_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail');
+				
+				// Inline Base64 image caching for ultra-fast first load
+				$cache_key = 'upf_b64_img_' . $doc_id;
+				$b64_src = wp_cache_get($cache_key, 'upf');
+				if (false === $b64_src) {
+					$attached_file = get_attached_file($doc_id);
+					$thumb_file = $attached_file; // default to original
+					$doc_meta = wp_get_attachment_metadata($doc_id);
+					if (!empty($doc_meta['sizes']['thumbnail']['file'])) {
+						$thumb_file = trailingslashit(dirname($attached_file)) . $doc_meta['sizes']['thumbnail']['file'];
+					}
+					if ($thumb_file && file_exists($thumb_file)) {
+						$mime = wp_check_filetype($thumb_file);
+						$mime_type_str = $mime['type'] ? $mime['type'] : 'image/jpeg';
+						$b64_src = 'data:' . $mime_type_str . ';base64,' . base64_encode(file_get_contents($thumb_file));
+						wp_cache_set($cache_key, $b64_src, 'upf', 86400 * 30); // cache for 30 days
+					} else {
+						$b64_src = esc_url($doc_thumb[0]); // fallback
+					}
+				}
+			?>
 
 				<a class="upfp_single_file edit-doc" href="javascript:void(0);">
-					<img data-type="img" data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($doc_thumb[0]); ?>">
+					<img data-type="img" data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo $b64_src; ?>">
 				</a>
 
 			<?php } else if(strpos($mime_type, 'video') !== false){ ?>
 
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($vdo_prvw_img); ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo $vdo_prvw_img; ?>">
 				</a>
 
 			<?php } else if(strpos($mime_type, 'zip') !== false) { ?>
 
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($zip_prvw_img); ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo $zip_prvw_img; ?>">
 				</a>
 
 			<?php } else if(strpos($mime_type, 'pdf') !== false) { ?>
 
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($pdf_prvw_img); ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo $pdf_prvw_img; ?>">
 				</a>
 
 			<?php } else if(strpos($mime_type, 'document') !== false) { ?>
 
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($doc_prvw_img); ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo $doc_prvw_img; ?>">
 				</a>
 
 			<?php } else{ ?>
 
 				<a class="edit-doc" href="javascript:void(0);">
-					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo esc_url($file_prvw_img); ?>">
+					<img data-src="<?php echo esc_attr(esc_url($doc_src)); ?>" src="<?php echo $file_prvw_img; ?>">
 				</a>
 
 			<?php } ?>

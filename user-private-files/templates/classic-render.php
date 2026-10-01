@@ -17,16 +17,32 @@ if (!function_exists('upvf_classic_display_prvt_files')) {
 			wp_enqueue_script('upf-classic-script');
 			
 			global $upf_plugin_url;
-			$doc_prvw_img = $upf_plugin_url . 'images/document.png';
-			$user_id = get_current_user_id();
-			$all_docs_ids = array();
-			$the_query = new WP_Query( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'author' => $user_id, 'meta_key' => 'upf_doc', 'meta_value' => 'true', 'posts_per_page' => -1 ) ); 
-			if ( $the_query->have_posts() ) {
-				while ( $the_query->have_posts() ) {
-					$the_query->the_post();
-					$all_docs_ids[] = get_the_ID();
+			$plugin_dir = plugin_dir_path(dirname(__FILE__));
+			$cache_key = 'upf_b64_icon_' . md5('images/document.png');
+			$doc_prvw_img = wp_cache_get($cache_key, 'upf');
+			if (false === $doc_prvw_img) {
+				$full_path = $plugin_dir . 'images/document.png';
+				if (file_exists($full_path)) {
+					$doc_prvw_img = 'data:image/png;base64,' . base64_encode(file_get_contents($full_path));
+					wp_cache_set($cache_key, $doc_prvw_img, 'upf', 86400 * 30);
+				} else {
+					$doc_prvw_img = $upf_plugin_url . 'images/document.png';
 				}
 			}
+			$user_id = get_current_user_id();
+			$the_query = new WP_Query( array( 
+				'post_type' => 'attachment', 
+				'post_status' => 'inherit', 
+				'author' => $user_id, 
+				'meta_key' => 'upf_doc', 
+				'meta_value' => 'true', 
+				'posts_per_page' => -1,
+				'fields' => 'ids',
+				'no_found_rows' => true,
+				'update_post_term_cache' => false,
+				'update_post_meta_cache' => true
+			) );
+			$all_docs_ids = $the_query->posts;
 			wp_reset_query();
 			
 			$all_docs_ids = apply_filters( "upvf_all_docs", $all_docs_ids, $all_docs_ids );
@@ -62,12 +78,32 @@ if (!function_exists('upvf_classic_display_prvt_files')) {
 					if (strpos($mime_type, 'image') !== false) {
 						$grp_img_html .= '<div id="doc_'.absint($doc_id).'" class="doc-item" data-alwd-usrs="'.esc_attr($ca_users_str).'" doc_type="'.esc_attr($mime_type).'">';
 						$grp_img_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail');
-						$grp_img_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-type="img" data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($grp_img_thumb[0]).'"></a>';
+						
+						$cache_key = 'upf_b64_img_' . $doc_id;
+						$b64_src = wp_cache_get($cache_key, 'upf');
+						if (false === $b64_src) {
+							$attached_file = get_attached_file($doc_id);
+							$thumb_file = $attached_file;
+							$doc_meta = wp_get_attachment_metadata($doc_id);
+							if (!empty($doc_meta['sizes']['thumbnail']['file'])) {
+								$thumb_file = trailingslashit(dirname($attached_file)) . $doc_meta['sizes']['thumbnail']['file'];
+							}
+							if ($thumb_file && file_exists($thumb_file)) {
+								$mime = wp_check_filetype($thumb_file);
+								$mime_type_str = $mime['type'] ? $mime['type'] : 'image/jpeg';
+								$b64_src = 'data:' . $mime_type_str . ';base64,' . base64_encode(file_get_contents($thumb_file));
+								wp_cache_set($cache_key, $b64_src, 'upf', 86400 * 30);
+							} else {
+								$b64_src = esc_url($grp_img_thumb[0]);
+							}
+						}
+						
+						$grp_img_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-type="img" data-src="'.esc_attr(esc_url($doc_src)).'" src="'. $b64_src .'"></a>';
 						$grp_img_html .= '<p class="doc_ttl">'.esc_html($doc_ttl).'</p>';
 						$grp_img_html .= '<p class="doc_desc upvf-hidden">'.esc_html($doc_desc).'</p></div>';
 					} else{
 						$grp_doc_html .= '<div id="doc_'.absint($doc_id).'" class="doc-item" data-alwd-usrs="'.esc_attr($ca_users_str).'" doc_type="'.esc_attr($mime_type).'">';
-						$grp_doc_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($doc_prvw_img).'"></a>';
+						$grp_doc_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.esc_attr(esc_url($doc_src)).'" src="'.$doc_prvw_img.'"></a>';
 						$grp_doc_html .= '<p class="doc_ttl">'.esc_html($doc_ttl).'</p>';
 						$grp_doc_html .= '<p class="doc_desc upvf-hidden">'.esc_html($doc_desc).'</p></div>';
 					}
@@ -75,10 +111,30 @@ if (!function_exists('upvf_classic_display_prvt_files')) {
 					$doc_item_html .= '<div id="doc_'.absint($doc_id).'" class="doc-item" data-alwd-usrs="'.esc_attr($ca_users_str).'" doc_type="'.esc_attr($mime_type).'">';
 					if (strpos($mime_type, 'image') !== false) {
 						$doc_thumb = wp_get_attachment_image_src($doc_id, 'thumbnail');
+						
+						$cache_key = 'upf_b64_img_' . $doc_id;
+						$b64_src = wp_cache_get($cache_key, 'upf');
+						if (false === $b64_src) {
+							$attached_file = get_attached_file($doc_id);
+							$thumb_file = $attached_file;
+							$doc_meta = wp_get_attachment_metadata($doc_id);
+							if (!empty($doc_meta['sizes']['thumbnail']['file'])) {
+								$thumb_file = trailingslashit(dirname($attached_file)) . $doc_meta['sizes']['thumbnail']['file'];
+							}
+							if ($thumb_file && file_exists($thumb_file)) {
+								$mime = wp_check_filetype($thumb_file);
+								$mime_type_str = $mime['type'] ? $mime['type'] : 'image/jpeg';
+								$b64_src = 'data:' . $mime_type_str . ';base64,' . base64_encode(file_get_contents($thumb_file));
+								wp_cache_set($cache_key, $b64_src, 'upf', 86400 * 30);
+							} else {
+								$b64_src = esc_url($doc_thumb[0]);
+							}
+						}
+						
 						$doc_item_html .= '<a class="edit-doc" href="javascript:void(0);">
-								<img data-type="img" data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($doc_thumb[0]).'"></a>';
+								<img data-type="img" data-src="'.esc_attr(esc_url($doc_src)).'" src="'. $b64_src .'"></a>';
 					} else{
-						$doc_item_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.esc_attr(esc_url($doc_src)).'" src="'.esc_url($doc_prvw_img).'"></a>';
+						$doc_item_html .= '<a class="edit-doc" href="javascript:void(0);"><img data-src="'.esc_attr(esc_url($doc_src)).'" src="'.$doc_prvw_img.'"></a>';
 					}
 					$doc_item_html .= '<p class="doc_ttl">'.esc_html($doc_ttl).'</p>';
 					$doc_item_html .= '<p class="doc_desc upvf-hidden">'.esc_html($doc_desc).'</p></div>';
@@ -169,17 +225,16 @@ if (!function_exists('upvf_classic_display_prvt_files')) {
 						'value' => serialize(strval($user_id)),
 						'compare' => 'LIKE',
 					),
-				)
+				),
+				'posts_per_page' => -1,
+				'fields' => 'ids',
+				'no_found_rows' => true,
+				'update_post_term_cache' => false,
+				'update_post_meta_cache' => true
 			);
 			
-			$all_shared_docs = array();
 			$the_query = new WP_Query( $args );
-			if ( $the_query->have_posts() ) {
-				while ( $the_query->have_posts() ) {
-					$the_query->the_post();
-					$all_shared_docs[] = get_the_ID();
-				}
-			}
+			$all_shared_docs = $the_query->posts;
 			wp_reset_query();
 			
 			if($all_shared_docs){
@@ -192,10 +247,30 @@ if (!function_exists('upvf_classic_display_prvt_files')) {
 					$swm_item_html .= '<div id="swm_doc_'.absint($swm_doc).'" class="swm-doc-item" doc_type="'.esc_attr($mime_type).'">';
 					if (strpos($mime_type, 'image') !== false) {
 						$doc_thumb = wp_get_attachment_image_src($swm_doc, 'thumbnail');
+						
+						$cache_key = 'upf_b64_img_' . $swm_doc;
+						$b64_src = wp_cache_get($cache_key, 'upf');
+						if (false === $b64_src) {
+							$attached_file = get_attached_file($swm_doc);
+							$thumb_file = $attached_file;
+							$doc_meta = wp_get_attachment_metadata($swm_doc);
+							if (!empty($doc_meta['sizes']['thumbnail']['file'])) {
+								$thumb_file = trailingslashit(dirname($attached_file)) . $doc_meta['sizes']['thumbnail']['file'];
+							}
+							if ($thumb_file && file_exists($thumb_file)) {
+								$mime = wp_check_filetype($thumb_file);
+								$mime_type_str = $mime['type'] ? $mime['type'] : 'image/jpeg';
+								$b64_src = 'data:' . $mime_type_str . ';base64,' . base64_encode(file_get_contents($thumb_file));
+								wp_cache_set($cache_key, $b64_src, 'upf', 86400 * 30);
+							} else {
+								$b64_src = esc_url($doc_thumb[0]);
+							}
+						}
+						
 						$swm_item_html .= '<a href="'.esc_url($swm_doc_src).'" target="_blank">
-								<img class="full-width" data-src="'.esc_attr(esc_url($swm_doc_src)).'" src="'.esc_url($doc_thumb[0]).'"></a>';
+								<img class="full-width" data-src="'.esc_attr(esc_url($swm_doc_src)).'" src="'. $b64_src .'"></a>';
 					} else{
-						$swm_item_html .= '<a href="'.esc_url($swm_doc_src).'" target="_blank"><img src="'.esc_url($doc_prvw_img).'"></a>';
+						$swm_item_html .= '<a href="'.esc_url($swm_doc_src).'" target="_blank"><img src="'.$doc_prvw_img.'"></a>';
 					}
 					$doc_author = get_post_field ('post_author', $swm_doc);
 					$user_obj = get_userdata( $doc_author );

@@ -3,7 +3,7 @@ Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, share documents, client portal, file upload, document library
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.1.9
+Stable tag: 2.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -42,11 +42,11 @@ User Private Files is the first choice for businesses like agency, accountant, l
 
 ### 🚀 Check the Demo Here:
 * **[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)**
-* **[Frontend Manager](https://backend.userprivatefiles.com/?utm_source=wp-demo-frontend&utm_medium=wporg)**
-* **[Classic Template](https://backend.userprivatefiles.com/?utm_source=wp-demo-classic&utm_medium=wporg)**
-* **[File Uploader](https://backend.userprivatefiles.com/?utm_source=wp-demo-uploader&utm_medium=wporg)**
-* **[File Gallery](https://backend.userprivatefiles.com/?utm_source=wp-demo-gallery&utm_medium=wporg)**
-* **[Public Files/Folder](https://backend.userprivatefiles.com/?utm_source=wp-demo-public&utm_medium=wporg)**
+* **[Frontend Manager](https://demo.userprivatefiles.com/?utm_source=wp-demo-frontend&utm_medium=wporg)**
+* **[Classic Template](https://demo.userprivatefiles.com/classic-demo/?utm_source=wp-demo-classic&utm_medium=wporg)**
+* **[File Uploader](https://demo.userprivatefiles.com/file-uploader-demo/?utm_source=wp-demo-uploader&utm_medium=wporg)**
+* **[File Gallery](https://demo.userprivatefiles.com/file-gallery-demo/?utm_source=wp-demo-gallery&utm_medium=wporg)**
+* **[Public Files/Folder](https://demo.userprivatefiles.com/public-folder/?utm_source=wp-demo-public&utm_medium=wporg)**
 
 == 🗝️ Everything you need in a Client Portal Plugin ==
 **Easy to use**
@@ -279,10 +279,10 @@ You can copy this shortcode from the backend file manager. When you click the pu
 
 The User Private Files makes use of the .htaccess file to restrict the unauthorized access and makes a file private to the authorized users only. But the .htaccess file is available on Apache servers only. See below documentation for nginx and windows servers:
 
-Configure Windows Server - https://userprivatefiles.com/documentation/configure-windows-server/?utm_source=wp-docs-backend&utm_medium=wporg
-Configure nginx Server - https://userprivatefiles.com/documentation/configure-nginx-server/?utm_source=wp-docs-backend&utm_medium=wporg
+Configure Windows Server - [https://userprivatefiles.com/documentation/configure-windows-server/](https://userprivatefiles.com/documentation/configure-windows-server/?utm_source=wp-docs-backend&utm_medium=wporg)
+Configure nginx Server - [https://userprivatefiles.com/documentation/configure-nginx-server/](https://userprivatefiles.com/documentation/configure-nginx-server/?utm_source=wp-docs-backend&utm_medium=wporg)
 
-**[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)** | **[Frontend Manager](https://backend.userprivatefiles.com/?utm_source=wp-demo-frontend&utm_medium=wporg)** | **[Classic Template](https://backend.userprivatefiles.com/?utm_source=wp-demo-classic&utm_medium=wporg)** | **[File Uploader](https://backend.userprivatefiles.com/?utm_source=wp-demo-uploader&utm_medium=wporg)** | **[File Gallery](https://backend.userprivatefiles.com/?utm_source=wp-demo-gallery&utm_medium=wporg)** | **[Public Files/Folder](https://backend.userprivatefiles.com/?utm_source=wp-demo-public&utm_medium=wporg)**
+**[Full Backend Demo](https://backend.userprivatefiles.com/?utm_source=wp-demo-backend&utm_medium=wporg)** | **[Frontend Manager](https://demo.userprivatefiles.com/?utm_source=wp-demo-frontend&utm_medium=wporg)** | **[Classic Template](https://demo.userprivatefiles.com/classic-demo/?utm_source=wp-demo-classic&utm_medium=wporg)** | **[File Uploader](https://demo.userprivatefiles.com/file-uploader-demo/?utm_source=wp-demo-uploader&utm_medium=wporg)** | **[File Gallery](https://demo.userprivatefiles.com/file-gallery-demo/?utm_source=wp-demo-gallery&utm_medium=wporg)** | **[Public Files/Folder](https://demo.userprivatefiles.com/public-folder/?utm_source=wp-demo-public&utm_medium=wporg)**
 
 User Private Files will add file sharing functionality on a WordPress website. Plugin designed for users to upload, store, and share files securely. It emphasizes data privacy and user control, allowing individuals to manage their files with ease. Enhancing the overall user experience while safeguarding confidential information.
 
@@ -356,6 +356,17 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.2.0 =
+* 2026-10-01
+* [Update] - Added object cache to make server response super fast.
+* [Update] - Optimized DB queries to load files blazingly fast to handle large number of files easily.
+* [Update] - Updated privacy logic via folder level htaccess instead of root file to support multi network sites.
+* Fixed - preview popup leaves empty space beneath it.
+
+= 2.1.9 =
+* 2026-09-29
+* [Update] - Improved security for REST API.
 
 = 2.1.8 =
 * 2026-07-07

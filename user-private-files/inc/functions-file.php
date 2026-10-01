@@ -99,6 +99,7 @@ if (!function_exists('upvf_pro_upload_doc_callback')) {
 								$res_array['doc_ttl'] = $doc_ttl;
 								$thumb_url = wp_get_attachment_image_src($attach_id, 'thumbnail');
 								$res_array['thumb_url'] = $thumb_url[0];
+								$res_array['mime_type'] = get_post_mime_type($attach_id);
 								// do some action after insertion
 								do_action('upf_file_inserted', $attach_id);
 							}
@@ -560,11 +561,25 @@ if (!function_exists('upvf_pro_add_bulk')) {
 					$header .= "MIME-Version: 1.0\n";
 					$header .= "Content-Type: text/html; charset=utf-8\n";
 					
+					$to_emails = array();
 					foreach($selected_users as $usr){
 						$user_id = strval($usr->id);
 						if (!in_array($user_id, $old_alwd_users)){
-							$to = $usr->user_email;
-							$is_sent = wp_mail($to, $upfp_email_subject, $upfp_email_content, $header);
+							$to_emails[] = $usr->user_email;
+						}
+					}
+					
+					$is_sent = true;
+					if(!empty($to_emails)) {
+						// Send emails in batches of 50 to avoid max header length issues
+						$email_batches = array_chunk($to_emails, 50);
+						foreach($email_batches as $batch) {
+							$batch_header = $header;
+							foreach($batch as $email) {
+								$batch_header .= "Bcc: " . $email . "\r\n";
+							}
+							$sent = wp_mail(get_option('admin_email'), $upfp_email_subject, $upfp_email_content, $batch_header);
+							if(!$sent) $is_sent = false;
 						}
 					}
 					

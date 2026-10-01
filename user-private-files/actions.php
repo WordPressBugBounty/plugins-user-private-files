@@ -20,12 +20,14 @@ if (!function_exists('upf_pro_file_inserted')) {
 				update_post_meta($attach_id, 'upf_foldr_id', $fldr_id);
 				
 				$curr_allowed_users = get_post_meta($fldr_id, 'upf_allowed', true);
+				$curr_allowed_users = is_array($curr_allowed_users) ? $curr_allowed_users : array();
 				if (!in_array($curr_user_id, $curr_allowed_users)){
 					array_push($curr_allowed_users, $curr_user_id);
 				}
 				update_post_meta($attach_id, 'upf_allowed', $curr_allowed_users);
 				
 				$curr_full_acs_users = get_post_meta($fldr_id, 'upf_acs_full', true);
+				$curr_full_acs_users = is_array($curr_full_acs_users) ? $curr_full_acs_users : array();
 				if (!in_array($curr_user_id, $curr_full_acs_users)){
 					array_push($curr_full_acs_users, $curr_user_id);
 				}

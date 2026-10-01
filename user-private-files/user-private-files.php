@@ -1,10 +1,10 @@
 <?php
 /**
 * Plugin Name: User Private Files
-* Description: This plugin allows users to manage their uploaded files and access to them.
-* Version: 2.1.9
+* Description: Create a secure client file sharing portal in WordPress where clients and admin can privately upload, share, manage, and exchange files and documents.
+* Version: 2.2.0
 * Author: User Private Files
-* Author URI: https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=wporg
+* Author URI: https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=upf-free
 * License: GPLv2 or later
 * Text Domain: user-private-files
 * Domain Path: /languages
@@ -19,31 +19,33 @@ include_once dirname( __FILE__ ) . '/upvf_actdeact.php';
 register_activation_hook( __FILE__, array( 'Upvf_Actdeact', 'upvf_plugin_activate' ) );
 register_deactivation_hook( __FILE__, array( 'Upvf_Actdeact', 'upvf_plugin_deactivate') );
 
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'upvf_plugin_action_links' );
+if ( !function_exists( 'upvf_plugin_action_links' ) ) {
+	function upvf_plugin_action_links( $links ) {
+		$settings_link = '<a href="admin.php?page=upvf-free">' . __( 'Settings', 'user-private-files' ) . '</a>';
+		$pro_link = '<a href="https://userprivatefiles.com/pricing/?utm_source=free-get-pro&utm_medium=upf-free" target="_blank" style="color: #46b450; font-weight: bold;">' . __( 'GET PRO', 'user-private-files' ) . '</a>';
+		array_unshift( $links, $pro_link );
+		array_unshift( $links, $settings_link );
+		return $links;
+	}
+}
+
+add_filter( 'plugin_row_meta', 'upvf_plugin_row_meta', 10, 2 );
+if ( !function_exists( 'upvf_plugin_row_meta' ) ) {
+	function upvf_plugin_row_meta( $links, $file ) {
+		if ( strpos( $file, 'user-private-files.php' ) !== false ) {
+			$docs_link = '<a href="https://userprivatefiles.com/documentation/?utm_source=wp-plugin-author&utm_medium=upf-free" target="_blank">' . __( 'Documentation', 'user-private-files' ) . '</a>';
+			$demo_link = '<a href="https://backend.userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=upf-free" target="_blank" style="color: #46b450; font-weight: bold;">' . __( 'PRO Demo', 'user-private-files' ) . '</a>';
+			$links[] = $docs_link;
+			$links[] = $demo_link;
+		}
+		return $links;
+	}
+}
+
 add_action( 'admin_init', 'upvf_admin_init_plugin', 1 );
 if (!function_exists('upvf_admin_init_plugin')) {
 	function upvf_admin_init_plugin(){
-		// check if htaccess is writable
-		$htaccess = ABSPATH.".htaccess";
-		if ( ! is_writeable( $htaccess ) ) {
-			add_action( 'admin_notices', function(){
-				$upload_dir = wp_upload_dir();
-				$manual_htcode = "RewriteRule ^".basename(content_url()) . "/" . wp_basename( $upload_dir['baseurl'] )."/upf-docs/(.*)$ ".home_url()."?file=$1 [QSA,L]";
-				echo '<div class="notice notice-warning is-dismissible">
-						<p>Your htaccess file is not writable. Please change permission and reactivate the plugin OR edit the htaccess file manually and enter this code at the bottom. Please ignore if already added!</p>
-						<p><code>'.$manual_htcode.'</code></p>
-					</div>';
-			} );
-			add_action('admin_head', function(){ ?>
-				<script>
-					let hta_access = 0;
-					jQuery(document).ready(function(){
-						jQuery('#deactivate-user-private-files').on('click', function(){
-							alert('Your htaccess file is not writable. Please check and remove the code from htaccess (if manually added)');
-						});
-					})
-				</script>
-		<?php });
-		}
 		// check if plugin created uploads folder or not
 		$upload_dir = wp_upload_dir();
 		$upf_dir_path = $upload_dir['basedir'] . "/upf-docs";
@@ -52,6 +54,20 @@ if (!function_exists('upvf_admin_init_plugin')) {
 			add_action('admin_head', function(){
 				echo '<div class="notice notice-warning is-dismissible"><p>Plugin was unable to create directory in uploads. Please create a "upf-docs" directory/folder under your uploads directory</p></div>';
 			});
+			return;
+		}
+
+		// check if folder-level htaccess (upf-docs/.htaccess) is added
+		if ( ! Upvf_Actdeact::upvf_protect_upf_dir() ) {
+			add_action( 'admin_notices', function(){
+				$upload_dir = wp_upload_dir();
+				$upf_htaccess = wp_normalize_path( $upload_dir['basedir'] . "/upf-docs/.htaccess" );
+				echo '<div class="notice notice-warning is-dismissible">
+						<p>' . esc_html__( 'User Private Files was unable to create the file below, which protects private files from direct access. Please make the upf-docs folder writable, or create this file manually with the following content:', 'user-private-files' ) . '</p>
+						<p><code>' . esc_html( $upf_htaccess ) . '</code></p>
+						<pre>' . esc_html( Upvf_Actdeact::upvf_upf_dir_htcode() ) . '</pre>
+					</div>';
+			} );
 		}
 	}
 }

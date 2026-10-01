@@ -100,23 +100,24 @@ jQuery(document).ready(function ($) {
 								var new_doc_thumb = results.thumb_url;
 								var new_doc_src = results.doc_src;
 								var doc_ttl = results.doc_ttl;
+								var current_doc_type = results.mime_type ? results.mime_type : doc_type;
 
 								$doc_pht_html = '<div id="doc_' + parseInt(new_doc_id) + '" class="doc-item" data-alwd-usrs>';
-								if (doc_type.indexOf("image") != -1) {
+								if (current_doc_type.indexOf("image") != -1) {
 									$doc_pht_html += '<a class="upfp_single_file edit-doc" href="javascript:void(0);"><img data-type="img" data-src="' + new_doc_src + '" src="' + new_doc_thumb + '"></a>';
 								} else {
 									var prvw_image = 'File_thumbnail.png';
 
-									if (doc_type.indexOf("pdf") != -1) {
+									if (current_doc_type.indexOf("pdf") != -1) {
 										prvw_image = 'PDF_thumbnail.png';
 									}
-									else if (doc_type.indexOf("video") != -1) {
+									else if (current_doc_type.indexOf("video") != -1) {
 										prvw_image = 'Video_thumbnail.png';
 									}
-									else if (doc_type.indexOf("document") != -1) {
+									else if (current_doc_type.indexOf("document") != -1) {
 										prvw_image = 'Doc_thumbnail.png';
 									}
-									else if (doc_type.indexOf("zip") != -1) {
+									else if (current_doc_type.indexOf("zip") != -1) {
 										prvw_image = 'Zip_thumbnail.png';
 									}
 
@@ -166,6 +167,9 @@ jQuery(document).ready(function ($) {
 
 		$('.edit_doc_upf_popup .doc_view').html('');
 		$('.edit_doc_upf_popup, .upfp_file_info').hide();
+		
+		// Remove height removal class
+        jQuery(".upfp_content").removeClass("upfp_zero_height");
 
 		// Update breadcrumb
 		$('.upfp_folder_banner .upfp_parmalink').find('.bc_file_name').remove();
@@ -324,6 +328,9 @@ jQuery(document).ready(function ($) {
 
 					// Display Preview
 					$('.edit_doc_upf_popup, .upfp_file_info').show();
+					
+					// Unset height of files-container to remove empty space below preview
+					jQuery(".upfp_content").addClass("upfp_zero_height");
 
 					// load comments
 					$('.upfp_file_comments').html(results.cmnts_html);

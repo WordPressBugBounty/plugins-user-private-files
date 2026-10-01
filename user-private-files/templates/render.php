@@ -22,15 +22,17 @@ if($uploading_allwd){
 		'post_status'	=> 'publish',
 		'author'		=> get_current_user_id(),
 		'posts_per_page' => -1, 
-		'meta_query' 	=> array(
-			array(
-				'key'     => 'upf_parent_fldr',
-				'value'   => '',
-				'compare' => 'NOT EXISTS'
-			)
-		)
+		'no_found_rows'  => true,
+		'update_post_term_cache' => false,
 	);
-	$folders = get_posts($args);
+	$all_folders_query = get_posts($args);
+	$folders = array();
+	foreach ($all_folders_query as $fld) {
+		$parent_fldr = get_post_meta($fld->ID, 'upf_parent_fldr', true);
+		if (empty($parent_fldr)) {
+			$folders[] = $fld;
+		}
+	}
 }
 
 // Root Folders shared with the User
@@ -39,6 +41,8 @@ $shared_args = array(
 	'post_type' => 'upf_folder',
 	'post_status' => 'publish',
 	'posts_per_page' => -1, 
+	'no_found_rows'  => true,
+	'update_post_term_cache' => false,
 	'meta_query' => array(
 		array(
 			'key' => 'upf_allowed',

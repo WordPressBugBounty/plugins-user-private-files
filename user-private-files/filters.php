@@ -104,3 +104,17 @@ function block_upf_doc_from_rest_media_item_cllbck($response, $handler, $request
     }
     return $response;
 }
+
+// Return 404 for upf-doc attachment pages (?attachment_id=<id>) 
+add_action('template_redirect', 'block_upf_doc_attachment_page_cllbck', 9);
+function block_upf_doc_attachment_page_cllbck() {
+    if (!is_attachment() || !metadata_exists('post', get_queried_object_id(), 'upf_doc')) {
+        return;
+    }
+
+    global $wp_query;
+    $wp_query->set_404();
+    status_header(404);
+    nocache_headers();
+    remove_action('template_redirect', 'redirect_canonical');
+}
