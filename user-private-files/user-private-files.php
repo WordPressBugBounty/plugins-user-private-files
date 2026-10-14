@@ -2,7 +2,7 @@
 /**
 * Plugin Name: User Private Files
 * Description: Create a secure client file sharing portal in WordPress where clients and admin can privately upload, share, manage, and exchange files and documents.
-* Version: 2.2.0
+* Version: 2.2.1
 * Author: User Private Files
 * Author URI: https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=upf-free
 * License: GPLv2 or later
@@ -35,7 +35,7 @@ if ( !function_exists( 'upvf_plugin_row_meta' ) ) {
 	function upvf_plugin_row_meta( $links, $file ) {
 		if ( strpos( $file, 'user-private-files.php' ) !== false ) {
 			$docs_link = '<a href="https://userprivatefiles.com/documentation/?utm_source=wp-plugin-author&utm_medium=upf-free" target="_blank">' . __( 'Documentation', 'user-private-files' ) . '</a>';
-			$demo_link = '<a href="https://backend.userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=upf-free" target="_blank" style="color: #46b450; font-weight: bold;">' . __( 'PRO Demo', 'user-private-files' ) . '</a>';
+			$demo_link = '<a href="https://backend.userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=upf-free" target="_blank">' . __( 'PRO Demo', 'user-private-files' ) . '</a>';
 			$links[] = $docs_link;
 			$links[] = $demo_link;
 		}

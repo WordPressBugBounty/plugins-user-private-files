@@ -94,22 +94,27 @@ if( $folder_id == 'trash-files' || $folder_status == 'trash' ){ // from trash
 }
 
 // Get ALL files for this user, then filter in PHP to avoid slow NOT EXISTS meta queries
-$all_files_query = new WP_Query( array( 
-	'post_type' => 'attachment',
-	'post_status' => $file_post_status,
-	'author' => $user_id,
-	'meta_query' => array(
-		array(
-			'key'     => 'upf_doc',
-			'value'   => 'true',
-		)
-	),
-	'posts_per_page' => -1,
-	'fields' => 'ids',
-	'no_found_rows' => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => true
-) );
+$query_args = array(
+    'post_type'              => 'attachment',
+    'post_status'            => $file_post_status,
+    'meta_query'             => array(
+        array(
+            'key'   => 'upf_doc',
+            'value' => 'true',
+        ),
+    ),
+    'posts_per_page'         => -1,
+    'fields'                 => 'ids',
+    'no_found_rows'          => true,
+    'update_post_term_cache' => false,
+    'update_post_meta_cache' => true,
+);
+
+if ( $folder_id === 'all-files' || $folder_id === 'trash-files' ) {
+    $query_args['author'] = $user_id;
+}
+
+$all_files_query = new WP_Query( $query_args );
 
 $all_docs_ids = array();
 $all_files = $all_files_query->posts;

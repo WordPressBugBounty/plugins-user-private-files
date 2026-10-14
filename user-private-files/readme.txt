@@ -3,7 +3,7 @@ Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, share documents, client portal, file upload, document library
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,6 +356,10 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.2.1 =
+* 2026-10-14
+* Fixed - Files uploaded by other users in a shared folder not visible.
 
 = 2.2.0 =
 * 2026-10-01

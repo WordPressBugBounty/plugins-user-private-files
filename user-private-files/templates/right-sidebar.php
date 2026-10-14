@@ -64,4 +64,8 @@ $user_id = get_current_user_id();
 		
 	</div>
 	
+	<div class="upfp_plugin_info">
+		<a href="https://userprivatefiles.com/?utm_source=powered-by&utm_medium=upf-free" target="_blank">Powered by User Private Files</a>
+	</div>
+	
 </div>
