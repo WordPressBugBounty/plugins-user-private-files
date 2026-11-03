@@ -20,19 +20,27 @@ body{
     height: 40px;
     align-self: center;
     margin: 0 10px;
-  }
-.upfp_banner .banner_col-1{
-	width: 70%;
 }
-.banner_col-1 {
-    display: flex;
-  }
+.upfp_banner .banner_col-1{
+	width: 25%;
+	display: flex;
+}
+
+.upfp_banner .upfp_btn-container h2 span{
+	color: #46B450;
+}
+
+.upfp_banner .upfp_btn-container{
+	width: 75%;
+	display: flex;
+	justify-content: end;
+}
 
 .upfp_banner .upfp_contains_btn {
     display: flex;
     justify-content: end;
     margin: 0.5em;
-  }
+}
 
 .contains_btn{
     position: absolute;
@@ -141,6 +149,10 @@ a.upfp_btn{
     align-items: center;
 }
 
+.upfp_col-2 p{
+	width: 95%;
+}
+
 .upfp_inner-container .upfp_col-2 .chosen-container{
     border: 0px solid #adb5bd;
     max-width: 95%;
@@ -222,28 +234,12 @@ a.upfp_btn{
     height: auto;
     width: 40vw;
     background-color: #fff;
-    border-radius: 10px;   
+    padding: 20px;
+	line-height: 2;
 }
 
-.upfp_pop-up p{
-    padding: 8%;
-}
-
-.upfp_close-popup{
-    position: absolute;
-    left: 38vw;
-    top: 1vh;
-    font-weight: 900;
-    font-size: 1.3rem;
-    cursor: pointer;
-    text-align: center;
-    border-top-right-radius: 10px;
-}
-
-.upfp_pop-up .heading{
-    width: 94%;
-    border-radius: 10px 10px 0 0;
-    padding: 3%;
+.upfp_pop-up p, .upfp_pop-up .heading{
+    padding: 0;
 }
 
 
@@ -395,7 +391,7 @@ a.upfp_btn{
     max-width: 750px;
     min-width: 425px;
   }
-  .upfp-popup .closePopup{
+  .upfp-popup .closePopup, .upfp_pop-up .closePopup{
     position: absolute;
     right: 0;
     top: 0;

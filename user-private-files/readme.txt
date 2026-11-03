@@ -3,8 +3,8 @@ Contributors: deepakkite, mrking2201, upfpro
 Tags: file sharing, share documents, client portal, file upload, document library
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.2.1
-Requires PHP: 7.4
+Stable tag: 2.2.2
+Requires PHP: 8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ Whether you need a client portal, secure file upload, file-sharing system, docum
 
 **Key Features**
 
-* **Client File Uploads** – Let clients and users upload files directly through your website.
+* **Client File Uploads** – Let clients and users upload unlimited files directly through your website.
 * **Secure Client Portal** – Give every user a private space to access and manage their files.
 * **Private File Sharing** – Securely share files and folders with specific users and control access.
 * **Document Management** – Organize private files into folders and manage access from one place.
@@ -356,6 +356,13 @@ Image, pdf, doc, zip, audio, video, txt and CSV files are supported in the moder
 9. Classic Design - Shared with me files
 
 == Changelog ==
+
+= 2.2.2 =
+* 2026-11-03
+* [Update] - Updated settings page to display available options first.
+* [Update] - Showing shortcodes under the settings page and added coupon.
+* Fixed - Loaded upf icon from local.
+* Fixed - The empty folder icon.
 
 = 2.2.1 =
 * 2026-10-14

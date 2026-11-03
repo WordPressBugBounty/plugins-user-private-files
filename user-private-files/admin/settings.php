@@ -9,22 +9,22 @@ if (!function_exists('upvf_config_callback')) {
 		if (!current_user_can('manage_options')){
 			wp_die( __('You do not have sufficient permissions to access this page.', 'user-private-files') );
 		}
+		
+		global $upf_plugin_url;
 		?>
 
 		<!-- Banner HTML -->
 		<div class="upfp_banner">
 			<div class="banner_col-1">
-			<img class="upfp_banner_logo" src="https://userprivatefiles.com/wp-content/uploads/2022/02/cropped-shield-180x180.png">
-			<h2>
-				<div class="upfp_msg"><div class="upfp_sub-msg">User Private Files - Free</div></div>
-			</h2>
+				<img class="upfp_banner_logo" src="<?php echo $upf_plugin_url . 'images/admin_images/cropped-shield-180x180.png'; ?>">
+				<h2><div class="upfp_msg"><div class="upfp_sub-msg">User Private Files - Free</div></div></h2>
 			</div>
 			<div class="upfp_btn-container">
+				<h2>Unlock More. Do More. Go PRO! 20% OFF Coupon: <span>GOPRO20</span></h2>
 				<div class="upfp_contains_btn">
-					<a id="btn1" class="upfp_btn" href="https://userprivatefiles.com/pricing/?utm_source=free-get-pro&utm_medium=upf-free" target="_blank">Get PRO Version</a>
+					<a id="btn1" class="upfp_btn" href="https://userprivatefiles.com/pricing/?utm_source=free-get-pro&utm_medium=upf-free" target="_blank">Get PRO Plugin</a>
 					<a id="btn2" class="upfp_btn" href="https://userprivatefiles.com/documentation/?utm_source=free-documentation&utm_medium=upf-free" target="_blank">Documentation</a>
 					<a id="btn3" class="upfp_btn" href="https://userprivatefiles.com/support/?utm_source=free-support&utm_medium=upf-free" target="_blank">Contact Support</a>
-					<a id="btn4" class="upfp_btn" href="https://wordpress.org/support/plugin/user-private-files/reviews/" target="_blank">Feedback</a>
 				</div>	
 			</div>
 		</div>
@@ -40,7 +40,7 @@ if (!function_exists('upvf_config_callback')) {
 		<!-- Tabs Navbar HTML -->
 		<nav class="upfp_tab-container">
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=settings" class="tabs <?php echo ($active_menu == 'settings' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-gear"></i> Settings</a>
-			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=upload" class="tabs <?php echo ($active_menu == 'upload' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-gear"></i> Upload</a>
+			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=upload" class="tabs <?php echo ($active_menu == 'upload' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-upload"></i> Upload</a>
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=storage" class="tabs <?php echo ($active_menu == 'storage' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-boxes-packing"></i> Storage</a>
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=login" class="tabs <?php echo ($active_menu == 'login' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-user-shield"></i> Log In</a>
 			<a href="<?php echo get_admin_url(); ?>admin.php?page=upvf-free&tab=register" class="tabs <?php echo ($active_menu == 'register' ? 'upfp_active' : ''); ?>"><i class="fa-solid fa-user-plus"></i> Registration</a>
@@ -118,23 +118,193 @@ if (!function_exists('upvf_config_callback')) {
 						wp_nonce_field('upfp_settings_option');
 						global $wp_roles;
 						$all_roles = $wp_roles->roles;
-						$editable_roles = apply_filters('editable_roles', $all_roles);
+						$options = '';
+						foreach($all_roles as $key => $val){
+							$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
+						}
+						
+						// $editable_roles = apply_filters('editable_roles', $all_roles);
+						
 						?>
+						
+						<div class="upfp_setting-container">
+							<h2 class="heading">Shortcodes</h2>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1"><label>[upf_manager]</label></div>
+								<div class="upfp_col-2"><p>Use this shortcode in a page to display a full-features file manager dashboard on frontend of your site.</p></div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1"><label>[upf_upload]</label></div>
+								<div class="upfp_col-2"><p>Display only Upload Box to your users, use this shortcode. With PRO version, this shortcode accepts an optional attribute “id”. You can pass a folder ID to it and the file will be uploaded to that folder if the user has upload access to it.</p></div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1"><label>[upf_display]</label></div>
+								<div class="upfp_col-2"><p>If you like to display a user’s uploaded and shared files only. This works like a gallery. This will not display any folder but will display all files from the folders.</p></div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1"><label>[upf_selected_files]</label></div>
+								<div class="upfp_col-2"><p>PRO Only - Use this shortcode to display a list of selected files and folders that users have access to.
+This shortcode accepts 2 parameters called “id” and “limit_folder_view” where id is a required parameter.</p></div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1"><label>[upf_public_folder]</label></div>
+								<div class="upfp_col-2"><p>PRO Only - This shortcode is used to display files that are publicly available and are not private. Users can view these files without the need of creating an account on your site.</p></div>
+							</div>
+							
+						</div>
+						
+						<div class="upfp_setting-container">
+							<h2 class="heading">Notification Settings</h2>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<?php $upfp_enable_email = get_option('upfp_enable_email'); ?>
+									<label>Enable Email Notification</label>
+								</div>
+
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_setting <?php echo ($upfp_enable_email == 'yes' ? 'parent_toggle' : ''); ?>">
+										<div class="upfp_toggle-check">
+										<input type="checkbox" name="upfp_enable_email_field" id="upfp_enable_email_field" <?php echo ($upfp_enable_email == 'yes')?'checked':''; ?>>
+											<div class="upfp_round <?php echo ($upfp_enable_email == 'yes' ? 'child_toggle' : ''); ?>"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<?php $upfp_email_subject = get_option('upfp_email_subject'); ?>
+									<label for="upfp_email_subject_field">Email Subject</label>
+								</div>
+
+								<div class="upfp_col-2">
+									<input type="text" name="upfp_email_subject_field" id="upfp_email_subject_field" class="upfp_input" placeholder="e.g. {user} shared a file / folder with you on <?php echo get_bloginfo( 'name' ); ?>" value="<?php echo esc_html( $upfp_email_subject ); ?>">
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<?php $upfp_email_content = html_entity_decode( get_option('upfp_email_content') ); ?>
+									<label for="upfp_email_content_field">Email Content <br> <small>(html allowed)</small></label>
+								</div>
+
+								<div class="upfp_col-2">
+									<textarea name="upfp_email_content_field" id="upfp_email_content_field" class="upfp_input" rows="5" placeholder="e.g. {user} shared a file / folder with you on <?php echo get_bloginfo( 'name' ); ?>. Login and check your files"><?php echo esc_html( $upfp_email_content ); ?></textarea>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Enable Frontend Notification (PRO Feature)</label>
+								</div>
+
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+											<input type="checkbox" name="field_notif" id="field_notif" disabled readonly="readonly">	
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+						
+						<div class="upfp_setting-container">
+							<h2 class="heading">Toolbar (PRO Feature)</h2>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide Search for</label>
+								</div>
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide Filters for</label>
+								</div>
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide New Folder Button</label>
+								</div>
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide Upload Folder Button</label>
+								</div>
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide Upload Files Button</label>
+								</div>
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide Add Link Button</label>
+								</div>
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide New File Button</label>
+								</div>
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">									
+									<label>Hide Tool Buttons Label</label>
+								</div>
+
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+											<input type="checkbox">	
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						
 						<div class="upfp_setting-container">
 							<h2 class="heading">General Settings - (PRO Feature)</h2>
 
 							<div class="upfp_inner-container">
 								<div class="upfp_col-1">
-									<?php 
-									$options = '';
-									foreach($editable_roles as $key => $val){
-										if($key != 'administrator') {
-											$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-										}
-									}
-									?>
 									<label>Enable backend file manager</label>
-									
 								</div>
 
 								<div class="upfp_col-2">
@@ -144,14 +314,47 @@ if (!function_exists('upvf_config_callback')) {
 
 							<div class="upfp_inner-container">
 								<div class="upfp_col-1">
-									<?php 
-									$options = '';
-									foreach($editable_roles as $key => $val){
-										$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-									}
-									?>
 									<label>Hide Trash section for</label>
-									
+								</div>
+
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Hide "Shared with me" Section for</label>
+								</div>
+
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Disable Sharing for</label>
+								</div>
+
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Disable Downloading for</label>
+								</div>
+
+								<div class="upfp_col-2">
+									<select class="chosen-select" multiple><?php echo $options; ?></select>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Disable File Comments for</label>
 								</div>
 
 								<div class="upfp_col-2">
@@ -161,12 +364,6 @@ if (!function_exists('upvf_config_callback')) {
 
 							<div class="upfp_inner-container">
 								<div class="upfp_col-1">
-									<?php 
-									$options = '';
-									foreach($editable_roles as $key => $val){
-										$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-									}
-									?>
 									<label>Hide My-files section for</label>
 									<i id="upfp_icon2" class="fas fa-info-circle upfp_icon"></i>
 								</div>
@@ -181,16 +378,6 @@ if (!function_exists('upvf_config_callback')) {
 									<label for="upfp_role_based_shrng">Enable role based sharing for</label>
 									<i id="upfp_icon1" class="fas fa-info-circle upfp_icon" aria-hidden="true"></i>
 								</div>
-								
-								 <?php 
-									global $wp_roles;
-									$all_roles = $wp_roles->roles;
-									$options = '';
-									foreach($all_roles as $key => $val){
-										$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-									}
-								?>
-
 								<div class="upfp_col-2">
 									<select id="upfp_role_based_shrng" class="chosen-select" multiple><?php echo $options; ?></select>
 								</div>								
@@ -213,6 +400,62 @@ if (!function_exists('upvf_config_callback')) {
 							<div class="upfp_inner-container">
 								<div class="upfp_col-1">
 									<label>Enable public folder</label>
+								</div>
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+											<input type="checkbox">	
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Display Pretty File Type</label>
+								</div>
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+											<input type="checkbox">	
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Append Filename to Share Links</label>
+								</div>
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+											<input type="checkbox">	
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Enable Request File/Folder Feature</label>
+								</div>
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+											<input type="checkbox">	
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Enable Auto Delete Files</label>
 								</div>
 								<div class="upfp_col-2">
 									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
@@ -290,6 +533,20 @@ if (!function_exists('upvf_config_callback')) {
 									</div>
 								</div>
 							</div>
+							
+							<div class="upfp_inner-container">
+								<div class="upfp_col-1">
+									<label>Enable PDF Sign</label>
+								</div>
+								<div class="upfp_col-2">
+									<div id="upfp_setting-toggle" class="upfp_pagination_toggle upfp_toggle_setting">
+										<div class="upfp_toggle-check">
+										<input type="checkbox">
+											<div class="upfp_round"></div>
+										</div>
+									</div>
+								</div>
+							</div>
 
 							<div class="upfp_inner-container">
 								<div class="upfp_col-1">
@@ -342,179 +599,6 @@ if (!function_exists('upvf_config_callback')) {
 							
 						</div>
 						
-						<div class="upfp_setting-container">
-							<h2 class="heading">Toolbar (PRO Feature)</h2>
-
-							<?php 
-								global $wp_roles;
-								$all_roles = $wp_roles->roles;
-							?>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php 
-										$options = '';
-										foreach($all_roles as $key => $val){
-											$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-										}
-									?>
-									<label>Hide Search for</label>
-								</div>
-								<div class="upfp_col-2">
-									<select class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-								<?php 
-										$options = '';
-										foreach($all_roles as $key => $val){
-											$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-										}
-									?>
-									<label>Hide Filters for</label>
-								</div>
-								<div class="upfp_col-2">
-									<select class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php 
-										$options = '';
-										foreach($all_roles as $key => $val){
-											$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-										}
-									?>
-									<label>Hide New Folder Button</label>
-								</div>
-								<div class="upfp_col-2">
-									<select class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-							
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php 										
-										$options = '';
-										foreach($all_roles as $key => $val){											
-											$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-										}
-									?>
-									<label>Hide Upload Folder Button</label>
-								</div>
-								<div class="upfp_col-2">
-									<select class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php 										
-										$options = '';
-										foreach($all_roles as $key => $val){											
-											$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-										}
-									?>
-									<label>Hide Upload Files Button</label>
-								</div>
-								<div class="upfp_col-2">
-									<select class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php 										
-										$options = '';
-										foreach($all_roles as $key => $val){											
-											$options .= '<option value="'.$key.'">'.$val['name'].'</option>';
-										}
-									?>
-									<label>Hide New File Button</label>
-								</div>
-								<div class="upfp_col-2">
-									<select class="chosen-select" multiple><?php echo $options; ?></select>
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">									
-									<label>Hide Tool Buttons Label</label>
-								</div>
-
-								<div class="upfp_col-2">
-									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
-										<div class="upfp_toggle-check">
-											<input type="checkbox">	
-											<div class="upfp_round"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						
-						<div class="upfp_setting-container">
-							<h2 class="heading">Notification Settings</h2>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<label>Enable Frontend Notification (PRO Feature)</label>
-								</div>
-
-								<div class="upfp_col-2">
-									<div id="upfp_setting-toggle" class="upfp_toggle_setting">
-										<div class="upfp_toggle-check">
-											<input type="checkbox" name="field_notif" id="field_notif" disabled readonly="readonly">	
-											<div class="upfp_round"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php $upfp_enable_email = get_option('upfp_enable_email'); ?>
-									<label>Enable Email Notification</label>
-								</div>
-
-								<div class="upfp_col-2">
-									<div id="upfp_setting-toggle" class="upfp_toggle_setting <?php echo ($upfp_enable_email == 'yes' ? 'parent_toggle' : ''); ?>">
-										<div class="upfp_toggle-check">
-										<input type="checkbox" name="upfp_enable_email_field" id="upfp_enable_email_field" <?php echo ($upfp_enable_email == 'yes')?'checked':''; ?>>
-											<div class="upfp_round <?php echo ($upfp_enable_email == 'yes' ? 'child_toggle' : ''); ?>"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php $upfp_email_subject = get_option('upfp_email_subject'); ?>
-									<label for="upfp_email_subject_field">Email Subject</label>
-								</div>
-
-								<div class="upfp_col-2">
-									<input type="text" name="upfp_email_subject_field" id="upfp_email_subject_field" class="upfp_input" placeholder="e.g. {user} shared a file / folder with you on <?php echo get_bloginfo( 'name' ); ?>" value="<?php echo esc_html( $upfp_email_subject ); ?>">
-								</div>
-							</div>
-
-							<div class="upfp_inner-container">
-								<div class="upfp_col-1">
-									<?php $upfp_email_content = html_entity_decode( get_option('upfp_email_content') ); ?>
-									<label for="upfp_email_content_field">Email Content <br> <small>(html allowed)</small></label>
-								</div>
-
-								<div class="upfp_col-2">
-									<textarea name="upfp_email_content_field" id="upfp_email_content_field" class="upfp_input" rows="5" placeholder="e.g. {user} shared a file / folder with you on <?php echo get_bloginfo( 'name' ); ?>. Login and check your files"><?php echo esc_html( $upfp_email_content ); ?></textarea>
-								</div>
-							</div>
-						
-						</div>
-						
 						<div class="upfp_admin_save">
 							<input type="submit" name="upfp_settings_submit" class="button-primary" value="Save"/>
 						</div>
@@ -524,7 +608,7 @@ if (!function_exists('upvf_config_callback')) {
 					<!--POP-UP-->
 					<div id="upfp_popup-container-1" class="upfp_popup-container">
 						<div class="upfp_pop-up">
-							<span id="upfp_close-popup1" class="upfp_close-popup">X</span>
+							<span class="closePopup upfp_close_info_pp"><i class="fa-solid fa-xmark"></i></span>
 							<h3 class="heading">Enable role based sharing for all users</h3>
 							<p>By default, users can share with email address one by one. Only admin is allowed to share files on role basis or to all users at once. Enabling this will allow all users share their files with all users and role based users at once.</p>
 						</div>
@@ -533,7 +617,7 @@ if (!function_exists('upvf_config_callback')) {
 					<!--POP-UP-->	
 					<div id="upfp_popup-container-2" class="upfp_popup-container">
 						<div class="upfp_pop-up">
-							<span id="upfp_close-popup2" class="upfp_close-popup">X</span>
+							<span class="closePopup upfp_close_info_pp"><i class="fa-solid fa-xmark"></i></span>
 							<h3 class="heading">Disable Uploading for</h3>
 							<p>This will limit users to upload only in the shared folders with full-access.</p>
 						</div>

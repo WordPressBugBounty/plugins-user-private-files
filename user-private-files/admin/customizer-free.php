@@ -225,6 +225,16 @@ if (!function_exists('upvf_pro_customiser_callback'))
                                     <img src="<?php echo $upf_plugin_url . 'images/premade_folder.png'; ?>" alt="Preview" class="upfp_thumb-prev" id="upfp_thumb-prev-folder">
                                 </div>								
                             </div>
+							
+							<div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label for="upfp_cust_premade_folder_thumb">Empty Folder Thumbnail</label>
+                                </div>
+                                <div class="upfp_col-2 upfp_thumb_col-2">
+                                    <input type="file" class="upfp_thumb" name="upfp_cust_empty_folder_thumb" id="upfp_cust_empty_folder_thumb" accept="image/png, image/jpeg, image/webp">
+                                    <img src="<?php echo $upf_plugin_url . 'images/empty-folder.png'; ?>" alt="Preview" class="upfp_thumb-prev" id="upfp_thumb-prev-folder">
+                                </div>								
+                            </div>
                                 
                             <div class="upfp_inner-container">
                                 <div class="upfp_col-1">
@@ -273,6 +283,16 @@ if (!function_exists('upvf_pro_customiser_callback'))
                                 <div class="upfp_col-2 upfp_thumb_col-2">
                                     <input type="file" class="upfp_thumb" name="upfp_cust_docs_thumb" id="upfp_cust_docs_thumb" accept="image/png, image/jpeg, image/webp">
                                     <img src="<?php echo $upf_plugin_url . 'images/Doc_thumbnail.png'; ?>" alt="Preview" class="upfp_thumb-prev" id="upfp_thumb-prev-docs">
+                                </div>								
+                            </div>
+							
+							<div class="upfp_inner-container">
+                                <div class="upfp_col-1">
+                                    <label for="upfp_cust_docs_thumb">Link Thumbnail</label>
+                                </div>
+                                <div class="upfp_col-2 upfp_thumb_col-2">
+                                    <input type="file" class="upfp_thumb" name="upfp_cust_link_thumb" id="upfp_cust_link_thumb" accept="image/png, image/jpeg, image/webp">
+                                    <img src="<?php echo $upf_plugin_url . 'images/File_thumbnail.png'; ?>" alt="Preview" class="upfp_thumb-prev" id="upfp_thumb-prev-docs">
                                 </div>								
                             </div>
 

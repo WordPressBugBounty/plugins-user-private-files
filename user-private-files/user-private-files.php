@@ -2,7 +2,7 @@
 /**
 * Plugin Name: User Private Files
 * Description: Create a secure client file sharing portal in WordPress where clients and admin can privately upload, share, manage, and exchange files and documents.
-* Version: 2.2.1
+* Version: 2.2.2
 * Author: User Private Files
 * Author URI: https://userprivatefiles.com/?utm_source=wp-plugin-author&utm_medium=upf-free
 * License: GPLv2 or later
